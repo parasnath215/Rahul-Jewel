@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Rahul Jewellers Legacy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+
+  <style>
+    :root {
+      --bg-dark: #081e18;
+      --bg-panel: #0d2c23;
+      --bg-card: #12382e;
+      --bg-input: #071914;
+      --gold-primary: #b78a3d;
+      --gold-light: #d8b26e;
+      --gold-border: rgba(183, 138, 61, 0.35);
+      --cream: #f7f1e7;
+      --text-muted: #9eb5ad;
+      --danger: #e55353;
+      --success: #2eb85c;
+      --info: #3399ff;
+      --warning: #f9b115;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #061713;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation Bar */
+    .admin-navbar {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-pill {
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--gold-border);
+    }
+
+    .brand-logo-pill img {
+      height: 26px;
+      display: block;
+    }
+
+    .admin-tag {
+      background: rgba(183, 138, 61, 0.15);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-nav {
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--cream);
+      padding: 7px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-nav:hover {
+      background: rgba(183, 138, 61, 0.15);
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .btn-logout {
+      background: rgba(229, 83, 83, 0.15);
+      border-color: rgba(229, 83, 83, 0.4);
+      color: #ff9b9b;
+    }
+
+    .btn-logout:hover {
+      background: rgba(229, 83, 83, 0.3);
+      border-color: #ff9b9b;
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    .dashboard-container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 24px 60px;
+      flex: 1;
+    }
+
+    /* KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .kpi-val {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1.1;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .badge-status {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-auto {
+      background: rgba(46, 184, 92, 0.15);
+      border: 1px solid rgba(46, 184, 92, 0.5);
+      color: #72e297;
+    }
+
+    .badge-manual {
+      background: rgba(249, 177, 21, 0.15);
+      border: 1px solid rgba(249, 177, 21, 0.5);
+      color: #ffd166;
+    }
+
+    /* Tabs Header */
+    .tabs-header {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--gold-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--cream);
+    }
+
+    .tab-btn.active {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold-light);
+    }
+
+    .tab-badge {
+      background: var(--gold-primary);
+      color: #061713;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    /* Tab Content Panels */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    /* Inquiries Tab Toolbar */
+    .toolbar-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .search-filter-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      max-width: 520px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid rgba(183, 138, 61, 0.3);
+      border-radius: 4px;
+      padding: 10px 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-family: var(--font-sans);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold-light);
+    }
+
+    .status-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: var(--bg-card);
+      border: 1px solid rgba(183, 138, 61, 0.25);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--gold-light);
+      color: var(--cream);
+    }
+
+    .pill-btn.active {
+      background: var(--gold-primary);
+      color: #061713;
+      border-color: var(--gold-primary);
+    }
+
+    .btn-export {
+      background: rgba(183, 138, 61, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-export:hover {
+      background: var(--gold-primary);
+      color: #061713;
+    }
+
+    /* Inquiries Table Card */
+    .table-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      overflow-x: auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .inq-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    .inq-table th {
+      background: #092019;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gold-border);
+      white-space: nowrap;
+    }
+
+    .inq-table td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(183, 138, 61, 0.12);
+      vertical-align: top;
+    }
+
+    .inq-table tr:hover td {
+      background: rgba(18, 56, 46, 0.4);
+    }
+
+    .inq-id {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .inq-date {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .cust-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .cust-contact {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .btn-quick-wa {
+      background: #25d366;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-quick-wa:hover { opacity: 0.85; }
+
+    .btn-quick-call {
+      background: rgba(183, 138, 61, 0.2);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-quick-call:hover {
+      background: var(--gold-primary);
+      color: #061713;
+    }
+
+    .inq-source-badge {
+      display: inline-block;
+      background: rgba(158, 181, 173, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .inq-product {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .inq-message-box {
+      background: rgba(7, 25, 20, 0.6);
+      border: 1px solid rgba(183, 138, 61, 0.15);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      color: #d8e5df;
+      line-height: 1.4;
+      max-width: 300px;
+      max-height: 90px;
+      overflow-y: auto;
+    }
+
+    .status-select {
+      background: var(--bg-input);
+      border: 1px solid rgba(183, 138, 61, 0.4);
+      border-radius: 4px;
+      padding: 6px 10px;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .status-select:focus {
+      border-color: var(--gold-light);
+    }
+
+    .status-select.new { color: #ffc107; border-color: #ffc107; }
+    .status-select.contacted { color: #17a2b8; border-color: #17a2b8; }
+    .status-select.converted { color: #28a745; border-color: #28a745; }
+    .status-select.closed { color: #6c757d; border-color: #6c757d; }
+
+    .notes-box {
+      width: 100%;
+      min-width: 160px;
+      background: var(--bg-input);
+      border: 1px solid rgba(183, 138, 61, 0.25);
+      border-radius: 4px;
+      padding: 6px 8px;
+      color: #ffffff;
+      font-size: 12px;
+      font-family: var(--font-sans);
+      resize: vertical;
+      min-height: 48px;
+      outline: none;
+    }
+
+    .notes-box:focus { border-color: var(--gold-light); }
+
+    .btn-save-note {
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .btn-save-note:hover {
+      background: var(--gold-primary);
+      color: #061713;
+    }
+
+    .btn-delete-inq {
+      background: transparent;
+      border: 1px solid rgba(229, 83, 83, 0.4);
+      color: #ff9b9b;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-delete-inq:hover {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    .empty-state {
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* ========================================= */
+    /* Rates Tab Layout                          */
+    /* ========================================= */
+    .rates-manager-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .rates-manager-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 6px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .panel-header {
+      border-bottom: 1px solid rgba(183, 138, 61, 0.2);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .mode-indicator-banner {
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .mode-indicator-banner.auto {
+      background: rgba(46, 184, 92, 0.12);
+      border: 1px solid rgba(46, 184, 92, 0.4);
+      color: #bbf3d0;
+    }
+
+    .mode-indicator-banner.manual {
+      background: rgba(249, 177, 21, 0.12);
+      border: 1px solid rgba(249, 177, 21, 0.4);
+      color: #fde8b1;
+    }
+
+    .mode-switch-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .btn-mode-toggle {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 4px;
+      border: 1px solid var(--gold-border);
+      background: var(--bg-input);
+      color: var(--cream);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .btn-mode-toggle:hover {
+      border-color: var(--gold-light);
+    }
+
+    .btn-mode-toggle.active {
+      background: linear-gradient(135deg, #b78a3d, #8f6521);
+      color: #061713;
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(183, 138, 61, 0.35);
+    }
+
+    .rate-field-group {
+      margin-bottom: 18px;
+    }
+
+    .rate-field-group label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .rate-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .rate-input-prefix {
+      position: absolute;
+      left: 14px;
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .rate-input-field {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid rgba(183, 138, 61, 0.3);
+      border-radius: 4px;
+      padding: 11px 14px 11px 32px;
+      color: #ffffff;
+      font-size: 15px;
+      font-family: var(--font-sans);
+      outline: none;
+    }
+
+    .rate-input-field:focus {
+      border-color: var(--gold-light);
+    }
+
+    .rate-field-hint {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Live Computation Box */
+    .computed-matrix-box {
+      background: rgba(7, 25, 20, 0.8);
+      border: 1px solid rgba(183, 138, 61, 0.25);
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .computed-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .computed-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .computed-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 8px;
+      background: rgba(18, 56, 46, 0.3);
+      border-radius: 3px;
+    }
+
+    .computed-item span:first-child { color: var(--text-muted); }
+    .computed-item span:last-child { color: #ffffff; font-weight: 600; font-family: monospace; }
+
+    /* Rates Form Buttons */
+    .form-btn-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-save-rates {
+      flex: 1;
+      background: linear-gradient(135deg, #c59b4c, #a4782e);
+      color: #061713;
+      border: none;
+      border-radius: 4px;
+      padding: 13px 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-save-rates:hover {
+      background: linear-gradient(135deg, #d8b26e, #b78a3d);
+      box-shadow: 0 4px 15px rgba(183, 138, 61, 0.4);
+    }
+
+    .btn-refresh-feed {
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--cream);
+      border-radius: 4px;
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-refresh-feed:hover {
+      background: rgba(183, 138, 61, 0.15);
+      border-color: var(--gold-light);
+    }
+
+    /* Live Preview Tiles */
+    .preview-tiles {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .preview-tile {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      height: 120px;
+      background: #092019;
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .preview-tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    .preview-tile-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .preview-tile-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .preview-tile-val {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* Toast Notification */
+    .toast-notify {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-primary);
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast-notify.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="admin-navbar">
+    <div class="nav-brand">
+      <div class="brand-logo-pill">
+        <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy">
+      </div>
+      <span class="admin-tag">Showroom Console</span>
+    </div>
+
+    <div class="nav-actions">
+      <a href="/" target="_blank" class="btn-nav">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Live Store</span>
+      </a>
+      <a href="/gold-rates" target="_blank" class="btn-nav">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span>Live Rates Page</span>
+      </a>
+      <a href="/admin/logout" class="btn-nav btn-logout">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Container -->
+  <div class="dashboard-container">
+
+    <!-- KPI Summary Section -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Inquiries</div>
+        <div class="kpi-val" id="kpiTotalInquiries"><%= inquiries.length %></div>
+        <div class="kpi-sub">Customer leads captured</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">New Leads (Pending)</div>
+        <div class="kpi-val" style="color: #ffd166;" id="kpiNewInquiries">
+          <%= inquiries.filter(i => i.status === 'new').length %>
+        </div>
+        <div class="kpi-sub">Requires concierge response</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">24K Gold Rate (10G)</div>
+        <div class="kpi-val">
+          ₹<%= rates.featured.gold24k_10g.value %>
+        </div>
+        <div class="kpi-sub">
+          <% if (ratesConfig.mode === 'manual') { %>
+            <span class="badge-status badge-manual">Showroom Override</span>
+          <% } else { %>
+            <span class="badge-status badge-auto">Live Market Feed</span>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Silver Rate (1 KG)</div>
+        <div class="kpi-val">
+          ₹<%= rates.featured.silver_1kg.value %>
+        </div>
+        <div class="kpi-sub"><%= rates.pageTitleDate || rates.currentDateDisplay %></div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab('inquiries')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Customer Inquiries &amp; Leads</span>
+        <span class="tab-badge" id="tabInquiryBadge"><%= inquiries.length %></span>
+      </button>
+
+      <button class="tab-btn" onclick="switchTab('rates')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Live Precious Metals &amp; Gold Rates</span>
+      </button>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: CUSTOMER INQUIRIES & LEADS              -->
+    <!-- ============================================== -->
+    <div id="tab-inquiries" class="tab-pane active">
+      <div class="toolbar-bar">
+        <div class="search-filter-wrap">
+          <input type="text" class="search-input" id="searchInquiries" placeholder="Search by name, phone, email, or product..." onkeyup="filterInquiries()">
+        </div>
+
+        <div class="status-pills">
+          <button class="pill-btn active" data-status="all" onclick="setStatusFilter('all')">All</button>
+          <button class="pill-btn" data-status="new" onclick="setStatusFilter('new')">New</button>
+          <button class="pill-btn" data-status="contacted" onclick="setStatusFilter('contacted')">Contacted</button>
+          <button class="pill-btn" data-status="converted" onclick="setStatusFilter('converted')">Converted</button>
+          <button class="pill-btn" data-status="closed" onclick="setStatusFilter('closed')">Closed</button>
+        </div>
+
+        <a href="/admin/api/inquiries/export" class="btn-export">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Export CSV</span>
+        </a>
+      </div>
+
+      <div class="table-card">
+        <table class="inq-table">
+          <thead>
+            <tr>
+              <th>Inquiry Ref</th>
+              <th>Customer &amp; Contact</th>
+              <th>Quick Action</th>
+              <th>Interest / Source</th>
+              <th>Client Message</th>
+              <th>Lead Status</th>
+              <th>Internal Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inquiriesTableBody">
+            <% if (inquiries && inquiries.length > 0) { %>
+              <% inquiries.forEach(inq => { %>
+                <tr id="row-<%= inq.id %>" data-status="<%= inq.status %>" data-search="<%= (inq.name + ' ' + inq.phone + ' ' + inq.email + ' ' + inq.productTitle + ' ' + inq.message).toLowerCase() %>">
+                  <td>
+                    <div class="inq-id"><%= inq.id %></div>
+                    <div class="inq-date"><%= inq.dateDisplay %></div>
+                  </td>
+                  <td>
+                    <div class="cust-name"><%= inq.name %></div>
+                    <div class="cust-contact">
+                      <div><%= inq.phone || 'Phone: N/A' %></div>
+                      <div><%= inq.email || '' %></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="quick-actions">
+                      <% if (inq.phone) { 
+                        const cleanPhone = inq.phone.replace(/[^0-9]/g, '');
+                        const waNumber = cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone;
+                        const waMsg = encodeURIComponent('Namaste ' + inq.name + ' ji! Rahul Jewellers showroom concierge connecting regarding your inquiry for "' + (inq.productTitle || 'heirloom jewelry') + '". How may we assist you today?');
+                      %>
+                        <a href="https://wa.me/<%= waNumber %>?text=<%= waMsg %>" target="_blank" class="btn-quick-wa" title="Open WhatsApp Chat">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-1.12-.075-.27-.087-.621-.212-1.077-.412-1.929-.848-3.19-2.779-3.287-2.909-.097-.129-.785-1.042-.785-1.988 0-.946.496-1.411.672-1.603.176-.192.384-.24.512-.24.128 0 .256.002.368.007.12.006.279-.045.437.334.16.384.545 1.332.593 1.43.048.098.08.213.016.341-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.201-.085.393.112.192.499.824 1.072 1.336.738.658 1.36.862 1.552.958.192.096.304.08.416-.048.112-.128.48-559.608-.752.128-.192.256-.16.432-.096.176.064 1.12.528 1.312.624.192.096.32.144.368.224.048.08.048.464-.096.869z"/></svg>
+                          <span>WhatsApp</span>
+                        </a>
+                        <a href="tel:<%= inq.phone %>" class="btn-quick-call" title="Direct Phone Call">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                          <span>Call</span>
+                        </a>
+                      <% } else { %>
+                        <span style="font-size: 11px; color: var(--text-muted);">No phone</span>
+                      <% } %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="inq-source-badge"><%= inq.source || 'Website' %></div>
+                    <div class="inq-product"><%= inq.productTitle || 'General Catalog' %></div>
+                  </td>
+                  <td>
+                    <div class="inq-message-box"><%= inq.message || 'Customer requested contact.' %></div>
+                  </td>
+                  <td>
+                    <select class="status-select <%= inq.status %>" onchange="updateInquiryStatus('<%= inq.id %>', this.value, this)">
+                      <option value="new" <%= inq.status === 'new' ? 'selected' : '' %>>New Lead</option>
+                      <option value="contacted" <%= inq.status === 'contacted' ? 'selected' : '' %>>Contacted</option>
+                      <option value="converted" <%= inq.status === 'converted' ? 'selected' : '' %>>Converted</option>
+                      <option value="closed" <%= inq.status === 'closed' ? 'selected' : '' %>>Closed</option>
+                    </select>
+                  </td>
+                  <td>
+                    <textarea class="notes-box" id="notes-<%= inq.id %>" placeholder="Add concierge notes..."><%= inq.notes || '' %></textarea>
+                    <button class="btn-save-note" onclick="saveInquiryNotes('<%= inq.id %>')">Save Note</button>
+                  </td>
+                  <td>
+                    <button class="btn-delete-inq" onclick="deleteInquiry('<%= inq.id %>')" title="Delete Inquiry">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                    </button>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="8" class="empty-state">No inquiries found.</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: LIVE PRECIOUS METALS & GOLD RATES       -->
+    <!-- ============================================== -->
+    <div id="tab-rates" class="tab-pane">
+      
+      <!-- Current Mode Banner -->
+      <div id="modeBanner" class="mode-indicator-banner <%= ratesConfig.mode === 'manual' ? 'manual' : 'auto' %>">
+        <div>
+          <strong id="modeTitle" style="font-size: 15px;">
+            <%= ratesConfig.mode === 'manual' ? 'Showroom Manual Override Active' : 'Automatic Live Market Feed Active' %>
+          </strong>
+          <div id="modeDesc" style="font-size: 13px; opacity: 0.9; margin-top: 4px;">
+            <%= ratesConfig.mode === 'manual' 
+              ? 'Board rates are locked to your showroom custom values and published immediately across all pages.' 
+              : 'Rates are dynamically fetched from bullion feeds and cached for 10 minutes.' %>
+          </div>
+        </div>
+        <div style="font-size: 12px; text-align: right; opacity: 0.85;">
+          Last Updated:<br>
+          <strong id="bannerLastUpdated"><%= rates.lastUpdatedIST %></strong>
+        </div>
+      </div>
+
+      <div class="rates-manager-grid">
+
+        <!-- Rates Configuration Form -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2 class="panel-title">Board Rates Configuration</h2>
+            <span class="admin-tag">Instant Publish</span>
+          </div>
+
+          <!-- Mode Toggle Buttons -->
+          <div class="mode-switch-group">
+            <button type="button" id="btnModeAuto" class="btn-mode-toggle <%= ratesConfig.mode === 'auto' ? 'active' : '' %>" onclick="setMode('auto')">
+              🟢 Auto Live Feed (10-Min Cron)
+            </button>
+            <button type="button" id="btnModeManual" class="btn-mode-toggle <%= ratesConfig.mode === 'manual' ? 'active' : '' %>" onclick="setMode('manual')">
+              🟠 Showroom Manual Override
+            </button>
+          </div>
+
+          <form id="ratesForm" onsubmit="saveRates(event)">
+            <!-- 24K Gold Rate (1g) -->
+            <div class="rate-field-group">
+              <label for="gold24k_1g">24K Gold Rate (Per 1 Gram in ₹)</label>
+              <div class="rate-input-wrap">
+                <span class="rate-input-prefix">₹</span>
+                <input type="number" step="1" id="gold24k_1g" name="gold24k_1g" class="rate-input-field" value="<%= ratesConfig.manualRates.gold24k_1g || rates.gold24k.rate1g %>" required oninput="recalcMatrix()">
+              </div>
+              <div class="rate-field-hint">Yields 10G 24K at ₹<span id="hint24k10g"><%= (ratesConfig.manualRates.gold24k_1g || rates.gold24k.rate1g) * 10 %></span></div>
+            </div>
+
+            <!-- Silver Rate (1g) -->
+            <div class="rate-field-group">
+              <label for="silver_1g">Silver Rate (Per 1 Gram in ₹)</label>
+              <div class="rate-input-wrap">
+                <span class="rate-input-prefix">₹</span>
+                <input type="number" step="1" id="silver_1g" name="silver_1g" class="rate-input-field" value="<%= ratesConfig.manualRates.silver_1g || rates.silver.rate10g / 10 %>" required oninput="recalcMatrix()">
+              </div>
+              <div class="rate-field-hint">Yields 1 KG Silver at ₹<span id="hintSil1kg"><%= (ratesConfig.manualRates.silver_1g || rates.silver.rate10g / 10) * 1000 %></span></div>
+            </div>
+
+            <!-- Platinum Rate (1g) -->
+            <div class="rate-field-group">
+              <label for="platinum_1g">Platinum Rate (Per 1 Gram in ₹)</label>
+              <div class="rate-input-wrap">
+                <span class="rate-input-prefix">₹</span>
+                <input type="number" step="1" id="platinum_1g" name="platinum_1g" class="rate-input-field" value="<%= ratesConfig.manualRates.platinum_1g || rates.platinum.rate1g %>" required oninput="recalcMatrix()">
+              </div>
+              <div class="rate-field-hint">Pt 950 Fine Platinum per gram</div>
+            </div>
+
+            <!-- Custom Notice / Board Date -->
+            <div class="rate-field-group">
+              <label for="customDateDisplay">Notice / Board Date Display (Optional)</label>
+              <input type="text" id="customDateDisplay" name="customDateDisplay" class="rate-input-field" style="padding-left: 14px;" placeholder="Leave empty for current Indian date" value="<%= ratesConfig.manualRates.customDateDisplay || '' %>">
+              <div class="rate-field-hint">Example: "4th Nov 2026" or "Special Festive Muhurat Rates"</div>
+            </div>
+
+            <!-- Calculated Preview Matrix -->
+            <div class="computed-matrix-box">
+              <div class="computed-title">Instant Karat &amp; Weight Matrix Preview</div>
+              <div class="computed-grid">
+                <div class="computed-item"><span>24K (10g):</span><span id="calc24k10g">₹0</span></div>
+                <div class="computed-item"><span>22K (10g - 91.6%):</span><span id="calc22k10g">₹0</span></div>
+                <div class="computed-item"><span>18K (10g - 75.0%):</span><span id="calc18k10g">₹0</span></div>
+                <div class="computed-item"><span>14K (10g - 58.3%):</span><span id="calc14k10g">₹0</span></div>
+                <div class="computed-item"><span>Silver (1 KG):</span><span id="calcSil1kg">₹0</span></div>
+                <div class="computed-item"><span>Platinum (10g):</span><span id="calcPlat10g">₹0</span></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="form-btn-bar">
+              <button type="submit" class="btn-save-rates">Save &amp; Publish Board Rates</button>
+              <button type="button" class="btn-refresh-feed" onclick="triggerMarketSpotRefresh()">Fetch Market Spot Now</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Live Website Preview Panel -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2 class="panel-title">Live Storefront Preview</h2>
+            <span class="badge-status <%= ratesConfig.mode === 'manual' ? 'badge-manual' : 'badge-auto' %>" id="previewModeBadge">
+              <%= ratesConfig.mode === 'manual' ? 'Manual Override' : 'Auto Live' %>
+            </span>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+            Here is how your metal rates currently display to patrons on the homepage and live rates board:
+          </p>
+
+          <div class="preview-tiles">
+            <!-- Gold 24K 10G Preview -->
+            <div class="preview-tile">
+              <img src="/assets/rate-gold.png" alt="Gold 24K">
+              <div class="preview-tile-content">
+                <div class="preview-tile-label">GOLD 24 CARAT (10G)</div>
+                <div class="preview-tile-val" id="prevGoldVal">₹<%= rates.featured.gold24k_10g.value %></div>
+              </div>
+            </div>
+
+            <!-- Silver 1KG Preview -->
+            <div class="preview-tile">
+              <img src="/assets/rate-silver.png" alt="Silver 1KG">
+              <div class="preview-tile-content">
+                <div class="preview-tile-label">SILVER (1 KG)</div>
+                <div class="preview-tile-val" id="prevSilVal">₹<%= rates.featured.silver_1kg.value %></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Table Preview -->
+          <div style="background: rgba(7, 25, 20, 0.7); border: 1px solid var(--gold-border); border-radius: 4px; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--gold-light); margin-bottom: 10px; font-weight: 600;">
+              <span>Metal &amp; Purity</span>
+              <span>1 Gram</span>
+              <span>10 Grams</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(183,138,61,0.1);">
+              <span>24K Pure Gold (999)</span>
+              <span id="prevRow24k1g">₹<%= rates.gold24k.rate1g.toLocaleString('en-IN') %></span>
+              <span id="prevRow24k10g" style="color: var(--gold-light); font-weight: 600;">₹<%= rates.gold24k.rate10g.toLocaleString('en-IN') %></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(183,138,61,0.1);">
+              <span>22K Hallmarked Gold (916)</span>
+              <span id="prevRow22k1g">₹<%= rates.gold22k.rate1g.toLocaleString('en-IN') %></span>
+              <span id="prevRow22k10g" style="color: var(--gold-light); font-weight: 600;">₹<%= rates.gold22k.rate10g.toLocaleString('en-IN') %></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(183,138,61,0.1);">
+              <span>18K Hallmarked Gold (750)</span>
+              <span id="prevRow18k1g">₹<%= rates.gold18k.rate1g.toLocaleString('en-IN') %></span>
+              <span id="prevRow18k10g" style="color: var(--gold-light); font-weight: 600;">₹<%= rates.gold18k.rate10g.toLocaleString('en-IN') %></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0;">
+              <span>Pure Silver (1 KG)</span>
+              <span>-</span>
+              <span id="prevRowSil1kg" style="color: var(--gold-light); font-weight: 600;">₹<%= rates.silver.rate1kg.toLocaleString('en-IN') %></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="toast-notify">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b78a3d" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <script>
+    let currentMode = '<%= ratesConfig.mode %>';
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+      if (tabId === 'inquiries') {
+        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        document.getElementById('tab-inquiries').classList.add('active');
+      } else {
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.getElementById('tab-rates').classList.add('active');
+        recalcMatrix();
+      }
+    }
+
+    // Toast Notification
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    // ----------------------------------------------------
+    // INQUIRIES MANAGEMENT
+    // ----------------------------------------------------
+    let activeStatusFilter = 'all';
+
+    function setStatusFilter(status) {
+      activeStatusFilter = status;
+      document.querySelectorAll('.pill-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.status === status);
+      });
+      filterInquiries();
+    }
+
+    function filterInquiries() {
+      const query = (document.getElementById('searchInquiries').value || '').toLowerCase().trim();
+      const rows = document.querySelectorAll('#inquiriesTableBody tr');
+
+      rows.forEach(row => {
+        if (!row.dataset.status) return; // skip empty state row
+        const rowStatus = row.dataset.status;
+        const rowSearch = row.dataset.search || '';
+
+        const statusMatch = activeStatusFilter === 'all' || rowStatus === activeStatusFilter;
+        const queryMatch = !query || rowSearch.includes(query);
+
+        row.style.display = (statusMatch && queryMatch) ? '' : 'none';
+      });
+    }
+
+    // Update Status via AJAX
+    async function updateInquiryStatus(id, newStatus, selectElem) {
+      try {
+        const res = await fetch(`/admin/api/inquiries/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        const data = await res.json();
+        if (data.success) {
+          selectElem.className = `status-select ${newStatus}`;
+          const row = document.getElementById(`row-${id}`);
+          if (row) row.dataset.status = newStatus;
+          showToast(`Inquiry ${id} status updated to ${newStatus.toUpperCase()}`);
+          filterInquiries();
+        } else {
+          alert('Error updating status: ' + data.error);
+        }
+      } catch (e) {
+        alert('Failed to connect to server');
+      }
+    }
+
+    // Save Internal Notes
+    async function saveInquiryNotes(id) {
+      const notesVal = document.getElementById(`notes-${id}`).value;
+      try {
+        const res = await fetch(`/admin/api/inquiries/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ notes: notesVal })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Notes saved for inquiry ${id}`);
+        } else {
+          alert('Error saving notes');
+        }
+      } catch (e) {
+        alert('Failed to save notes');
+      }
+    }
+
+    // Delete Inquiry
+    async function deleteInquiry(id) {
+      if (!confirm(`Are you sure you want to delete inquiry ${id}? This action cannot be undone.`)) {
+        return;
+      }
+      try {
+        const res = await fetch(`/admin/api/inquiries/${id}`, {
+          method: 'DELETE'
+        });
+        const data = await res.json();
+        if (data.success) {
+          const row = document.getElementById(`row-${id}`);
+          if (row) row.remove();
+          showToast(`Inquiry ${id} deleted`);
+          // Update badge
+          const count = document.querySelectorAll('#inquiriesTableBody tr[data-status]').length;
+          document.getElementById('tabInquiryBadge').innerText = count;
+          document.getElementById('kpiTotalInquiries').innerText = count;
+        } else {
+          alert('Error deleting inquiry');
+        }
+      } catch (e) {
+        alert('Failed to connect to server');
+      }
+    }
+
+    // ----------------------------------------------------
+    // RATES MANAGEMENT
+    // ----------------------------------------------------
+    function recalcMatrix() {
+      const g24 = parseFloat(document.getElementById('gold24k_1g').value) || 0;
+      const sil = parseFloat(document.getElementById('silver_1g').value) || 0;
+      const plat = parseFloat(document.getElementById('platinum_1g').value) || 0;
+
+      const g24_10 = Math.round(g24 * 10);
+      const g22_10 = Math.round(g24 * 10 * (22 / 24));
+      const g18_10 = Math.round(g24 * 10 * (18 / 24));
+      const g14_10 = Math.round(g24 * 10 * (14 / 24));
+      const sil_1k = Math.round(sil * 1000);
+      const plat_10 = Math.round(plat * 10);
+
+      document.getElementById('hint24k10g').innerText = g24_10.toLocaleString('en-IN');
+      document.getElementById('hintSil1kg').innerText = sil_1k.toLocaleString('en-IN');
+
+      document.getElementById('calc24k10g').innerText = '₹' + g24_10.toLocaleString('en-IN');
+      document.getElementById('calc22k10g').innerText = '₹' + g22_10.toLocaleString('en-IN');
+      document.getElementById('calc18k10g').innerText = '₹' + g18_10.toLocaleString('en-IN');
+      document.getElementById('calc14k10g').innerText = '₹' + g14_10.toLocaleString('en-IN');
+      document.getElementById('calcSil1kg').innerText = '₹' + sil_1k.toLocaleString('en-IN');
+      document.getElementById('calcPlat10g').innerText = '₹' + plat_10.toLocaleString('en-IN');
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.getElementById('btnModeAuto').classList.toggle('active', mode === 'auto');
+      document.getElementById('btnModeManual').classList.toggle('active', mode === 'manual');
+
+      const banner = document.getElementById('modeBanner');
+      banner.className = `mode-indicator-banner ${mode}`;
+      if (mode === 'manual') {
+        document.getElementById('modeTitle').innerText = 'Showroom Manual Override Active';
+        document.getElementById('modeDesc').innerText = 'Board rates are locked to your showroom custom values and published immediately across all pages.';
+      } else {
+        document.getElementById('modeTitle').innerText = 'Automatic Live Market Feed Active';
+        document.getElementById('modeDesc').innerText = 'Rates are dynamically fetched from bullion feeds and cached for 10 minutes.';
+      }
+    }
+
+    // Save Rates
+    async function saveRates(e) {
+      e.preventDefault();
+      const gold24k_1g = document.getElementById('gold24k_1g').value;
+      const silver_1g = document.getElementById('silver_1g').value;
+      const platinum_1g = document.getElementById('platinum_1g').value;
+      const customDateDisplay = document.getElementById('customDateDisplay').value;
+
+      try {
+        const res = await fetch('/admin/api/rates', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            mode: currentMode,
+            gold24k_1g,
+            silver_1g,
+            platinum_1g,
+            customDateDisplay
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Board rates saved and published to live website!');
+          updateLivePreview(data.rates);
+        } else {
+          alert('Error saving rates: ' + data.error);
+        }
+      } catch (err) {
+        alert('Failed to connect to server');
+      }
+    }
+
+    // Trigger Market Spot Refresh
+    async function triggerMarketSpotRefresh() {
+      try {
+        const res = await fetch('/admin/api/rates/refresh', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Fresh market spot rates fetched successfully!');
+          if (data.data) {
+            updateLivePreview(data.data);
+            if (data.data.gold24k) {
+              document.getElementById('gold24k_1g').value = data.data.gold24k.rate1g;
+              document.getElementById('silver_1g').value = Math.round(data.data.silver.rate1kg / 1000);
+              document.getElementById('platinum_1g').value = data.data.platinum.rate1g;
+              recalcMatrix();
+            }
+          }
+        }
+      } catch (err) {
+        alert('Failed to fetch live market spot');
+      }
+    }
+
+    function updateLivePreview(rates) {
+      if (!rates || !rates.featured) return;
+      document.getElementById('prevGoldVal').innerText = '₹' + rates.featured.gold24k_10g.value;
+      document.getElementById('prevSilVal').innerText = '₹' + rates.featured.silver_1kg.value;
+      document.getElementById('bannerLastUpdated').innerText = rates.lastUpdatedIST;
+
+      if (rates.gold24k) {
+        document.getElementById('prevRow24k1g').innerText = '₹' + rates.gold24k.rate1g.toLocaleString('en-IN');
+        document.getElementById('prevRow24k10g').innerText = '₹' + rates.gold24k.rate10g.toLocaleString('en-IN');
+      }
+      if (rates.gold22k) {
+        document.getElementById('prevRow22k1g').innerText = '₹' + rates.gold22k.rate1g.toLocaleString('en-IN');
+        document.getElementById('prevRow22k10g').innerText = '₹' + rates.gold22k.rate10g.toLocaleString('en-IN');
+      }
+      if (rates.gold18k) {
+        document.getElementById('prevRow18k1g').innerText = '₹' + rates.gold18k.rate1g.toLocaleString('en-IN');
+        document.getElementById('prevRow18k10g').innerText = '₹' + rates.gold18k.rate10g.toLocaleString('en-IN');
+      }
+      if (rates.silver) {
+        document.getElementById('prevRowSil1kg').innerText = '₹' + rates.silver.rate1kg.toLocaleString('en-IN');
+      }
+
+      const badge = document.getElementById('previewModeBadge');
+      if (rates.mode === 'manual') {
+        badge.className = 'badge-status badge-manual';
+        badge.innerText = 'Manual Override';
+      } else {
+        badge.className = 'badge-status badge-auto';
+        badge.innerText = 'Auto Live';
+      }
+    }
+
+    // Run initial calc
+    recalcMatrix();
+  </script>
+</body>
+</html>

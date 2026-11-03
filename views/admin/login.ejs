@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Rahul Jewellers Legacy</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+
+  <style>
+    :root {
+      --emerald-dark: #071f19;
+      --emerald-card: #0c2d24;
+      --gold-primary: #b78a3d;
+      --gold-light: #d8b26e;
+      --gold-border: rgba(183, 138, 61, 0.35);
+      --cream: #f7f1e7;
+      --text-muted: #9eb5ad;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Instrument Sans', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, #10382d 0%, #061914 100%);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .brand-logo-wrap {
+      display: inline-block;
+      background: #ffffff;
+      padding: 12px 28px;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 18px;
+      border: 1px solid var(--gold-border);
+    }
+
+    .brand-logo-wrap img {
+      height: 38px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .card {
+      background: var(--emerald-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 36px 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold-light);
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .alert-error {
+      background: rgba(220, 53, 69, 0.15);
+      border: 1px solid rgba(220, 53, 69, 0.4);
+      color: #ff9b9b;
+      padding: 12px 14px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(4, 19, 15, 0.7);
+      border: 1px solid rgba(183, 138, 61, 0.3);
+      border-radius: 4px;
+      padding: 13px 16px;
+      color: #ffffff;
+      font-size: 15px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--gold-light);
+      box-shadow: 0 0 0 3px rgba(183, 138, 61, 0.2);
+      background: rgba(4, 19, 15, 0.95);
+    }
+
+    .form-input::placeholder {
+      color: rgba(158, 181, 173, 0.4);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #c59b4c 0%, #a4782e 100%);
+      color: #071f19;
+      border: none;
+      border-radius: 4px;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(183, 138, 61, 0.3);
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #d8b26e 0%, #b78a3d 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(183, 138, 61, 0.45);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .card-footer {
+      margin-top: 24px;
+      text-align: center;
+      border-top: 1px solid rgba(183, 138, 61, 0.15);
+      padding-top: 18px;
+    }
+
+    .card-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 13px;
+      transition: opacity 0.2s;
+    }
+
+    .card-footer a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .security-notice {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: rgba(158, 181, 173, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .security-notice svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="brand-header">
+      <div class="brand-logo-wrap">
+        <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy">
+      </div>
+    </div>
+
+    <div class="card">
+      <h1 class="card-title">Showroom Admin Console</h1>
+      <p class="card-subtitle">Manage customer leads &amp; live metal rates</p>
+
+      <% if (locals.error) { %>
+        <div class="alert-error">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><%= error %></span>
+        </div>
+      <% } %>
+
+      <form action="/admin/login" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input class="form-input" type="text" id="username" name="username" placeholder="admin" value="<%= locals.username || '' %>" required autofocus>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+
+        <button class="btn-submit" type="submit">
+          <span>Sign In to Console</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <div class="card-footer">
+        <a href="/">&larr; Return to Rahul Jewellers Main Store</a>
+      </div>
+    </div>
+
+    <div class="security-notice">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+      <span>Authorized Personnel Only &bull; 256-bit Encrypted Session</span>
+    </div>
+  </div>
+
+</body>
+</html>

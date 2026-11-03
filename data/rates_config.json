@@ -1,0 +1,11 @@
+{
+  "mode": "auto",
+  "manualRates": {
+    "gold24k_1g": 13500,
+    "silver_1g": 175,
+    "platinum_1g": 5200,
+    "customDateDisplay": "Diwali Exclusive Festive Rate"
+  },
+  "updatedAt": "2026-11-03T20:31:42.656Z",
+  "updatedBy": "admin"
+}

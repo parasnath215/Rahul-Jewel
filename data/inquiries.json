@@ -1,0 +1,41 @@
+[
+  {
+    "id": "RJ-INQ-1001",
+    "name": "Chitransh Srivastava",
+    "phone": "+91 96169 05999",
+    "email": "chitransh.srivastava@gmail.com",
+    "source": "Contact Page Inquiry",
+    "productTitle": "Bespoke Polki Bridal Suite",
+    "message": "We are planning an heirloom bridal polki choker for our upcoming wedding in Hazratganj. Requesting a private concierge consultation.",
+    "status": "converted",
+    "notes": "Visited showroom on 1st Nov. Choker bespoke design confirmed with hallmarked 916 gold.",
+    "createdAt": "2026-11-01T11:30:00.000Z",
+    "dateDisplay": "01 Nov 2026, 11:30 AM"
+  },
+  {
+    "id": "RJ-INQ-1002",
+    "name": "Dr. Rashmi Verma",
+    "phone": "+91 98390 12345",
+    "email": "dr.rashmi.verma@yahoo.co.in",
+    "source": "Product Quick Inquiry",
+    "productTitle": "The Royal Noor Heritage Choker",
+    "message": "Interested in the certified diamond weight and current gold rate making charges for this piece.",
+    "status": "contacted",
+    "notes": "Shared certified dossiers via WhatsApp. Requested showroom visit this Saturday.",
+    "createdAt": "2026-11-02T15:45:00.000Z",
+    "dateDisplay": "02 Nov 2026, 03:45 PM"
+  },
+  {
+    "id": "RJ-INQ-1003",
+    "name": "Aditya Narayan Mehrotra",
+    "phone": "+91 94150 98765",
+    "email": "aditya.mehrotra@outlook.com",
+    "source": "Swarn Sanchay Scheme Inquiry",
+    "productTitle": "Swarn Sanchay Monthly Gold Purchase",
+    "message": "Would like details on the 11-month gold advance purchase scheme and bonus savings on 24K bullion.",
+    "status": "new",
+    "notes": "Pending follow-up by senior bullion consultant.",
+    "createdAt": "2026-11-03T18:20:00.000Z",
+    "dateDisplay": "03 Nov 2026, 06:20 PM"
+  }
+]

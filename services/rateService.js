@@ -7,9 +7,11 @@
  * - Scheduled background cron/interval runner updating rates every 10 minutes so user requests serve cached data instantly.
  * - Full matrix calculation for 1g, 5g, 8g, 10g, 50g, 100g weights across all metals & karats.
  * - Dynamic real calendar dates and rolling 10-day historical market archive.
+ * - Integrates with Admin Service for showroom manual override / board rates mode & auto live feed mode.
  */
 
 const https = require('https');
+const adminService = require('./adminService');
 
 // Cache configuration (10 minutes TTL)
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
@@ -148,14 +150,18 @@ function generateRealHistoricalPrices(currentG24_1g, currentSil_1g, currentPlat_
 /**
  * Build complete metal rates structure
  */
-function buildRatesPayload(base) {
+function buildRatesPayload(base, options = {}) {
   const now = new Date();
-  const g24_1g = base.gold24k_1g;
+  const dateStr = (options.customDateDisplay && options.customDateDisplay.trim())
+    ? options.customDateDisplay.trim()
+    : formatIndianDate(now);
+
+  const g24_1g = Number(base.gold24k_1g) || REAL_BENCHMARK_RATES.gold24k_1g;
   const g22_1g = Math.round(g24_1g * (22 / 24)); // 91.67%
   const g18_1g = Math.round(g24_1g * (18 / 24)); // 75.00%
   const g14_1g = Math.round(g24_1g * (14 / 24)); // 58.33%
-  const sil_1g = base.silver_1g;
-  const plat_1g = base.platinum_1g;
+  const sil_1g = Number(base.silver_1g) || REAL_BENCHMARK_RATES.silver_1g;
+  const plat_1g = Number(base.platinum_1g) || REAL_BENCHMARK_RATES.platinum_1g;
 
   // Standard weights matrix
   const weights = [1, 5, 8, 10, 50, 100];
@@ -189,10 +195,16 @@ function buildRatesPayload(base) {
   const realGold10g = g24_1g * 10;
   const realSilver1kg = sil_1g * 1000;
 
+  const mode = options.mode || 'auto';
+  const isManual = mode === 'manual';
+
   return {
     success: true,
-    pageTitleDate: formatIndianDate(now),
-    currentDateDisplay: formatIndianDate(now),
+    mode: mode,
+    isManual: isManual,
+    modeLabel: isManual ? 'Showroom Board Rate (Manual Override)' : 'Live Market Feed (IBJA/Bullion)',
+    pageTitleDate: dateStr,
+    currentDateDisplay: dateStr,
     lastUpdatedIST: formatISTTimestamp(now),
     featured: {
       gold24k_10g: {
@@ -250,15 +262,21 @@ function buildRatesPayload(base) {
     disclaimer: '* GST, Hallmarking & Making Charges are Extra',
     cacheInfo: {
       cached: true,
+      mode: mode,
       ttlSeconds: CACHE_TTL_MS / 1000,
       timestamp: now.toISOString()
     }
   };
 }
 
-// In-Memory Cache Store - ALWAYS primed with valid baseline payload
+// In-Memory Cache Store - Primed with config or benchmark payload
+const initialConfig = adminService.getRateConfig();
+const initialPayload = initialConfig.mode === 'manual'
+  ? buildRatesPayload(initialConfig.manualRates, { mode: 'manual', customDateDisplay: initialConfig.manualRates.customDateDisplay })
+  : buildRatesPayload(REAL_BENCHMARK_RATES, { mode: 'auto' });
+
 const cache = {
-  data: buildRatesPayload(REAL_BENCHMARK_RATES),
+  data: initialPayload,
   lastFetched: Date.now(),
   expiresAt: Date.now() + CACHE_TTL_MS,
   isFetching: false,
@@ -328,6 +346,13 @@ async function fetchLiveMarketSpot() {
  * Refresh Cache (Called periodically or manually)
  */
 async function refreshRates(force = false) {
+  const config = adminService.getRateConfig();
+
+  // If in manual mode and this is not a forced reset/test, retain manual payload
+  if (config.mode === 'manual' && !force) {
+    return cache.data;
+  }
+
   if (cache.isFetching && !force) {
     return cache.data;
   }
@@ -335,20 +360,25 @@ async function refreshRates(force = false) {
   cache.isFetching = true;
   try {
     const rawSpot = await fetchLiveMarketSpot();
-    const payload = buildRatesPayload(rawSpot);
     const now = Date.now();
 
-    cache.data = payload;
-    cache.lastFetched = now;
-    cache.expiresAt = now + CACHE_TTL_MS;
-    cache.fetchCount += 1;
+    // If config mode is auto (or forced auto switch), apply to cache:
+    if (config.mode === 'auto' || force) {
+      const payload = buildRatesPayload(rawSpot, { mode: 'auto' });
+      cache.data = payload;
+      cache.lastFetched = now;
+      cache.expiresAt = now + CACHE_TTL_MS;
+      cache.fetchCount += 1;
 
-    console.log(`[RATE SERVICE] Real precious metals cache refreshed at ${formatISTTimestamp(new Date(now))} (24K 10G: ₹${payload.featured.gold24k_10g.value}, Silver 1KG: ₹${payload.featured.silver_1kg.value}).`);
+      console.log(`[RATE SERVICE] Real precious metals cache refreshed at ${formatISTTimestamp(new Date(now))} (24K 10G: ₹${payload.featured.gold24k_10g.value}, Silver 1KG: ₹${payload.featured.silver_1kg.value}).`);
+      return cache.data;
+    }
+
     return cache.data;
   } catch (err) {
     console.error('[RATE SERVICE] Error refreshing rates, retaining existing cache:', err.message);
     if (!cache.data) {
-      cache.data = buildRatesPayload(REAL_BENCHMARK_RATES);
+      cache.data = buildRatesPayload(REAL_BENCHMARK_RATES, { mode: 'auto' });
     }
     return cache.data;
   } finally {
@@ -357,9 +387,58 @@ async function refreshRates(force = false) {
 }
 
 /**
+ * Apply showroom manual rate overrides from Admin panel
+ */
+function applyManualRates(manualRates, customDateDisplay = '', updatedBy = 'admin') {
+  const updatedConfig = adminService.setRateConfig({
+    mode: 'manual',
+    gold24k_1g: manualRates.gold24k_1g,
+    silver_1g: manualRates.silver_1g,
+    platinum_1g: manualRates.platinum_1g,
+    customDateDisplay: customDateDisplay,
+    updatedBy: updatedBy
+  });
+
+  const payload = buildRatesPayload(updatedConfig.manualRates, {
+    mode: 'manual',
+    customDateDisplay: updatedConfig.manualRates.customDateDisplay,
+    updatedBy: updatedBy
+  });
+
+  cache.data = payload;
+  cache.lastFetched = Date.now();
+  cache.expiresAt = Date.now() + (365 * 24 * 60 * 60 * 1000); // 1-year persistent TTL until switched
+  console.log(`[RATE SERVICE] Manual showroom rates applied by ${updatedBy}: 24K 1g=₹${manualRates.gold24k_1g}, Silver 1g=₹${manualRates.silver_1g}, Plat 1g=₹${manualRates.platinum_1g}`);
+  return cache.data;
+}
+
+/**
+ * Reset to automatic 10-minute live market feed
+ */
+async function resetToAuto(updatedBy = 'admin') {
+  adminService.setRateConfig({
+    mode: 'auto',
+    updatedBy: updatedBy
+  });
+  console.log(`[RATE SERVICE] Reset to automatic live market feed by ${updatedBy}. Fetching fresh spot rates...`);
+  return await refreshRates(true);
+}
+
+/**
  * Get current rates (serves from in-memory cache with near-zero latency)
  */
 async function getRates() {
+  const config = adminService.getRateConfig();
+  if (config.mode === 'manual') {
+    if (!cache.data || cache.data.mode !== 'manual') {
+      cache.data = buildRatesPayload(config.manualRates, {
+        mode: 'manual',
+        customDateDisplay: config.manualRates.customDateDisplay
+      });
+    }
+    return cache.data;
+  }
+
   const now = Date.now();
   if (!cache.data || !cache.expiresAt || now >= cache.expiresAt) {
     const updated = await refreshRates();
@@ -372,7 +451,17 @@ async function getRates() {
  * Synchronous get of current cached data (for server render)
  */
 function getCachedRatesSync() {
-  return cache.data || buildRatesPayload(REAL_BENCHMARK_RATES);
+  const config = adminService.getRateConfig();
+  if (config.mode === 'manual') {
+    if (!cache.data || cache.data.mode !== 'manual') {
+      cache.data = buildRatesPayload(config.manualRates, {
+        mode: 'manual',
+        customDateDisplay: config.manualRates.customDateDisplay
+      });
+    }
+    return cache.data;
+  }
+  return cache.data || buildRatesPayload(REAL_BENCHMARK_RATES, { mode: 'auto' });
 }
 
 /**
@@ -383,13 +472,25 @@ function initRateService() {
     clearInterval(scheduledJobInterval);
   }
 
-  // 1. Refresh immediately in background
-  refreshRates();
+  const config = adminService.getRateConfig();
+  if (config.mode === 'manual') {
+    cache.data = buildRatesPayload(config.manualRates, {
+      mode: 'manual',
+      customDateDisplay: config.manualRates.customDateDisplay
+    });
+    console.log('[RATE SERVICE] Initialized in MANUAL SHOWROOM OVERRIDE mode from rates_config.json.');
+  } else {
+    // 1. Refresh immediately in background
+    refreshRates();
+  }
 
   // 2. Schedule recurring refresh every 10 minutes (600,000 ms)
   scheduledJobInterval = setInterval(() => {
-    console.log('[RATE SERVICE] Cron trigger: executing scheduled 10-minute rate update...');
-    refreshRates();
+    const cfg = adminService.getRateConfig();
+    if (cfg.mode === 'auto') {
+      console.log('[RATE SERVICE] Cron trigger: executing scheduled 10-minute rate update...');
+      refreshRates();
+    }
   }, CACHE_TTL_MS);
 
   if (scheduledJobInterval.unref) {
@@ -403,9 +504,13 @@ module.exports = {
   getRates,
   getCachedRatesSync,
   refreshRates,
+  applyManualRates,
+  resetToAuto,
+  fetchLiveMarketSpot,
   initRateService,
   getCacheStatus: () => ({
     isCached: !!cache.data,
+    mode: adminService.getRateConfig().mode,
     ttlSeconds: CACHE_TTL_MS / 1000,
     lastFetched: cache.lastFetched ? new Date(cache.lastFetched).toISOString() : null,
     expiresAt: cache.expiresAt ? new Date(cache.expiresAt).toISOString() : null,
