@@ -1636,4 +1636,72 @@ a.directions-link svg path,
     height: 24px !important;
     stroke: #123c32 !important;
   }
+
+  .mobile-toggle.active {
+    transform: rotate(90deg) !important;
+    color: #b78a3d !important;
+  }
+  .mobile-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    background: rgba(10, 42, 35, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .mobile-backdrop.open {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .mobile-drawer {
+    display: block !important;
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    box-shadow: 0 16px 36px rgba(10, 42, 35, 0.16) !important;
+    border-bottom: 2px solid #b78a3d !important;
+    max-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 999 !important;
+    box-sizing: border-box !important;
+  }
+  .mobile-drawer.open {
+    max-height: calc(100vh - 60px) !important;
+    padding-bottom: 24px !important;
+  }
+  .mobile-nav-list {
+    list-style: none !important;
+    padding: 16px 20px 8px 20px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+  .mobile-nav-list li > a {
+    text-decoration: none !important;
+    font-family: var(--font-sans) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #123c32 !important;
+    display: block !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    transition: color 0.2s ease, padding-left 0.2s ease !important;
+  }
+  .mobile-nav-list li > a:hover,
+  .mobile-nav-list li > a.active {
+    color: #b78a3d !important;
+    padding-left: 4px !important;
+  }
 }
+

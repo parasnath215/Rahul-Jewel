@@ -2,8 +2,8 @@
 <header class="site-header">
   <div class="header-container">
     <a class="brand-logo" href="/" aria-label="Rahul Jewellers Legacy">
-        <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
-      </a>
+      <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
+    </a>
 
     <nav class="nav-menu" aria-label="Primary Navigation">
       <a class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'home') ? 'active' : '' %>" href="/">Home</a>
@@ -25,8 +25,19 @@
       <a class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'contact') ? 'active' : '' %>" href="/contact">Contact</a>
     </nav>
 
-    <button class="mobile-toggle" type="button" aria-label="Toggle Navigation">
+    <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Toggle Navigation">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
+  </div>
+
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/collections/bracelets">Collections</a></li>
+      <li><a href="/gold-rates">Live Gold Rates</a></li>
+      <li><a href="/contact">Contact Showroom</a></li>
+    </ul>
   </div>
 </header>

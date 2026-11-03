@@ -74,6 +74,7 @@
       </button>
     </div>
 
+    <div class="mobile-backdrop" id="mobileBackdrop"></div>
     <!-- Mobile Drawer Menu -->
     <div class="mobile-drawer" id="mobileDrawer">
       <ul class="mobile-nav-list">
@@ -277,9 +278,28 @@
     // Mobile navigation toggle
     const toggleBtn = document.getElementById('mobileToggle');
     const drawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('mobileBackdrop');
+
     if (toggleBtn && drawer) {
-      toggleBtn.addEventListener('click', () => {
-        drawer.classList.toggle('open');
+      function toggleMenu(forceState) {
+        const isOpen = forceState !== undefined ? forceState : !drawer.classList.contains('open');
+        drawer.classList.toggle('open', isOpen);
+        toggleBtn.classList.toggle('active', isOpen);
+        if (backdrop) backdrop.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      if (backdrop) {
+        backdrop.addEventListener('click', () => toggleMenu(false));
+      }
+
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
       });
     }
 
