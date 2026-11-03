@@ -95,7 +95,7 @@
 
     /* ---------- Header ---------- */
     .site-header {
-      background: var(--page);
+      background: #0a2a23;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -105,14 +105,14 @@
 
     .nav {
       height: 84px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(183, 138, 61, 0.35);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 max(40px, calc((100% - 1440px) / 2 + 40px));
       width: 100%;
       overflow: visible;
-      background: rgba(252, 250, 246, 0.98);
+      background: #0a2a23;
       position: relative;
     }
 
@@ -749,31 +749,55 @@
 
     /* ---------- Marks of Excellence ---------- */
     .marks {
-      margin-top: 44px;
+      margin-top: 36px;
       width: 100%;
-      height: 250px;
-      background: #fff;
+      background: #ffffff;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px 40px;
-      overflow: hidden;
+      padding: 48px max(40px, calc((100% - 1440px) / 2 + 40px));
       box-sizing: border-box;
-    
+      border-top: 1px solid rgba(183, 138, 61, 0.2);
+      border-bottom: 1px solid rgba(183, 138, 61, 0.2);
     }
 
-    .marks h3 {
+    .marks h3, .marks .marks-title {
       text-align: center;
-      font: italic 400 28px/1.2 'Lora', serif;
-      letter-spacing: 1px;
-      color: var(--brand);
-      margin-bottom: 24px;
+      font: italic 500 24px/1.2 'Lora', serif;
+      letter-spacing: 0.12em;
+      color: var(--brand, #0a2a23);
+      text-transform: uppercase;
+      margin-bottom: 32px;
     }
 
-    .marks .marks-img {
+    .marks-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      width: 100%;
       max-width: 1300px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .mark-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .mark-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .mark-item img {
+      max-width: 130px;
       width: 100%;
       height: auto;
       object-fit: contain;
@@ -1797,19 +1821,25 @@
 
       /* Marks of Excellence */
       .marks {
-        margin-top: 32px !important;
-        padding: 0 16px !important;
-        text-align: center !important;
-      }
-      .marks h3 {
-        font-size: 24px !important;
-        margin-bottom: 16px !important;
-      }
-      .marks-img {
-        width: 100% !important;
-        max-width: 100% !important;
+        margin-top: 24px !important;
+        padding: 32px 16px 36px !important;
         height: auto !important;
-        object-fit: contain !important;
+      }
+      .marks h3, .marks .marks-title {
+        font-size: 19px !important;
+        letter-spacing: 0.1em !important;
+        margin-bottom: 24px !important;
+      }
+      .marks-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        row-gap: 22px !important;
+        column-gap: 12px !important;
+        width: 100% !important;
+      }
+      .mark-item img {
+        max-width: 100px !important;
+        height: auto !important;
       }
 
       /* Our Jewellery Collection: 2 columns */
@@ -2010,6 +2040,8 @@
     }
 
   </style>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="shortcut icon" href="/assets/favicon.png">
 </head>
 <body>
 
@@ -2039,14 +2071,8 @@
   <!-- ===== Site header ===== -->
   <header class="site-header" id="home">
     <div class="nav">
-      <a class="logo" href="#home" aria-label="Rahul Jewellers Legacy">
-        <span class="mark m1"><img src="/assets/logo-mark-1.svg" alt=""></span>
-        <span class="mark m2"><img src="/assets/logo-mark-2.svg" alt=""></span>
-        <span class="mark m3"><img src="/assets/logo-mark-3.svg" alt=""></span>
-        <span class="word">RAHUL JEWELLERS</span>
-        <span class="rule l"></span>
-        <span class="tag">LEGACY</span>
-        <span class="rule r"></span>
+      <a class="brand-logo" href="/" aria-label="Rahul Jewellers Legacy">
+        <img src="/assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#home">Home</a>
@@ -2190,9 +2216,29 @@
   </section>
 
   <!-- ===== Marks of Excellence ===== -->
-  <section class="marks">
-    <h3>Our Marks of Excellence</h3>
-    <img class="marks-img" src="/assets/marks-of-excellence.png" alt="Our Marks of Excellence - IGI/GIA Certified Earth-Mined Diamonds, Karatmeter &amp; Live Melting in Your Presence, 100% Stone Deduction, Weight x Rate Exchange, Lifetime Buyback, 0% Old Gold Deduction">
+  <!-- ===== Marks of Excellence ===== -->
+  <section class="marks" id="marks-of-excellence">
+    <h3 class="marks-title">OUR MARKS OF EXCELLENCE</h3>
+    <div class="marks-grid">
+      <div class="mark-item">
+        <img src="/assets/icons/icon 1.png" alt="IGI/GIA Certified Earth-Mined Diamonds" loading="lazy">
+      </div>
+      <div class="mark-item">
+        <img src="/assets/icons/icon 2.png" alt="100% Stone Deduction" loading="lazy">
+      </div>
+      <div class="mark-item">
+        <img src="/assets/icons/icon 3.png" alt="Lifetime Buyback" loading="lazy">
+      </div>
+      <div class="mark-item">
+        <img src="/assets/icons/icon 4.png" alt="Karatmeter & Live Melting in Your Presence" loading="lazy">
+      </div>
+      <div class="mark-item">
+        <img src="/assets/icons/icon 5.png" alt="Weight × Rate Exchange" loading="lazy">
+      </div>
+      <div class="mark-item">
+        <img src="/assets/icons/icon 6.png" alt="0% Old Gold Deduction" loading="lazy">
+      </div>
+    </div>
   </section>
 
   <!-- ===== Swarn Sanchay Scheme banner ===== -->
@@ -2597,5 +2643,32 @@
     }
   </script>
 
+
+  <script>
+    // Live Gold & Precious Metal Rates Dynamic Poller
+    async function updateHomeLiveRates() {
+      try {
+        const res = await fetch('/api/rates');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.success && data.featured) {
+          const goldVal = document.querySelector('#gold-rates .rates .tile:nth-child(1) .val');
+          const silVal = document.querySelector('#gold-rates .rates .tile:nth-child(2) .val');
+          const title = document.querySelector('#gold-rates .head-copy .h2');
+          if (title && data.pageTitleDate) {
+            title.innerText = `Metal Rates (${data.pageTitleDate})`;
+          }
+          if (goldVal && data.featured.gold24k_10g) {
+            goldVal.innerHTML = `${data.featured.gold24k_10g.value} <img src="/assets/triangle-up.svg" alt="Rate up">`;
+          }
+          if (silVal && data.featured.silver_1kg) {
+            silVal.innerHTML = `${data.featured.silver_1kg.value} <img class="down" src="/assets/triangle-down.svg" alt="Rate down">`;
+          }
+        }
+      } catch (err) {}
+    }
+    updateHomeLiveRates();
+    setInterval(updateHomeLiveRates, 60000);
+  </script>
 </body>
 </html>
