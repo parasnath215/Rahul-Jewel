@@ -296,6 +296,12 @@ body {
   overflow: hidden;
 }
 
+.hero-banner-wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-banner-wrap img.hero-banner-img {
   width: 100%;
   height: 100%;
@@ -854,6 +860,20 @@ body {
   }
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner-wrap {
+    aspect-ratio: 390 / 577;
+    max-width: 100%;
+  }
+  .hero-cta-link {
+    top: 44%;
+    left: 6%;
+    width: 88%;
+    max-width: 350px;
+    height: 48px;
   }
 }
 

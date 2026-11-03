@@ -25,7 +25,10 @@
   <!-- Category Hero Banner (1440x577 Artwork) -->
   <section class="category-hero" id="hero">
     <div class="hero-banner-wrap">
-      <img class="hero-banner-img" src="<%= category.banner %>" alt="<%= category.title %>">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= category.mobileBanner %>">
+        <img class="hero-banner-img" src="<%= category.banner %>" alt="<%= category.title %>">
+      </picture>
       <a href="#products" class="hero-cta-link" aria-label="Discover collection"></a>
     </div>
   </section>

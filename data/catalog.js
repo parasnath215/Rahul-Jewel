@@ -5,6 +5,7 @@ const categories = {
     title: 'Bracelets Collection | Rahul Jewellers Legacy',
     heading: 'Handcrafted Bracelets',
     banner: '/assets/Banners/Bracelets.png',
+    mobileBanner: '/assets/Mobile%20Banners/Bracelets.png',
     description: 'Timeless gold and diamond bracelets crafted for unforgettable moments. BIS hallmarked purity with certified natural diamonds.',
     count: 15,
     products: [
@@ -165,6 +166,7 @@ const categories = {
     title: 'Royal Bangles Collection | Rahul Jewellers Legacy',
     heading: 'Royal Heritage Bangles & Kadas',
     banner: '/assets/Banners/Bangles.png',
+    mobileBanner: '/assets/Mobile%20Banners/Bangles.png',
     description: 'Heritage kadas, polki temple bangles, and meenakari gold artisan cuffs crafted with heirloom finesse.',
     count: 9,
     products: [
@@ -265,6 +267,7 @@ const categories = {
     title: 'Necklaces Collection | Rahul Jewellers Legacy',
     heading: 'Heirloom Necklaces & Chokers',
     banner: '/assets/Banners/Necklaces.png',
+    mobileBanner: '/assets/Mobile%20Banners/Necklace.png',
     description: 'Timeless necklaces adorned with gold and diamonds, designed for unforgettable celebrations and bridal grandeur.',
     count: 9,
     products: [
@@ -365,6 +368,7 @@ const categories = {
     title: 'Rings Collection | Rahul Jewellers Legacy',
     heading: 'Solitaires & Statement Rings',
     banner: '/assets/Banners/Rings.png',
+    mobileBanner: '/assets/Mobile%20Banners/Rings.png',
     description: 'Timeless gold and diamond rings crafted for unforgettable moments. Engagement solitaires, cocktail rings, and eternal bands.',
     count: 9,
     products: [
@@ -465,6 +469,7 @@ const categories = {
     title: 'Earrings Collection | Rahul Jewellers Legacy',
     heading: 'Handcrafted Earrings & Jhumkas',
     banner: '/assets/Banners/Earring.png',
+    mobileBanner: '/assets/Mobile%20Banners/Earrings.png',
     description: 'Sculpted heritage jhumkas, sparkling polki chandbalis, and modern dangles for regal celebrations.',
     count: 9,
     products: [
@@ -565,6 +570,7 @@ const categories = {
     title: 'Studs Collection | Rahul Jewellers Legacy',
     heading: 'Diamond & Gold Daily Studs',
     banner: '/assets/Banners/Studs.png',
+    mobileBanner: '/assets/Mobile%20Banners/Studs.png',
     description: 'Effortless brilliance for everyday luxury. Certified solitaire studs, floral clusters, and pure hallmarked gold buttons.',
     count: 9,
     products: [
@@ -665,6 +671,7 @@ const categories = {
     title: 'Gold Chains Collection | Rahul Jewellers Legacy',
     heading: 'Classic & Heavy Gold Chains',
     banner: '/assets/Banners/chains.png',
+    mobileBanner: '/assets/Mobile%20Banners/Chains.png',
     description: 'Precision woven 22K hallmarked chains, solid rope links, and regal men and women everyday essentials.',
     count: 9,
     products: [
@@ -765,6 +772,7 @@ const categories = {
     title: 'Designer Fancy Chains | Rahul Jewellers Legacy',
     heading: 'Designer Italian & Fancy Chains',
     banner: '/assets/Banners/Fancy Chains.png',
+    mobileBanner: '/assets/Mobile%20Banners/Fancy Chains.png',
     description: 'Italian dual-tone craftsmanship, laser faceted statement links, and modern layering paperclip chains.',
     count: 9,
     products: [
