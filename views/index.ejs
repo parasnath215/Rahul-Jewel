@@ -95,7 +95,7 @@
 
     /* ---------- Header ---------- */
     .site-header {
-      background: #0a2a23;
+      background: #ffffff;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -105,14 +105,14 @@
 
     .nav {
       height: 84px;
-      border-bottom: 1px solid rgba(183, 138, 61, 0.35);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 max(40px, calc((100% - 1440px) / 2 + 40px));
       width: 100%;
       overflow: visible;
-      background: #0a2a23;
+      background: #ffffff;
       position: relative;
     }
 
@@ -1641,7 +1641,250 @@
       }
     }
 
+    
+    /* ---------- Section Intro & Underline Links (Matching Screenshots) ---------- */
+    .sec-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    .sec-eyebrow {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #a9823f;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1.15;
+      color: #123c32;
+      margin: 0 0 6px 0;
+    }
+    .sec-sub {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 14px;
+      color: #71717a;
+      margin: 0 0 12px 0;
+    }
+    .sec-desc {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #52525b;
+      max-width: 520px;
+      margin: 0 0 14px 0;
+    }
+    .sec-underline-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #123c32;
+      text-decoration: none;
+      border-bottom: 1.5px solid #a9823f;
+      padding-bottom: 3px;
+      transition: color 0.2s ease;
+    }
+    .sec-underline-link .arrow {
+      color: #a9823f;
+      font-size: 13px;
+      transition: transform 0.2s ease;
+    }
+    .sec-underline-link:hover {
+      color: #a9823f;
+    }
+    .sec-underline-link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    /* Stacked Cards for Rates & Collections */
+    .rates-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+    .curated-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+    .stacked-card {
+      display: block;
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .stacked-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    }
+    .card-media {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #f4efe6;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-content {
+      background: #fbf6ee;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-content.flex-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-label {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #123c32;
+      text-transform: uppercase;
+    }
+    .card-val-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #123c32;
+      line-height: 1.1;
+    }
+    .trend-up {
+      color: #15803d;
+      font-size: 12px;
+    }
+    .trend-down {
+      color: #b91c1c;
+      font-size: 12px;
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #123c32;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .card-sub-caps {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #71717a;
+      text-transform: uppercase;
+    }
+    .card-arrow-icon {
+      font-size: 18px;
+      color: #a9823f;
+      transition: transform 0.2s ease;
+    }
+    .stacked-card:hover .card-arrow-icon {
+      transform: translate(2px, -2px);
+    }
+
     @media (max-width: 768px) {
+
+      .site-brand-logo,
+      .brand-logo img,
+      .logo img {
+        height: 38px !important;
+        max-width: 180px !important;
+      }
+
+
+      /* Mobile Hero Left-Aligned */
+      .hero {
+        align-items: flex-start !important;
+        text-align: left !important;
+        padding: 32px 18px 24px !important;
+      }
+      .hero-copy {
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 12px !important;
+      }
+      .hero-copy .heritage {
+        justify-content: flex-start !important;
+        text-align: left !important;
+        margin: 0 !important;
+      }
+      .hero-copy h1 {
+        text-align: left !important;
+        margin: 0 !important;
+        font-size: 32px !important;
+        line-height: 1.15 !important;
+      }
+      .hero-copy p {
+        text-align: left !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        font-size: 13.5px !important;
+      }
+      .hero-copy .btn {
+        align-self: flex-start !important;
+        margin: 4px 0 0 0 !important;
+      }
+
+      /* Rates & Curated Collections matching screenshots */
+      .sec-rates, .sec-curated {
+        padding: 28px 18px 24px !important;
+        background: #fcfaf6 !important;
+      }
+      .sec-title {
+        font-size: 32px !important;
+      }
+      .rates-cards-grid,
+      .curated-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .card-media {
+        height: 145px !important;
+      }
+      .card-content {
+        padding: 14px 18px !important;
+      }
+      .card-val {
+        font-size: 24px !important;
+      }
+
       /* Hero Section */
       .hero {
         height: auto !important;
@@ -2072,7 +2315,7 @@
   <header class="site-header" id="home">
     <div class="nav">
       <a class="brand-logo" href="/" aria-label="Rahul Jewellers Legacy">
-        <img src="/assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
+        <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#home">Home</a>
@@ -2127,79 +2370,96 @@
   </section>
 
   <!-- ===== Metal Rates ===== -->
-  <section class="sec" id="gold-rates" style="background:var(--page)">
-    <div class="sec-head">
-      <div class="head-copy">
-        <span class="eyebrow">Market</span>
-        <h2 class="h2">Metal Rates (<%= (typeof rates !== "undefined" && rates.pageTitleDate) ? rates.pageTitleDate : "4th Nov 2026" %>)</h2>
-      </div>
-      <a class="link-u" href="/gold-rates">Check Full Rates <svg class="ico"><use href="#i-arrow-right"/></svg></a>
+    <!-- ===== Metal Rates Section ===== -->
+  <section class="sec sec-rates" id="gold-rates">
+    <div class="sec-intro">
+      <span class="sec-eyebrow">MARKET</span>
+      <h2 class="sec-title">Metal Rates</h2>
+      <p class="sec-sub">Updated as of <%= (typeof rates !== "undefined" && rates.currentDateDisplay) ? rates.currentDateDisplay : "4th November 2026" %></p>
+      <a class="sec-underline-link" href="/gold-rates">CHECK MORE <span class="arrow">&rarr;</span></a>
     </div>
-    <div class="rates">
-      <div class="tile">
-        <img class="abs-fill" src="/assets/rate-gold.png" alt="Gold rates">
-        <div class="cap">
-          <div class="cap-copy">
-            <span class="lbl">Gold 24 Carat (10g)</span>
-            <span class="val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.gold24k_10g.value : "1,27,100" %> <img src="/assets/triangle-up.svg" alt="Rate up"></span>
+    <div class="rates-cards-grid">
+      <!-- Gold 24 Carat (10G) -->
+      <a class="stacked-card" href="/gold-rates">
+        <div class="card-media">
+          <img src="/assets/rate-gold.png" alt="Gold 24 Carat (10G)" loading="lazy">
+        </div>
+        <div class="card-content">
+          <span class="card-label">GOLD 24 CARAT (10G)</span>
+          <div class="card-val-row">
+            <span class="card-val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.gold24k_10g.value : "1,27,100" %></span>
+            <span class="trend-up" aria-label="Up">&#9650;</span>
           </div>
         </div>
-      </div>
-      <div class="tile">
-        <img class="abs-fill" src="/assets/rate-silver.png" alt="Silver rates">
-        <div class="cap">
-          <div class="cap-copy">
-            <span class="lbl">SILVER (1 kG)</span>
-            <span class="val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.silver_1kg.value : "1,61,000" %> <img class="down" src="/assets/triangle-down.svg" alt="Rate down"></span>
+      </a>
+
+      <!-- Silver (1 KG) -->
+      <a class="stacked-card" href="/gold-rates">
+        <div class="card-media">
+          <img src="/assets/rate-silver.png" alt="Silver (1 KG)" loading="lazy">
+        </div>
+        <div class="card-content">
+          <span class="card-label">SILVER (1 KG)</span>
+          <div class="card-val-row">
+            <span class="card-val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.silver_1kg.value : "1,61,000" %></span>
+            <span class="trend-down" aria-label="Down">&#9660;</span>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
   <!-- ===== Curated Collections ===== -->
-  <section class="sec" id="collections" style="background:var(--page)">
-    <div class="sec-head">
-      <div class="head-copy">
-        <span class="eyebrow">DISCOVER EXCELLENCE</span>
-        <h2 class="h2">Curated Collections</h2>
-        <p class="desc">Explore our handpicked selections crafted for every special occasion. From timeless heritage pieces to modern daily elegance.</p>
-      </div>
-      <a class="link-u" href="/collections/bracelets">Explore all collections <svg class="ico"><use href="#i-arrow-right"/></svg></a>
+    <!-- ===== Curated Collections Section ===== -->
+  <section class="sec sec-curated" id="collections">
+    <div class="sec-intro">
+      <span class="sec-eyebrow">DISCOVER EXCELLENCE</span>
+      <h2 class="sec-title">Curated Collections</h2>
+      <p class="sec-desc">Explore our handpicked selections crafted for every special occasion. From timeless heritage pieces to modern daily elegance.</p>
+      <a class="sec-underline-link" href="/collections/bracelets">EXPLORE ALL COLLECTIONS <span class="arrow">&rarr;</span></a>
     </div>
-    <div class="mosaic">
-      <a class="tile big" href="/collections/necklaces">
-        <img class="abs-fill" src="/assets/collection-noor.png" alt="The Noor Bridal Edit">
-        <div class="cap">
-          <div class="cap-copy">
-            <span class="t">The Noor Bridal Edit</span>
-            <span class="s">Heritage forms · modern radiance</span>
+    <div class="curated-cards-grid">
+      <!-- Card 1: The Noor Bridal Edit -->
+      <a class="stacked-card" href="/collections/necklaces">
+        <div class="card-media">
+          <img src="/assets/collection-noor.png" alt="The Noor Bridal Edit" loading="lazy">
+        </div>
+        <div class="card-content flex-row">
+          <div class="card-text">
+            <h3 class="card-name">The Noor Bridal Edit</h3>
+            <span class="card-sub-caps">HERITAGE FORMS &middot; MODERN RADIANCE</span>
           </div>
-          <svg class="ico"><use href="#i-arrow-up-right"/></svg>
+          <span class="card-arrow-icon" aria-hidden="true">&#8599;</span>
         </div>
       </a>
-      <div class="col">
-        <a class="tile" href="/collections/bangles">
-          <img class="abs-fill" src="/assets/collection-everyday.png" alt="Everyday Gold">
-          <div class="cap">
-            <div class="cap-copy">
-              <span class="t">Everyday Gold</span>
-              <span class="s">Quiet icons for every day</span>
-            </div>
-            <svg class="ico"><use href="#i-arrow-up-right"/></svg>
+
+      <!-- Card 2: Everyday Gold -->
+      <a class="stacked-card" href="/collections/chains">
+        <div class="card-media">
+          <img src="/assets/collection-everyday.png" alt="Everyday Gold" loading="lazy">
+        </div>
+        <div class="card-content flex-row">
+          <div class="card-text">
+            <h3 class="card-name">Everyday Gold</h3>
+            <span class="card-sub-caps">QUIET ICONS FOR EVERY DAY</span>
           </div>
-        </a>
-        <a class="tile" href="/collections/bracelets">
-          <img class="abs-fill" src="/assets/collection-diamond.png" alt="The Diamond Line">
-          <div class="cap">
-            <div class="cap-copy">
-              <span class="t">The Diamond Line</span>
-              <span class="s">Light, precisely cut</span>
-            </div>
-            <svg class="ico"><use href="#i-arrow-up-right"/></svg>
+          <span class="card-arrow-icon" aria-hidden="true">&#8599;</span>
+        </div>
+      </a>
+
+      <!-- Card 3: The Diamond Line -->
+      <a class="stacked-card" href="/collections/bracelets">
+        <div class="card-media">
+          <img src="/assets/collection-diamond.png" alt="The Diamond Line" loading="lazy">
+        </div>
+        <div class="card-content flex-row">
+          <div class="card-text">
+            <h3 class="card-name">The Diamond Line</h3>
+            <span class="card-sub-caps">LIGHT, PRECISELY CUT</span>
           </div>
-        </a>
-      </div>
+          <span class="card-arrow-icon" aria-hidden="true">&#8599;</span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -2652,17 +2912,17 @@
         if (!res.ok) return;
         const data = await res.json();
         if (data && data.success && data.featured) {
-          const goldVal = document.querySelector('#gold-rates .rates .tile:nth-child(1) .val');
-          const silVal = document.querySelector('#gold-rates .rates .tile:nth-child(2) .val');
-          const title = document.querySelector('#gold-rates .head-copy .h2');
-          if (title && data.pageTitleDate) {
-            title.innerText = `Metal Rates (${data.pageTitleDate})`;
+          const goldVal = document.querySelector('#gold-rates .stacked-card:nth-child(1) .card-val');
+          const silVal = document.querySelector('#gold-rates .stacked-card:nth-child(2) .card-val');
+          const subDate = document.querySelector('#gold-rates .sec-sub');
+          if (subDate && data.currentDateDisplay) {
+            subDate.innerText = `Updated as of ${data.currentDateDisplay}`;
           }
-          if (goldVal && data.featured.gold24k_10g) {
-            goldVal.innerHTML = `${data.featured.gold24k_10g.value} <img src="/assets/triangle-up.svg" alt="Rate up">`;
+          if (goldVal && data.featured && data.featured.gold24k_10g) {
+            goldVal.innerText = data.featured.gold24k_10g.value;
           }
-          if (silVal && data.featured.silver_1kg) {
-            silVal.innerHTML = `${data.featured.silver_1kg.value} <img class="down" src="/assets/triangle-down.svg" alt="Rate down">`;
+          if (silVal && data.featured && data.featured.silver_1kg) {
+            silVal.innerText = data.featured.silver_1kg.value;
           }
         }
       } catch (err) {}
