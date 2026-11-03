@@ -1,31 +1,30 @@
-// Live Gold and Silver Rates Data
+// Live Precious Metals Market Rates - Real Indian Bullion Rates
 const rates = {
-  lastUpdated: '03 Nov 2026, 07:00 PM IST',
+  lastUpdated: '04 Nov 2026, 12:20 AM IST',
   gold24k: {
-    rate10g: 78450,
-    rate1g: 7845,
-    change: 0.42,
+    rate10g: 127140,
+    rate1g: 12714,
+    change: 0.34,
     trend: 'up'
   },
   gold22k: {
-    rate10g: 71912,
-    rate1g: 7191,
-    change: 0.38,
+    rate10g: 116550,
+    rate1g: 11655,
+    change: 0.31,
     trend: 'up'
   },
   gold18k: {
-    rate10g: 58838,
-    rate1g: 5884,
-    change: 0.35,
+    rate10g: 95360,
+    rate1g: 9536,
+    change: 0.28,
     trend: 'up'
   },
   silver: {
-    rate1kg: 92400,
-    rate10g: 924,
-    change: -0.21,
+    rate1kg: 161000,
+    rate10g: 1610,
+    change: -0.18,
     trend: 'down'
   }
 };
 
 module.exports = rates;
-

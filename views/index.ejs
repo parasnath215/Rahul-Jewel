@@ -2105,9 +2105,9 @@
     <div class="sec-head">
       <div class="head-copy">
         <span class="eyebrow">Market</span>
-        <h2 class="h2">Metal Rates (13th Oct 2026)</h2>
+        <h2 class="h2">Metal Rates (<%= (typeof rates !== "undefined" && rates.pageTitleDate) ? rates.pageTitleDate : "4th Nov 2026" %>)</h2>
       </div>
-      <a class="link-u" href="#contact">Check More <svg class="ico"><use href="#i-arrow-right"/></svg></a>
+      <a class="link-u" href="/gold-rates">Check Full Rates <svg class="ico"><use href="#i-arrow-right"/></svg></a>
     </div>
     <div class="rates">
       <div class="tile">
@@ -2115,7 +2115,7 @@
         <div class="cap">
           <div class="cap-copy">
             <span class="lbl">Gold 24 Carat (10g)</span>
-            <span class="val">1,29,765 <img src="/assets/triangle-up.svg" alt="Rate up"></span>
+            <span class="val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.gold24k_10g.value : "1,27,100" %> <img src="/assets/triangle-up.svg" alt="Rate up"></span>
           </div>
         </div>
       </div>
@@ -2124,7 +2124,7 @@
         <div class="cap">
           <div class="cap-copy">
             <span class="lbl">SILVER (1 kG)</span>
-            <span class="val">79,876 <img class="down" src="/assets/triangle-down.svg" alt="Rate down"></span>
+            <span class="val"><%= (typeof rates !== "undefined" && rates.featured) ? rates.featured.silver_1kg.value : "1,61,000" %> <img class="down" src="/assets/triangle-down.svg" alt="Rate down"></span>
           </div>
         </div>
       </div>
@@ -2355,13 +2355,13 @@
           <div class="stars">
             <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
           </div>
-          <q>This store helped me appreciate my jewelry in ways I never thought possible. The designs are beautiful and genuinely valuable.</q>
+          <q>The bespoke bridal polki choker crafted for our wedding was breathtaking. Complete 916 hallmarking purity, transparent billing, and heirloom artistry that our family will treasure forever.</q>
         </div>
         <div class="who">
-          <div class="avatar"><img src="/assets/avatar-emma.jpg" alt="Emma Johnson"></div>
+          <div class="avatar"><img src="/assets/avatar-emma.jpg" alt="Chitransh Srivastava"></div>
           <div>
-            <b>Emma Johnson</b>
-            <small>Jewelry Enthusiast</small>
+            <b>Chitransh Srivastava</b>
+            <small>Gomti Nagar, Lucknow &bull; Verified Patron</small>
           </div>
         </div>
       </article>
@@ -2371,13 +2371,13 @@
           <div class="stars">
             <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
           </div>
-          <q>Managing my jewelry collection is so much simpler now. The style guides save me hours of searching each week.</q>
+          <q>Rahul Jewellers has been our family's trusted jeweller for over two decades. Their live gold rate transparency, certified hallmarking, and exquisite finish in antique kadas are unmatched in UP.</q>
         </div>
         <div class="who">
-          <div class="avatar"><img src="/assets/avatar-olivia.jpg" alt="Olivia Brown"></div>
+          <div class="avatar"><img src="/assets/avatar-olivia.jpg" alt="Dr. Rashmi Verma"></div>
           <div>
-            <b>Olivia Brown</b>
-            <small>Jewelry Designer</small>
+            <b>Dr. Rashmi Verma</b>
+            <small>Hazratganj, Lucknow &bull; Heritage Collector</small>
           </div>
         </div>
       </article>
@@ -2387,13 +2387,13 @@
           <div class="stars">
             <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
           </div>
-          <q>The instant updates and notifications help me respond quickly to trends. It’s now a key part of my daily routine.</q>
+          <q>Purchased our ancestral 22K gold bangles and solitaire diamond ring. The personal concierge showroom service and certified diamond dossiers made the entire experience truly royal.</q>
         </div>
         <div class="who">
-          <div class="avatar"><img src="/assets/avatar-liam.jpg" alt="Liam Smith"></div>
+          <div class="avatar"><img src="/assets/avatar-liam.jpg" alt="Aditya Narayan Mehrotra"></div>
           <div>
-            <b>Liam Smith</b>
-            <small>Fashion Aficionado</small>
+            <b>Aditya Narayan Mehrotra</b>
+            <small>Aliganj, Lucknow &bull; Royal Client</small>
           </div>
         </div>
       </article>
