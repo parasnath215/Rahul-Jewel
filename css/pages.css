@@ -1224,6 +1224,252 @@ a.directions-link svg path,
 }
 
 /* ========================================================
+   9. GOLD & METAL RATES PAGE STYLES
+   ======================================================== */
+.rates-page-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 40px 80px;
+  box-sizing: border-box;
+}
+
+.rates-page-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 500;
+  color: #171a18;
+  line-height: 1.2;
+  margin: 8px 0 32px;
+}
+
+/* 2 Highlight Feature Tiles */
+.rates-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.rates-feature-tile {
+  position: relative;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background: #171a18;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.rates-feature-tile img.abs-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.rates-feature-tile:hover img.abs-fill {
+  transform: scale(1.02);
+}
+
+.rates-feature-tile .tile-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(7, 30, 24, 0.15) 0%, rgba(7, 30, 24, 0.88) 100%);
+  pointer-events: none;
+}
+
+.rates-feature-tile .tile-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.rates-feature-tile .tile-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #d8c5b0;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.rates-feature-tile .tile-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rates-feature-tile .tile-value {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.rates-feature-tile .trend-icon-up {
+  color: #22c55e;
+  font-size: 16px;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+.rates-feature-tile .trend-icon-down {
+  color: #ef4444;
+  font-size: 16px;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+/* Metal Rates Table Cards */
+.rates-card {
+  background: #ffffff;
+  border: 1px solid #e7ded3;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(10, 42, 35, 0.04);
+  padding: 36px 36px 28px;
+  margin-bottom: 40px;
+}
+
+.rates-card-header {
+  margin-bottom: 20px;
+}
+
+.rates-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.rates-card-title-row h2 {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #171a18;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.rates-card-title-row h2 span.sub-note {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #788582;
+  margin-left: 6px;
+}
+
+.rates-card-title-row .gold-decor-line {
+  flex: 1;
+  height: 1px;
+  background: #cbb493;
+  opacity: 0.7;
+}
+
+.rates-disclaimer {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-style: italic;
+  color: #7b8b85;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* Responsive Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  min-width: 680px;
+}
+
+.rates-table thead tr {
+  background: #0d2822;
+}
+
+.rates-table th {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: center;
+  border: none;
+}
+
+.rates-table th:first-child {
+  text-align: left;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-left: 20px;
+}
+
+.rates-table th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding-right: 20px;
+}
+
+.rates-table tbody tr {
+  border-bottom: 1px solid #f0e9df;
+  transition: background 0.15s ease;
+}
+
+.rates-table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.rates-table tbody tr:nth-child(even) {
+  background: #fff8f0;
+}
+
+.rates-table tbody tr:hover {
+  background: #f5ede1;
+}
+
+.rates-table td {
+  padding: 15px 18px;
+  font-size: 13.5px;
+  color: #2b3a35;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  border: none;
+}
+
+.rates-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: #171a18;
+  padding-left: 20px;
+}
+
+.rates-table td:last-child {
+  padding-right: 20px;
+}
+
+/* ========================================================
    8. RESPONSIVE BREAKPOINTS (Mobile Optimization)
    ======================================================== */
 @media (max-width: 991px) {
@@ -1278,9 +1524,25 @@ a.directions-link svg path,
   .about-features-container,
   .about-journey-section,
   .contact-section-wrap,
-  .product-detail-container {
+  .product-detail-container,
+  .rates-page-container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  .rates-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .rates-card {
+    padding: 24px 16px 20px;
+    margin-bottom: 28px;
+  }
+  .rates-card-title-row h2 {
+    font-size: 16px;
+  }
+  .rates-page-title {
+    font-size: 28px;
+    margin-bottom: 20px;
   }
   .about-intro-section h1 {
     font-size: 36px;

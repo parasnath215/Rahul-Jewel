@@ -86,6 +86,15 @@ async function runTests() {
     console.log(`[TEST] GET /product/:slug => Status ${res.statusCode} | Contains Hallmarked 916: ${res.body.includes('Hallmarked 916')}`);
     if (res.statusCode !== 200) throw new Error('Product slug page failed');
 
+    // 2e. Test Gold Rates page
+    res = await request('GET', '/gold-rates');
+    console.log(`[TEST] GET /gold-rates => Status ${res.statusCode} | Contains ALL METAL RATES: ${res.body.includes('ALL METAL RATES')}`);
+    if (res.statusCode !== 200) throw new Error('Gold Rates page failed');
+
+    res = await request('GET', '/gold-rates.html');
+    console.log(`[TEST] GET /gold-rates.html => Status ${res.statusCode} | Redirects to: ${res.headers.location}`);
+    if (res.statusCode !== 301) throw new Error('Redirect /gold-rates.html failed');
+
     // 3. Test Redirect Aliases
     res = await request('GET', '/bracelets');
     console.log(`[TEST] GET /bracelets => Status ${res.statusCode} | Redirects to: ${res.headers.location}`);
@@ -107,10 +116,24 @@ async function runTests() {
     console.log(`[TEST] GET /api/catalog/bracelets => Status ${res.statusCode} | Products count: ${braceData.count}`);
     if (braceData.count !== 15) throw new Error('Bracelets API count failed');
 
-    // 6. Test Rates API
+    // 6. Test Live Cached Rates API
     res = await request('GET', '/api/rates');
     const ratesData = JSON.parse(res.body);
-    console.log(`[TEST] GET /api/rates => Status ${res.statusCode} | 24K Rate: ₹${ratesData.data.gold24k.rate10g}`);
+    console.log(`[TEST] GET /api/rates => Status ${res.statusCode} | Featured 24K 10G: ${ratesData.featured.gold24k_10g.value} | Rows: ${ratesData.allMetalRates.length} | Cached: ${ratesData.cacheInfo.cached}`);
+    if (ratesData.allMetalRates.length !== 6) throw new Error('Rates API metal rows count mismatch');
+    if (ratesData.priceHistory.length !== 10) throw new Error('Rates API history rows count mismatch');
+
+    // 6b. Test Rate Cache Status
+    res = await request('GET', '/api/rates/status');
+    const cacheStatus = JSON.parse(res.body);
+    console.log(`[TEST] GET /api/rates/status => Status ${res.statusCode} | TTL: ${cacheStatus.cache.ttlSeconds}s | Cached: ${cacheStatus.cache.isCached}`);
+    if (cacheStatus.cache.ttlSeconds !== 600) throw new Error('Rate cache TTL mismatch');
+
+    // 6c. Test Manual Refresh Rate Cache API
+    res = await request('POST', '/api/rates/refresh');
+    const refreshData = JSON.parse(res.body);
+    console.log(`[TEST] POST /api/rates/refresh => Status ${res.statusCode} | Success: ${refreshData.success}`);
+    if (!refreshData.success) throw new Error('Rates manual refresh failed');
 
     // 7. Test Inquiry POST API
     res = await request('POST', '/api/inquiry', {
@@ -136,4 +159,3 @@ async function runTests() {
 }
 
 runTests();
-

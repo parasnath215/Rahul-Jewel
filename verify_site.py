@@ -6,6 +6,7 @@ html_files = [
     'about.html',
     'contact.html',
     'product.html',
+    'gold-rates.html',
     'bangles.html',
     'bracelets.html',
     'chains.html',
@@ -60,4 +61,3 @@ if total_issues == 0:
     print("ALL FILES PASS VERIFICATION 100%! NO MISSING ASSETS OR BROKEN LINKS!")
 else:
     print(f"Found {total_issues} issues.")
-

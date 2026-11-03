@@ -5,6 +5,10 @@ const express = require('express');
 const path = require('path');
 const { categories, categoryList } = require('./data/catalog');
 const rates = require('./data/rates');
+const rateService = require('./services/rateService');
+
+// Initialize background scheduled rate service (10-minute caching cycle)
+rateService.initRateService();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -89,6 +93,20 @@ app.get('/product.html', (req, res) => {
   res.redirect(301, '/product');
 });
 
+// 5. Gold & Precious Metal Rates Page (Indian Market Live Rates with 10-min Cache)
+app.get('/gold-rates', async (req, res) => {
+  const currentRates = await rateService.getRates();
+  res.render('gold-rates', {
+    activePage: 'gold-rates',
+    categories,
+    categoryList,
+    rates: currentRates
+  });
+});
+app.get('/gold-rates.html', (req, res) => {
+  res.redirect(301, '/gold-rates');
+});
+
 // 2. Dynamic Category Collection Page: /collections/:category
 app.get('/collections/:category', (req, res, next) => {
   const catKey = req.params.category.toLowerCase();
@@ -150,11 +168,40 @@ app.get('/api/catalog/:category', (req, res) => {
   });
 });
 
-// Get metal rates
-app.get('/api/rates', (req, res) => {
+// Get live cached metal rates (serves from in-memory cache with 10-minute TTL)
+app.get('/api/rates', async (req, res) => {
+  try {
+    const cachedRates = await rateService.getRates();
+    res.json({
+      success: true,
+      data: rates,
+      ...cachedRates
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Refresh metal rates manually (cache invalidation)
+app.post('/api/rates/refresh', async (req, res) => {
+  try {
+    const freshRates = await rateService.refreshRates(true);
+    res.json({
+      success: true,
+      message: 'Rates refreshed successfully from bullion feeds',
+      data: freshRates,
+      cache: rateService.getCacheStatus()
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Cache status endpoint
+app.get('/api/rates/status', (req, res) => {
   res.json({
     success: true,
-    data: rates
+    cache: rateService.getCacheStatus()
   });
 });
 
