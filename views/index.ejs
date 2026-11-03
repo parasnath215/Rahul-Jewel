@@ -659,6 +659,13 @@
     }
 
     /* ---------- Promo banners ---------- */
+    
+    /* Mobile-only Banners Default Hidden on Desktop */
+    .mobile-hero,
+    .mobile-banner {
+      display: none;
+    }
+
     .banner {
       position: relative;
       width: 100%;
@@ -1824,6 +1831,46 @@
     }
 
     @media (max-width: 768px) {
+      /* Mobile Hero & Banners */
+      .desktop-hero,
+      .desktop-banner {
+        display: none !important;
+      }
+      .mobile-hero,
+      .mobile-banner {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 0 !important;
+        background: #0a241d !important;
+      }
+      .mobile-hero-link,
+      .mobile-banner-link {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        line-height: 0 !important;
+      }
+      .mobile-hero-img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        object-fit: cover !important;
+        aspect-ratio: 390 / 720 !important;
+      }
+      .mobile-banner-img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        object-fit: cover !important;
+        aspect-ratio: 390 / 349 !important;
+      }
+
       /* Mobile Viewport Safeguards */
       html, body {
         width: 100% !important;
@@ -2623,8 +2670,8 @@
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="about">
+  <!-- ===== Desktop Hero ===== -->
+  <section class="hero desktop-hero" id="about">
     <div class="bg"><img class="abs-fill" src="/assets/hero-bg.png" alt="Jewellery background"></div>
     <div class="hero-copy">
       <div class="heritage"><i></i><span>An Indian legacy, since 1989</span></div>
@@ -2638,6 +2685,13 @@
       <div class="assurance"><b>100%</b><span>Certified diamonds</span></div>
       <div class="assurance"><b>37 yrs</b><span>Of trusted craft</span></div>
     </div>
+  </section>
+
+  <!-- ===== Mobile Hero (Entire image is clickable for Explore Collection) ===== -->
+  <section class="mobile-hero" id="hero-mobile">
+    <a href="#collections" class="mobile-hero-link" aria-label="Explore Collections - Jewellery That Becomes Your Legacy">
+      <img src="/assets/hero-mobile.jpg" alt="Rahul Jewellers Legacy - Jewellery That Becomes Your Legacy" class="mobile-hero-img" width="390" height="720" loading="eager">
+    </a>
   </section>
 
   <!-- ===== Metal Rates ===== -->
@@ -2735,7 +2789,8 @@
   </section>
 
   <!-- ===== Diamond Jewellery banner ===== -->
-  <section class="banner">
+  <!-- Desktop Diamond Banner -->
+  <section class="banner desktop-banner">
     <div class="bg"><img class="abs-fill" src="/assets/diamond-banner.png" alt="Diamond Jewellery banner"></div>
     <div class="banner-in">
       <div class="banner-text">
@@ -2744,6 +2799,13 @@
       </div>
       <a class="btn" href="/collections/bracelets">DISCOVER <svg class="ico"><use href="#i-arrow-right"/></svg></a>
     </div>
+  </section>
+
+  <!-- Mobile Diamond Banner (Clickable banner) -->
+  <section class="mobile-banner mobile-banner-diamond">
+    <a href="/collections/bracelets" class="mobile-banner-link" aria-label="Discover Diamond Jewellery">
+      <img src="/assets/diamond-mobile.jpg" alt="Diamond Jewellery - Discover our stunning diamond jewellery collections" class="mobile-banner-img" width="390" height="349" loading="lazy">
+    </a>
   </section>
 
   <!-- ===== Marks of Excellence ===== -->
@@ -2773,7 +2835,8 @@
   </section>
 
   <!-- ===== Swarn Sanchay Scheme banner ===== -->
-  <section class="banner left">
+  <!-- Desktop Swarn Sanchay Banner -->
+  <section class="banner left desktop-banner">
     <div class="bg"><img class="abs-fill" src="/assets/swarn-banner.png" alt="Swarn Sanchay Scheme"></div>
     <div class="banner-in">
       <div class="banner-text">
@@ -2782,6 +2845,13 @@
       </div>
       <a class="btn" href="#contact">Learn More <svg class="ico"><use href="#i-arrow-right"/></svg></a>
     </div>
+  </section>
+
+  <!-- Mobile Swarn Sanchay Banner (Clickable banner) -->
+  <section class="mobile-banner mobile-banner-swarn">
+    <a href="#contact" class="mobile-banner-link" aria-label="Swarn Sanchay Scheme - Learn More">
+      <img src="/assets/swarn-sanchay-mobile.png" alt="Swarn Sanchay Scheme - A safe promising jewellery purchase scheme made for you" class="mobile-banner-img" width="390" height="349" loading="lazy">
+    </a>
   </section>
 
   <!-- ===== Our Jewellery Collection ===== -->
@@ -2994,7 +3064,9 @@
   <section class="store" id="contact">
     <div class="store-feature">
       <div class="store-photo">
-        <img src="/assets/store.jpg" alt="Rahul Jewellers Map Location">
+        <a href="https://share.google/cu6lY4n09u5U7s5Zb" target="_blank" rel="noopener noreferrer" aria-label="Open Rahul Jewellers in Google Maps">
+          <img src="/assets/store.jpg" alt="Rahul Jewellers Map Location">
+        </a>
       </div>
       <div class="store-info">
         <span class="eyebrow">VISIT RAHUL JEWELLERS</span>
@@ -3003,11 +3075,11 @@
         <div class="details">
           <div class="detail">
             <svg class="ico"><use href="#i-map-pin"/></svg>
-            <span>A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</span>
+            <span><a href="https://share.google/cu6lY4n09u5U7s5Zb" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</a></span>
           </div>
           <div class="detail">
             <svg class="ico"><use href="#i-clock"/></svg>
-            <span>Monday–Saturday, 10:30 AM–7:30 PM</span>
+            <span>Monday &ndash; Saturday, 10:30 AM &ndash; 7:30 PM</span>
           </div>
           <div class="detail">
             <svg class="ico"><use href="#i-phone"/></svg>
@@ -3018,7 +3090,7 @@
             <span><a href="mailto:concierge@rahuljewellers.in">concierge@rahuljewellers.in</a></span>
           </div>
         </div>
-        <a class="directions" href="https://maps.google.com/?q=Rahul+Jewellers+Lucknow" target="_blank" rel="noopener noreferrer">
+        <a class="directions" href="https://share.google/cu6lY4n09u5U7s5Zb" target="_blank" rel="noopener noreferrer">
           Get directions <svg class="ico"><use href="#i-arrow-up-right"/></svg>
         </a>
       </div>
