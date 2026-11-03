@@ -1588,6 +1588,12 @@
        RESPONSIVE & MOBILE OPTIMIZATION (media_1793721017001_446faf7a)
        ======================================================== */
     @media (max-width: 991px) {
+      .desktop-hero {
+        display: none !important;
+      }
+      .mobile-hero {
+        display: block !important;
+      }
       .site-header {
         height: 64px;
         padding: 0 16px;
@@ -1861,7 +1867,7 @@
         height: auto !important;
         display: block !important;
         object-fit: cover !important;
-        aspect-ratio: 390 / 720 !important;
+        aspect-ratio: 554 / 1024 !important;
       }
       .mobile-banner-img {
         width: 100% !important;
@@ -2056,116 +2062,6 @@
         border-radius: 6px !important;
         border: 1px solid #b78a3d !important;
         transition: background 0.2s ease !important;
-      }
-
-      /* Hero Section: Strictly Left-Aligned on Mobile */
-      .hero {
-        height: auto !important;
-        min-height: unset !important;
-        padding: 34px 18px 24px 18px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: visible !important;
-      }
-      .hero-copy {
-        order: 1 !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 12px !important;
-        margin: 0 !important;
-      }
-      .hero-copy .heritage {
-        justify-content: flex-start !important;
-        text-align: left !important;
-        margin: 0 !important;
-        font-size: 10.5px !important;
-        letter-spacing: 0.2em !important;
-      }
-      .hero-copy h1 {
-        font-size: 32px !important;
-        line-height: 1.15 !important;
-        text-align: left !important;
-        margin: 0 !important;
-        max-width: 100% !important;
-      }
-      .hero-copy p {
-        font-size: 13.5px !important;
-        text-align: left !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        line-height: 1.6 !important;
-      }
-      .hero-copy .btn {
-        align-self: flex-start !important;
-        margin: 6px 0 0 0 !important;
-        padding: 13px 26px !important;
-        font-size: 11.5px !important;
-        letter-spacing: 0.12em !important;
-      }
-      .hero-product {
-        order: 2 !important;
-        position: relative !important;
-        width: 100% !important;
-        max-width: 340px !important;
-        height: auto !important;
-        margin: 20px auto 0 auto !important;
-        display: flex !important;
-        justify-content: center !important;
-      }
-      .hero-product img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 380px !important;
-        object-fit: contain !important;
-        display: block !important;
-      }
-      .assurances {
-        order: 3 !important;
-        position: relative !important;
-        margin: -24px auto 0 auto !important;
-        z-index: 10 !important;
-        background: rgba(10, 36, 29, 0.92) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        border: 1px solid rgba(183, 138, 61, 0.4) !important;
-        border-radius: 100px !important;
-        padding: 10px 14px !important;
-        width: calc(100% - 24px) !important;
-        max-width: 360px !important;
-        display: flex !important;
-        justify-content: space-around !important;
-        gap: 6px !important;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4) !important;
-        box-sizing: border-box !important;
-      }
-      .assurance {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 2px !important;
-        flex: 1 !important;
-      }
-      .assurance:not(:last-child) {
-        border-right: 1px solid rgba(183, 138, 61, 0.28) !important;
-      }
-      .assurance b {
-        font-size: 13.5px !important;
-        color: #d8b26e !important;
-      }
-      .assurance span {
-        font-size: 8px !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        color: #cbd5e1 !important;
-        line-height: 1.2 !important;
       }
 
       /* Metal Rates & Curated Collections matching screenshots */
@@ -2670,8 +2566,8 @@
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="about">
+  <!-- ===== Desktop Hero (Visible on Desktop Only) ===== -->
+  <section class="hero desktop-hero" id="about">
     <div class="bg"><img class="abs-fill" src="assets/hero-bg.png" alt="Jewellery background"></div>
     <div class="hero-copy">
       <div class="heritage"><i></i><span>An Indian legacy, since 1989</span></div>
@@ -2685,6 +2581,13 @@
       <div class="assurance"><b>100%</b><span>Certified diamonds</span></div>
       <div class="assurance"><b>37 yrs</b><span>Of trusted craft</span></div>
     </div>
+  </section>
+
+  <!-- ===== Mobile Hero (Entire image is clickable for Explore Collection) ===== -->
+  <section class="mobile-hero" id="hero-mobile">
+    <a href="#collections" class="mobile-hero-link" aria-label="Explore Collections - Jewellery That Becomes Your Legacy">
+      <img src="assets/hero-mobile.png" alt="Rahul Jewellers Legacy - Jewellery That Becomes Your Legacy" class="mobile-hero-img" width="554" height="1024" loading="eager">
+    </a>
   </section>
 
   <!-- ===== Metal Rates ===== -->
