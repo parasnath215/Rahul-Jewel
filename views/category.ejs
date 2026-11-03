@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= category.title %></title>
+  <meta name="description" content="<%= category.description %>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/category.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <%- include('partials/top-bar') %>
+
+  <!-- Main Navigation Header -->
+  <%- include('partials/header', { activeCategory: category.key, activePage: 'category' }) %>
+
+  <!-- Category Hero Banner (1440x577 Artwork) -->
+  <section class="category-hero" id="hero">
+    <div class="hero-banner-wrap">
+      <img class="hero-banner-img" src="<%= category.banner %>" alt="<%= category.title %>">
+      <a href="#products" class="hero-cta-link" aria-label="Discover collection"></a>
+    </div>
+  </section>
+
+  <!-- Subcategory Icon Bar -->
+  <%- include('partials/subnav') %>
+
+  <!-- Product Catalog Grid (3 Columns, 1px Border Cards) -->
+  <main class="products-section" id="products">
+    <div class="products-container">
+      <div class="products-grid">
+        <% category.products.forEach((product, index) => { %>
+          <%- include('partials/product-card', { 
+              product: product, 
+              categoryHeading: category.heading,
+              showFirstBtn: (index === 0 && category.key === 'bracelets')
+          }) %>
+        <% }); %>
+      </div>
+    </div>
+  </main>
+
+  <!-- Quick View Detail Modal -->
+  <%- include('partials/modal') %>
+
+  <!-- Reusable Grand Palace Line-Art Footer -->
+  <%- include('partials/footer') %>
+
+  <!-- Interactivity Script -->
+  <script src="/js/category.js"></script>
+</body>
+</html>
+

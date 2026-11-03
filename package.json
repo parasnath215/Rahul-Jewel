@@ -1,0 +1,26 @@
+{
+  "name": "rahul-jewellers",
+  "version": "1.0.0",
+  "description": "Rahul Jewellers Legacy - Luxury Indian Fine Jewellery Multi-page Website & Catalog",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test-server.js"
+  },
+  "keywords": [
+    "jewellery",
+    "luxury",
+    "gold",
+    "diamonds",
+    "express",
+    "nodejs",
+    "ejs"
+  ],
+  "author": "Rahul Jewellers",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
