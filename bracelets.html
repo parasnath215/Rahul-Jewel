@@ -29,15 +29,15 @@
         Complimentary <span class="divider">|</span> Exchange Guarantee*
       </div>
       <div class="top-bar-right">
-        <a href="index.html#contact">Book Concierge</a>
+        <a href="contact.html">Book Concierge</a>
         <span style="color: var(--gold-accent); opacity: 0.6;">&bull;</span>
-        <a href="index.html#visit-us">Store Locator</a>
+        <a href="contact.html">Store Locator</a>
       </div>
     </div>
   </div>
 
   <!-- 2. MAIN NAVIGATION HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="home">
     <div class="header-container">
       <a class="brand-logo" href="index.html" aria-label="Rahul Jewellers Legacy">
         <img src="assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
@@ -47,7 +47,7 @@
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="about.html">About Us</a>
         <div class="nav-item-dropdown">
-          <a class="nav-link active" href="#products">Collection</a>
+          <a class="nav-link active" href="index.html#collections">Collection</a>
           <ul class="dropdown-menu">
             <li><a href="bangles.html">Bangles</a></li>
             <li><a href="bracelets.html" class="active-cat">Bracelets</a></li>
@@ -59,7 +59,7 @@
             <li><a href="studs.html">Studs</a></li>
           </ul>
         </div>
-        <a class="nav-link" href="index.html#gold-rates">Gold Rates</a>
+        <a class="nav-link" href="gold-rates.html">Gold Rates</a>
         <a class="nav-link" href="contact.html">Contact</a>
       </nav>
 
@@ -118,17 +118,19 @@
     </div>
   </section>
 
-  <!-- 5. PRODUCT CATALOG GRID (Exact 3 Columns, 1px Border Cards) -->
+  <!-- 5. PRODUCT CATALOG GRID (4 Columns Desktop, 2 Columns Mobile) -->
   <main class="products-section" id="products">
     <div class="products-container">
       <div class="products-grid">
         <div class="product-card" 
+             data-id="RJ-BR-01"
              data-title="Noor Floral Diamond Cuff Bracelet" 
              data-category="Handcrafted Bracelets" 
              data-purity="18K Rose Gold" 
              data-diamonds="0.85 ct VVS-EF Natural Diamonds" 
              data-weight="16.20 gms"
-             data-tags="all diamond gold">
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_01.jpg" alt="Noor Floral Diamond Cuff Bracelet" loading="lazy">
           <button class="view-item-btn" style="opacity: 1; transform: translateY(0); pointer-events: auto;" type="button" aria-label="View details for Noor Floral Diamond Cuff Bracelet">
             <span>VIEW ITEM</span>
@@ -136,12 +138,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-02"
              data-title="Symphony Delicate Rose Gold Bangle-Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K Yellow Gold" 
-             data-diamonds="1.20 ct Certified Solitaires" 
+             data-purity="18K Rose Gold" 
+             data-diamonds="0.45 ct Brilliant Diamonds" 
              data-weight="14.85 gms"
-             data-tags="all gold">
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all gold diamond daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_02.jpg" alt="Symphony Delicate Rose Gold Bangle-Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Symphony Delicate Rose Gold Bangle-Bracelet">
             <span>VIEW ITEM</span>
@@ -149,12 +153,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-03"
              data-title="Aura Solitaire Diamond Station Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="22K BIS Hallmarked Gold" 
-             data-diamonds="1.75 ct VVS Clarity Diamonds" 
+             data-purity="18K Yellow Gold" 
+             data-diamonds="1.20 ct Certified Solitaires" 
              data-weight="18.40 gms"
-             data-tags="all diamond gold daily gifting">
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond gifting">
           <img class="product-img" src="assets/products/bracelets/bracelet_03.jpg" alt="Aura Solitaire Diamond Station Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Aura Solitaire Diamond Station Bracelet">
             <span>VIEW ITEM</span>
@@ -162,12 +168,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-04"
              data-title="Imperial Gold Link Tennis Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K White Gold" 
-             data-diamonds="0.45 ct Brilliant Diamonds" 
-             data-weight="12.60 gms"
-             data-tags="all diamond gold gifting">
+             data-purity="22K BIS Hallmarked Gold" 
+             data-diamonds="1.75 ct VVS Clarity Diamonds" 
+             data-weight="21.10 gms"
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all gold diamond">
           <img class="product-img" src="assets/products/bracelets/bracelet_04.jpg" alt="Imperial Gold Link Tennis Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Imperial Gold Link Tennis Bracelet">
             <span>VIEW ITEM</span>
@@ -175,12 +183,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-05"
              data-title="Celestial Multi-Diamond Bypass Bracelet" 
              data-category="Handcrafted Bracelets" 
              data-purity="18K Rose Gold" 
-             data-diamonds="0.85 ct VVS-EF Natural Diamonds" 
-             data-weight="21.10 gms"
-             data-tags="all diamond gold">
+             data-diamonds="0.90 ct VVS-EF Diamonds" 
+             data-weight="15.60 gms"
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond">
           <img class="product-img" src="assets/products/bracelets/bracelet_05.jpg" alt="Celestial Multi-Diamond Bypass Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Celestial Multi-Diamond Bypass Bracelet">
             <span>VIEW ITEM</span>
@@ -188,12 +198,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-06"
              data-title="Heritage Filigree Hinged Gold Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K Yellow Gold" 
-             data-diamonds="1.20 ct Certified Solitaires" 
-             data-weight="16.20 gms"
-             data-tags="all gold daily">
+             data-purity="22K BIS Hallmarked Gold" 
+             data-diamonds="Plain 916 Antique Finished Gold" 
+             data-weight="24.30 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all gold">
           <img class="product-img" src="assets/products/bracelets/bracelet_06.jpg" alt="Heritage Filigree Hinged Gold Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Heritage Filigree Hinged Gold Bracelet">
             <span>VIEW ITEM</span>
@@ -201,12 +213,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-07"
              data-title="Eternity Baguette & Round Diamond Cuff" 
              data-category="Handcrafted Bracelets" 
-             data-purity="22K BIS Hallmarked Gold" 
-             data-diamonds="1.75 ct VVS Clarity Diamonds" 
-             data-weight="14.85 gms"
-             data-tags="all diamond gold">
+             data-purity="18K White Gold" 
+             data-diamonds="2.10 ct Baguette & Brilliant Diamonds" 
+             data-weight="19.80 gms"
+             data-cert="BIS 100% Certified & IGI Verified"
+             data-tags="all diamond daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_07.jpg" alt="Eternity Baguette & Round Diamond Cuff" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Eternity Baguette & Round Diamond Cuff">
             <span>VIEW ITEM</span>
@@ -214,12 +228,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-08"
              data-title="Lattice Openwork Gold Bangle Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K White Gold" 
-             data-diamonds="0.45 ct Brilliant Diamonds" 
-             data-weight="18.40 gms"
-             data-tags="all diamond gold gifting">
+             data-purity="22K BIS Hallmarked Gold" 
+             data-diamonds="Hand-chiseled 916 Pure Gold" 
+             data-weight="26.40 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all gold gifting">
           <img class="product-img" src="assets/products/bracelets/bracelet_08.jpg" alt="Lattice Openwork Gold Bangle Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Lattice Openwork Gold Bangle Bracelet">
             <span>VIEW ITEM</span>
@@ -227,12 +243,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-09"
              data-title="Radiant Channel Diamond Wide Bracelet" 
              data-category="Handcrafted Bracelets" 
              data-purity="18K Rose Gold" 
-             data-diamonds="0.85 ct VVS-EF Natural Diamonds" 
-             data-weight="12.60 gms"
-             data-tags="all diamond gold daily">
+             data-diamonds="1.65 ct Precision Channel Set Diamonds" 
+             data-weight="22.50 gms"
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond">
           <img class="product-img" src="assets/products/bracelets/bracelet_09.jpg" alt="Radiant Channel Diamond Wide Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Radiant Channel Diamond Wide Bracelet">
             <span>VIEW ITEM</span>
@@ -240,12 +258,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-10"
              data-title="Royal Kundan Beaded Gold Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K Yellow Gold" 
-             data-diamonds="1.20 ct Certified Solitaires" 
-             data-weight="21.10 gms"
-             data-tags="all gold">
+             data-purity="22K BIS Hallmarked Gold" 
+             data-diamonds="Natural Uncut Polki & Emerald Beads" 
+             data-weight="27.90 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all gold daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_10.jpg" alt="Royal Kundan Beaded Gold Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Royal Kundan Beaded Gold Bracelet">
             <span>VIEW ITEM</span>
@@ -253,12 +273,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-11"
              data-title="Zeenat Marquise Diamond Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="22K BIS Hallmarked Gold" 
-             data-diamonds="1.75 ct VVS Clarity Diamonds" 
-             data-weight="16.20 gms"
-             data-tags="all diamond gold">
+             data-purity="18K Rose Gold" 
+             data-diamonds="1.35 ct Marquise Cut Diamonds" 
+             data-weight="17.20 gms"
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond gifting">
           <img class="product-img" src="assets/products/bracelets/bracelet_11.jpg" alt="Zeenat Marquise Diamond Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Zeenat Marquise Diamond Bracelet">
             <span>VIEW ITEM</span>
@@ -266,12 +288,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-12"
              data-title="Gilded Ribbon Twisted Rose Gold Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K White Gold" 
-             data-diamonds="0.45 ct Brilliant Diamonds" 
-             data-weight="14.85 gms"
-             data-tags="all diamond gold daily gifting">
+             data-purity="18K Rose Gold" 
+             data-diamonds="0.60 ct Diamond Pave Highlights" 
+             data-weight="13.90 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all gold daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_12.jpg" alt="Gilded Ribbon Twisted Rose Gold Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Gilded Ribbon Twisted Rose Gold Bracelet">
             <span>VIEW ITEM</span>
@@ -279,12 +303,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-13"
              data-title="Pavé Diamond Infinity Knot Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K Rose Gold" 
-             data-diamonds="0.85 ct VVS-EF Natural Diamonds" 
-             data-weight="18.40 gms"
-             data-tags="all diamond gold">
+             data-purity="18K Yellow Gold" 
+             data-diamonds="0.85 ct Micro-Pavé Diamonds" 
+             data-weight="16.20 gms"
+             data-cert="BIS 100% Certified & SGL Verified"
+             data-tags="all diamond">
           <img class="product-img" src="assets/products/bracelets/bracelet_13.jpg" alt="Pavé Diamond Infinity Knot Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Pavé Diamond Infinity Knot Bracelet">
             <span>VIEW ITEM</span>
@@ -292,12 +318,14 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-14"
              data-title="Cascading Brilliance Wave Bracelet" 
              data-category="Handcrafted Bracelets" 
-             data-purity="18K Yellow Gold" 
-             data-diamonds="1.20 ct Certified Solitaires" 
-             data-weight="12.60 gms"
-             data-tags="all gold">
+             data-purity="18K White Gold" 
+             data-diamonds="1.80 ct Brilliant Wave Diamonds" 
+             data-weight="18.75 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all diamond daily">
           <img class="product-img" src="assets/products/bracelets/bracelet_14.jpg" alt="Cascading Brilliance Wave Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Cascading Brilliance Wave Bracelet">
             <span>VIEW ITEM</span>
@@ -305,18 +333,27 @@
           </button>
         </div>
         <div class="product-card" 
+             data-id="RJ-BR-15"
              data-title="Vintage Heirloom 22K Gold Bracelet" 
              data-category="Handcrafted Bracelets" 
              data-purity="22K BIS Hallmarked Gold" 
-             data-diamonds="1.75 ct VVS Clarity Diamonds" 
-             data-weight="21.10 gms"
-             data-tags="all diamond gold daily">
+             data-diamonds="Handmade Solid Link 916 Gold" 
+             data-weight="25.30 gms"
+             data-cert="BIS 100% Certified"
+             data-tags="all gold gifting">
           <img class="product-img" src="assets/products/bracelets/bracelet_15.jpg" alt="Vintage Heirloom 22K Gold Bracelet" loading="lazy">
           <button class="view-item-btn" type="button" aria-label="View details for Vintage Heirloom 22K Gold Bracelet">
             <span>VIEW ITEM</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
+      </div>
+      <!-- Load More Button -->
+      <div class="load-more-wrap" id="loadMoreWrap">
+        <button class="load-more-btn" id="loadMoreBtn" type="button" aria-label="Load more bracelets designs">
+          <span>Load More Designs</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </div>
     </div>
   </main>
@@ -371,67 +408,67 @@
   </div>
 
   <!-- 7. REUSABLE GRAND PALACE FOOTER -->
+    <!-- ===== Footer ===== -->
   <footer class="footer">
-    <div class="footer-bg-wrap">
-      <img src="assets/footer-bg.png" alt="Palace illustration">
+    <div class="bg">
+      <img class="abs-fill" src="assets/footer-bg.png" alt="Palace architecture illustration">
     </div>
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img class="footer-logo" src="assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy">
-          <p>Crafting timeless, heirloom jewelry that celebrates heritage, purity, and magnificent cultural artistry. Trusted for generations of refined gold and diamond creations.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-            <a href="#" aria-label="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" fill="currentColor"/><circle cx="6" cy="12" r="3" fill="currentColor"/><circle cx="18" cy="19" r="3" fill="currentColor"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2"/></svg></a>
+    <div class="f-in">
+      <div class="f-brand">
+        <img class="logo-img" src="assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy">
+        <p>Crafting timeless, heirloom jewelry that celebrates heritage, purity, and magnificent cultural artistry. Trusted for generations of refined gold and diamond creations.</p>
+        <div class="social">
+          <a href="#" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ico" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <a href="#" aria-label="Share"><svg class="ico" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">Our Legacy</a>
+        <a href="index.html#collections">Services</a>
+        <a href="necklaces.html">Diamonds</a>
+        <a href="gold-rates.html">Gold</a>
+        <a href="about.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="f-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Disclaimer</a>
+      </div>
+
+      <div class="f-col">
+        <h4>Visit Our Store</h4>
+        <div class="store-detail">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</span>
+        </div>
+        <div class="divider"></div>
+        <div class="store-detail">
+          <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <strong style="color:var(--gold-light, #d2ae6e);">Store Timings:</strong><br>
+            Mon – Tue: 11:30 AM - 8:30 PM<br>
+            Wednesday: Closed<br>
+            Thu – Sun: 11:30 AM - 8:30PM
           </div>
         </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about">Our Legacy</a></li>
-            <li><a href="index.html#collections">Services</a></li>
-            <li><a href="necklaces.html">Diamonds</a></li>
-            <li><a href="index.html#gold-rates">Gold</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Disclaimer</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col footer-store-info">
-          <h4>Visit Our Store</h4>
-          <p>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</span>
-          </p>
-          <p>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span><strong>Store Timings:</strong><br>Mon – Tue: 11:30 AM – 8:30 PM<br>Wednesday: Closed<br>Thu – Sun: 11:30 AM – 8:30 PM</span>
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #a4b5ad; margin-bottom: 4px;">Talk To Our Expert</p>
+        <div class="connect-block">
+          <h5>Connect</h5>
+          <div class="connect-label">TALK TO OUR EXPERT</div>
           <a class="phone-link" href="tel:+919616905999">+91 96169 05999</a>
         </div>
       </div>
+    </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Rahul Jewellers &mdash; All rights reserved. Designed with timeless purity.</p>
-      </div>
+    <div class="copy">
+      &copy; 2026 Rahul Jewellers - All rights reserved. Designed with timeless purity.
     </div>
   </footer>
 

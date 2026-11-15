@@ -93,95 +93,198 @@
       pointer-events: none;
     }
 
-    /* ---------- Header ---------- */
+    /* ---------- Top Announcement Bar (Matching Chains Page) ---------- */
+    .top-bar {
+      background: #0a2a23;
+      color: #dfcbb2;
+      height: 44px;
+      border-bottom: 1px solid rgba(183, 138, 61, 0.4);
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Instrument Sans', sans-serif;
+    }
+    .top-bar-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .top-bar-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      color: #e5ded4;
+    }
+    .top-bar-left svg {
+      width: 13px;
+      height: 13px;
+      stroke: #b78a3d;
+      fill: none;
+    }
+    .top-bar-center {
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: #f7f1e7;
+    }
+    .top-bar-center span.divider {
+      margin: 0 8px;
+      color: #b78a3d;
+    }
+    .top-bar-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+    .top-bar-right a {
+      color: #dfcbb2;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .top-bar-right a:hover {
+      color: #ffffff;
+    }
+
+    /* ---------- Header (Matching Chains Page) ---------- */
     .site-header {
       background: #ffffff;
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
+      z-index: 999;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       width: 100%;
     }
 
-    .nav {
-      height: 84px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    .header-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      height: 76px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 max(40px, calc((100% - 1440px) / 2 + 40px));
-      width: 100%;
-      overflow: visible;
-      background: #ffffff;
-      position: relative;
     }
 
-    .nav-dropdown {
-      position: relative;
+    .brand-logo {
       display: inline-flex;
       align-items: center;
-    }
-
-    .nav-dropdown > a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
+      gap: 12px;
       text-decoration: none;
+      color: inherit;
+    }
+
+    .site-brand-logo, .brand-logo img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #2b3a35;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      position: relative;
+      padding: 6px 0;
       transition: color 0.2s ease;
+      font-family: 'Instrument Sans', sans-serif;
     }
 
-    .nav-dropdown > a:hover {
-      color: var(--gold);
+    .nav-link:hover,
+    .nav-link.active {
+      color: #123c32;
+      font-weight: 600;
     }
 
-    .nav-dropdown .dropdown-menu {
+    /* Collection Dropdown */
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .nav-item-dropdown .dropdown-menu {
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(8px);
-      min-width: 190px;
+      left: -24px;
+      min-width: 210px;
       background: #ffffff;
-      border: 1px solid rgba(183, 138, 61, 0.35);
-      box-shadow: 0 14px 32px rgba(10, 42, 35, 0.15);
-      border-radius: 4px;
+      border: 1px solid rgba(183, 138, 61, 0.3);
+      box-shadow: 0 12px 30px rgba(10, 42, 35, 0.12);
+      border-radius: 2px;
       padding: 8px 0;
       list-style: none;
       opacity: 0;
       visibility: hidden;
-      pointer-events: none;
-      transition: all 0.22s ease;
-      z-index: 999;
-      font-family: 'Instrument Sans', sans-serif;
+      transform: translateY(6px);
+      transition: all 0.25s ease;
+      z-index: 200;
     }
 
-    .nav-dropdown:hover .dropdown-menu {
+    .nav-item-dropdown:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
     }
 
-    .nav-dropdown .dropdown-menu li {
+    .nav-item-dropdown .dropdown-menu li {
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .nav-dropdown .dropdown-menu li a {
+    .nav-item-dropdown .dropdown-menu li a {
       display: block;
-      padding: 9px 20px;
+      padding: 9px 22px;
       color: #2b3a35;
-      font-size: 13.5px;
-      font-weight: 500;
       text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
       transition: background 0.15s ease, color 0.15s ease;
-      white-space: nowrap;
+      font-family: 'Instrument Sans', sans-serif;
     }
 
-    .nav-dropdown .dropdown-menu li a:hover {
+    .nav-item-dropdown .dropdown-menu li a:hover {
       background: #f7f3ed;
       color: #123c32;
       font-weight: 600;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #123c32;
+    }
+
+    .mobile-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+
+    .mobile-drawer,
+    .mobile-backdrop {
+      display: none !important;
     }
 
     .logo {
@@ -1891,24 +1994,32 @@
         box-sizing: border-box !important;
       }
 
-      /* Header: White Background, Logo Left, Hamburger Right */
+      /* Top Announcement Bar on Mobile */
+      .top-bar-center {
+        display: none !important;
+      }
+      .top-bar-container {
+        padding: 0 16px !important;
+        font-size: 10px !important;
+      }
+      .top-bar-right {
+        gap: 6px !important;
+      }
+
+      /* Header: Matching Chains Page */
       .site-header {
         background: #ffffff !important;
-        height: 64px !important;
         position: sticky !important;
         top: 0 !important;
         z-index: 1000 !important;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
       }
-      .nav {
-        height: 64px !important;
+      .header-container {
         padding: 0 16px !important;
+        height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        background: #ffffff !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
       }
       .brand-logo {
         display: flex !important;
@@ -1916,16 +2027,12 @@
         margin-right: auto !important;
       }
       .site-brand-logo,
-      .brand-logo img,
-      .logo img {
-        height: 36px !important;
+      .brand-logo img {
+        height: 32px !important;
         width: auto !important;
         max-width: 175px !important;
         object-fit: contain !important;
         display: block !important;
-      }
-      .nav-links {
-        display: none !important;
       }
       .mobile-toggle {
         display: flex !important;
@@ -1950,34 +2057,20 @@
         stroke: currentColor !important;
       }
 
-      /* Mobile Drawer Menu & Backdrop */
-      .mobile-backdrop {
+      /* Nav Menu Dropdown on Mobile */
+      .nav-menu {
         display: none;
-        position: fixed;
-        inset: 0;
-        top: 64px;
-        background: rgba(10, 36, 29, 0.45);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        z-index: 998;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-      .mobile-backdrop.open {
-        display: block !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-      }
-      .mobile-drawer {
-        display: block !important;
         position: fixed !important;
-        top: 64px !important;
+        top: 60px !important;
         left: 0 !important;
         width: 100% !important;
         background: #ffffff !important;
         box-shadow: 0 16px 36px rgba(10, 42, 35, 0.16) !important;
         border-bottom: 2px solid #b78a3d !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        padding: 16px 20px 24px 20px !important;
         max-height: 0 !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
@@ -1985,52 +2078,37 @@
         z-index: 999 !important;
         box-sizing: border-box !important;
       }
-      .mobile-drawer.open {
-        max-height: calc(100vh - 64px) !important;
-        padding-bottom: 24px !important;
-      }
-      .mobile-nav-list {
-        list-style: none !important;
-        padding: 16px 20px 8px 20px !important;
-        margin: 0 !important;
+      .nav-menu.open {
         display: flex !important;
-        flex-direction: column !important;
-        gap: 4px !important;
+        max-height: calc(100vh - 60px) !important;
       }
-      .mobile-nav-list li > a {
-        text-decoration: none !important;
-        font-family: 'Instrument Sans', sans-serif !important;
+      .nav-menu .nav-link {
+        width: 100% !important;
+        padding: 11px 0 !important;
         font-size: 15px !important;
         font-weight: 600 !important;
         color: #123c32 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         display: block !important;
-        padding: 10px 0 !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-        transition: color 0.2s ease, padding-left 0.2s ease !important;
       }
-      .mobile-nav-list li > a:hover,
-      .mobile-nav-list li > a.active {
-        color: #b78a3d !important;
-        padding-left: 4px !important;
+      .nav-menu .nav-item-dropdown {
+        width: 100% !important;
       }
-      .mobile-nav-sub {
-        padding: 10px 0 6px 0 !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-      }
-      .mobile-nav-heading {
-        font-size: 11px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.12em !important;
-        text-transform: uppercase !important;
-        color: #b78a3d !important;
-        margin-bottom: 8px !important;
-      }
-      .mobile-cat-grid {
+      .nav-menu .dropdown-menu {
+        position: static !important;
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 8px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 10px 0 !important;
+        min-width: unset !important;
+        background: transparent !important;
       }
-      .mobile-cat-grid a {
+      .nav-menu .dropdown-menu li a {
         display: block !important;
         background: #faf7f2 !important;
         border: 1px solid rgba(183, 138, 61, 0.2) !important;
@@ -2039,32 +2117,11 @@
         font-size: 12.5px !important;
         font-weight: 500 !important;
         color: #2b3a35 !important;
-        text-decoration: none !important;
-        transition: all 0.2s ease !important;
+        text-align: center !important;
       }
-      .mobile-cat-grid a:hover {
-        background: #123c32 !important;
-        color: #ffffff !important;
-        border-color: #123c32 !important;
-      }
-      .mobile-drawer-bottom {
-        padding: 14px 20px 0 20px !important;
-      }
-      .drawer-concierge-btn {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 8px !important;
-        background: #123c32 !important;
-        color: #ffffff !important;
-        text-decoration: none !important;
-        font-size: 12px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.08em !important;
-        padding: 12px 16px !important;
-        border-radius: 6px !important;
-        border: 1px solid #b78a3d !important;
-        transition: background 0.2s ease !important;
+      .mobile-drawer,
+      .mobile-backdrop {
+        display: none !important;
       }
 
       /* Metal Rates & Curated Collections matching screenshots */
@@ -2515,65 +2572,11 @@
 
 <div class="page">
 
+  <!-- Top Announcement Bar (Matching Chains Page) -->
+  <%- include('partials/top-bar') %>
+
   <!-- ===== Site header ===== -->
-  <header class="site-header" id="home">
-    <div class="nav">
-      <a class="brand-logo" href="/" aria-label="Rahul Jewellers Legacy">
-        <img src="/assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="/about">About Us</a>
-        <div class="nav-dropdown">
-          <a href="#collections">Collection</a>
-          <ul class="dropdown-menu">
-            <li><a href="/collections/bangles">Bangles</a></li>
-            <li><a href="/collections/bracelets">Bracelets</a></li>
-            <li><a href="/collections/chains">Chains</a></li>
-            <li><a href="/collections/earrings">Earrings</a></li>
-            <li><a href="/collections/fancy-chains">Fancy Chains</a></li>
-            <li><a href="/collections/necklaces">Necklaces</a></li>
-            <li><a href="/collections/rings">Rings</a></li>
-            <li><a href="/collections/studs">Studs</a></li>
-          </ul>
-        </div>
-        <a href="/gold-rates">Gold Rates</a>
-        <a href="/contact">Contact</a>
-      </nav>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  
-    <div class="mobile-backdrop" id="mobileBackdrop"></div>
-    <div class="mobile-drawer" id="mobileDrawer">
-      <ul class="mobile-nav-list">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li class="mobile-nav-sub">
-          <div class="mobile-nav-heading">Curated Collections</div>
-          <div class="mobile-cat-grid">
-            <a href="/collections/bangles">Bangles</a>
-            <a href="/collections/bracelets">Bracelets</a>
-            <a href="/collections/chains">Chains</a>
-            <a href="/collections/earrings">Earrings</a>
-            <a href="/collections/fancy-chains">Fancy Chains</a>
-            <a href="/collections/necklaces">Necklaces</a>
-            <a href="/collections/rings">Rings</a>
-            <a href="/collections/studs">Studs</a>
-          </div>
-        </li>
-        <li><a href="/gold-rates">Live Gold Rates</a></li>
-        <li><a href="/contact">Contact Showroom</a></li>
-      </ul>
-      <div class="mobile-drawer-bottom">
-        <a href="tel:+919616905999" class="drawer-concierge-btn">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          CALL CONCIERGE: +91 96169 05999
-        </a>
-      </div>
-    </div>
-  </header>
+  <%- include('partials/header', { activePage: 'home' }) %>
 
   <!-- ===== Desktop Hero ===== -->
   <section class="hero desktop-hero" id="about">
@@ -2768,8 +2771,8 @@
         <p class="desc">Elegantly designed earrings, rings, bracelets, bangles, and necklaces.</p>
       </div>
       <div class="filters" role="tablist">
-        <button class="filter" data-category="all">All</button>
-        <button class="filter on" data-category="earrings">Earrings</button>
+        <button class="filter on" data-category="all">All</button>
+        <button class="filter" data-category="earrings">Earrings</button>
         <button class="filter" data-category="necklaces">Necklaces</button>
         <button class="filter" data-category="rings">Rings</button>
         <button class="filter" data-category="bangles">Bangles</button>
@@ -2777,64 +2780,64 @@
     </div>
     <div class="rows">
       <div class="row">
-        <div class="card" data-category="necklaces">
+        <a class="card" href="/collections/necklaces" data-category="necklaces" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-01.png" alt="Ira Emerald Necklace" loading="lazy"></div>
           <div class="info">
             <span class="detail">Gold · emerald · diamond</span>
             <span class="name">Ira Emerald Necklace</span>
           </div>
-        </div>
-        <div class="card" data-category="rings">
+        </a>
+        <a class="card" href="/collections/rings" data-category="rings" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-02.png" alt="Rhea Polki Ring" loading="lazy"></div>
           <div class="info">
             <span class="detail">Polki · 18K gold</span>
             <span class="name">Rhea Polki Ring</span>
           </div>
-        </div>
-        <div class="card" data-category="earrings">
+        </a>
+        <a class="card" href="/collections/earrings" data-category="earrings" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-03.png" alt="Anika Pearl Drops" loading="lazy"></div>
           <div class="info">
             <span class="detail">Pearl · diamond</span>
             <span class="name">Anika Pearl Drops</span>
           </div>
-        </div>
-        <div class="card" data-category="bangles">
+        </a>
+        <a class="card" href="/collections/bracelets" data-category="bangles" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-04.png" alt="Kavya Link Bracelet" loading="lazy"></div>
           <div class="info">
             <span class="detail">18K yellow gold</span>
             <span class="name">Kavya Link Bracelet</span>
           </div>
-        </div>
+        </a>
       </div>
       <div class="row">
-        <div class="card" data-category="necklaces">
+        <a class="card" href="/collections/necklaces" data-category="necklaces" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-05.png" alt="Noor Diamond Collar" loading="lazy"></div>
           <div class="info">
             <span class="detail">Certified diamonds</span>
             <span class="name">Noor Diamond Collar</span>
           </div>
-        </div>
-        <div class="card" data-category="earrings">
+        </a>
+        <a class="card" href="/collections/earrings" data-category="earrings" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-06.png" alt="Aaina Chandbalis" loading="lazy"></div>
           <div class="info">
             <span class="detail">22K gold · kundan</span>
             <span class="name">Aaina Chandbalis</span>
           </div>
-        </div>
-        <div class="card" data-category="bangles">
+        </a>
+        <a class="card" href="/collections/bangles" data-category="bangles" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-07.png" alt="Veena Ruby Bangle" loading="lazy"></div>
           <div class="info">
             <span class="detail">Ruby · 18K gold</span>
             <span class="name">Veena Ruby Bangle</span>
           </div>
-        </div>
-        <div class="card" data-category="earrings">
+        </a>
+        <a class="card" href="/collections/studs" data-category="earrings" style="text-decoration:none; color:inherit;">
           <div class="im"><img src="/assets/product-08.png" alt="Sia Diamond Studs" loading="lazy"></div>
           <div class="info">
             <span class="detail">Certified diamonds</span>
             <span class="name">Sia Diamond Studs</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -3035,68 +3038,7 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="bg">
-      <img class="abs-fill" src="/assets/footer-bg.png" alt="Palace architecture illustration">
-    </div>
-    <div class="f-in">
-      <div class="f-brand">
-        <img class="logo-img" src="/assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy">
-        <p>Crafting timeless, heirloom jewelry that celebrates heritage, purity, and magnificent cultural artistry. Trusted for generations of refined gold and diamond creations.</p>
-        <div class="social">
-          <a href="#" aria-label="Facebook"><svg class="ico"><use href="#i-facebook"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg class="ico"><use href="#i-instagram"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg class="ico"><use href="#i-youtube"/></svg></a>
-          <a href="#" aria-label="Share"><svg class="ico"><use href="#i-share"/></svg></a>
-        </div>
-      </div>
-
-      <div class="f-col">
-        <h4>Quick Links</h4>
-        <a href="#home">Home</a>
-        <a href="#about">Our Legacy</a>
-        <a href="#collections">Services</a>
-        <a href="#collections">Diamonds</a>
-        <a href="/gold-rates">Gold</a>
-        <a href="#about">Blog</a>
-        <a href="/contact">Contact</a>
-      </div>
-
-      <div class="f-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Disclaimer</a>
-      </div>
-
-      <div class="f-col">
-        <h4>Visit Our Store</h4>
-        <div class="store-detail">
-          <svg class="ico"><use href="#i-map-pin"/></svg>
-          <span>A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</span>
-        </div>
-        <div class="divider"></div>
-        <div class="store-detail">
-          <svg class="ico"><use href="#i-clock"/></svg>
-          <div>
-            <strong style="color:var(--gold-light);">Store Timings:</strong><br>
-            Mon – Tue: 11:30 AM - 8:30 PM<br>
-            Wednesday: Closed<br>
-            Thu – Sun: 11:30 AM - 8:30PM
-          </div>
-        </div>
-        <div class="connect-block">
-          <h5>Connect</h5>
-          <div class="connect-label">TALK TO OUR EXPERT</div>
-          <a class="phone-link" href="tel:+919616905999">+91 96169 05999</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="copy">
-      &copy; 2026 Rahul Jewellers - All rights reserved. Designed with timeless purity.
-    </div>
-  </footer>
+  <%- include('partials/footer') %>
 
 </div>
 
@@ -3146,35 +3088,31 @@
     });
   }
 
-    // Mobile navigation drawer toggle with backdrop & animation
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    const mobileBackdrop = document.getElementById('mobileBackdrop');
+    // Mobile Navigation Toggle (Matching Chains Page)
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-    if (mobileToggle && mobileDrawer) {
-      function toggleMobileMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !mobileDrawer.classList.contains('open');
-        mobileDrawer.classList.toggle('open', isOpen);
+    if (mobileToggle && navMenu) {
+      function toggleMenu(forceState) {
+        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
+        navMenu.classList.toggle('open', isOpen);
         mobileToggle.classList.toggle('active', isOpen);
-        if (mobileBackdrop) {
-          mobileBackdrop.classList.toggle('open', isOpen);
-        }
         document.body.style.overflow = isOpen ? 'hidden' : '';
       }
 
       mobileToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        toggleMobileMenu();
+        toggleMenu();
       });
 
-      if (mobileBackdrop) {
-        mobileBackdrop.addEventListener('click', () => toggleMobileMenu(false));
-      }
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
 
-      mobileDrawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          toggleMobileMenu(false);
-        });
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.site-header') && !e.target.closest('.nav-menu')) {
+          toggleMenu(false);
+        }
       });
     }
 

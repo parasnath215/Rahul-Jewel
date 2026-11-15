@@ -7,6 +7,7 @@ const { categories, categoryList } = require('./data/catalog');
 const rates = require('./data/rates');
 const rateService = require('./services/rateService');
 const adminService = require('./services/adminService');
+const catalogService = require('./services/catalogService');
 
 // Initialize background scheduled rate service (10-minute caching cycle)
 rateService.initRateService();
@@ -18,9 +19,9 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Middleware with large payload support for image uploads
+app.use(express.json({ limit: '25mb' }));
+app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
 // Lightweight Native Cookie Parser Helper
 function getCookies(req) {
@@ -221,11 +222,15 @@ app.get('/admin', requireAdmin, async (req, res) => {
   const inquiries = adminService.getInquiries();
   const ratesConfig = adminService.getRateConfig();
   const currentRates = await rateService.getRates();
+  const products = catalogService.getAllProducts();
 
   res.render('admin/dashboard', {
     inquiries,
     ratesConfig,
-    rates: currentRates
+    rates: currentRates,
+    products,
+    categories,
+    categoryList
   });
 });
 
@@ -349,6 +354,97 @@ app.post('/admin/api/rates/refresh', requireAdmin, async (req, res) => {
       success: true,
       message: 'Market spot rates fetched successfully',
       data: freshRates
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ==========================================
+// ADMIN REST API (PRODUCT CATALOG MANAGEMENT)
+// ==========================================
+
+// Get all products (with optional category and search filters)
+app.get('/admin/api/products', requireAdmin, (req, res) => {
+  const { category, search } = req.query;
+  const products = catalogService.getAllProducts({ categoryKey: category, search });
+  res.json({
+    success: true,
+    count: products.length,
+    products
+  });
+});
+
+// Get single product by ID
+app.get('/admin/api/products/:id', requireAdmin, (req, res) => {
+  const product = catalogService.getProductById(req.params.id);
+  if (!product) {
+    return res.status(404).json({ success: false, error: 'Product not found' });
+  }
+  res.json({
+    success: true,
+    product
+  });
+});
+
+// Add new product
+app.post('/admin/api/products', requireAdmin, (req, res) => {
+  try {
+    const product = catalogService.createProduct(req.body);
+    catalogService.syncStaticHtmlFiles(product.categoryKey);
+    res.json({
+      success: true,
+      message: `Product ${product.id} created successfully`,
+      product
+    });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Update product (details and/or image)
+app.put('/admin/api/products/:id', requireAdmin, (req, res) => {
+  try {
+    const updated = catalogService.updateProduct(req.params.id, req.body);
+    if (!updated) {
+      return res.status(404).json({ success: false, error: 'Product not found' });
+    }
+    catalogService.syncStaticHtmlFiles(updated.categoryKey);
+    res.json({
+      success: true,
+      message: `Product ${updated.id} updated successfully`,
+      product: updated
+    });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Delete product
+app.delete('/admin/api/products/:id', requireAdmin, (req, res) => {
+  const product = catalogService.getProductById(req.params.id);
+  const catKey = product ? product.categoryKey : null;
+  const deleted = catalogService.deleteProduct(req.params.id);
+  if (!deleted) {
+    return res.status(404).json({ success: false, error: 'Product not found' });
+  }
+  if (catKey) {
+    catalogService.syncStaticHtmlFiles(catKey);
+  }
+  res.json({
+    success: true,
+    message: `Product ${req.params.id} deleted successfully`
+  });
+});
+
+// Sync all static HTML files with latest catalog data
+app.post('/admin/api/products/sync-static', requireAdmin, (req, res) => {
+  try {
+    const results = catalogService.syncStaticHtmlFiles();
+    res.json({
+      success: true,
+      message: 'Static HTML product catalogs synchronized successfully',
+      results
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

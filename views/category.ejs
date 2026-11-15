@@ -38,7 +38,7 @@
   <!-- Subcategory Icon Bar -->
   <%- include('partials/subnav') %>
 
-  <!-- Product Catalog Grid (3 Columns, 1px Border Cards) -->
+  <!-- Product Catalog Grid (4 Columns Desktop, 2 Columns Mobile) -->
   <main class="products-section" id="products">
     <div class="products-container">
       <div class="products-grid">
@@ -50,6 +50,14 @@
           }) %>
         <% }); %>
       </div>
+      <% if (category.products.length > 12) { %>
+      <div class="load-more-wrap" id="loadMoreWrap">
+        <button class="load-more-btn" id="loadMoreBtn" type="button" aria-label="Load more designs">
+          <span>Load More Designs</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <% } %>
     </div>
   </main>
 

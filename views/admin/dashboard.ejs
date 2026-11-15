@@ -560,6 +560,74 @@
       .rates-manager-grid {
         grid-template-columns: 1fr;
       }
+      .admin-navbar {
+        padding: 12px 18px;
+      }
+      .dashboard-container {
+        padding: 20px 16px 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+      .nav-brand {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .btn-nav {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .kpi-card {
+        padding: 14px;
+      }
+      .kpi-val {
+        font-size: 24px;
+      }
+      .tabs-header {
+        gap: 6px;
+        padding-bottom: 2px;
+      }
+      .tab-btn {
+        padding: 10px 14px;
+        font-size: 13.5px;
+        white-space: nowrap;
+      }
+      .panel-card {
+        padding: 16px;
+      }
+      .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .inquiry-filters-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .panel-card {
@@ -844,6 +912,313 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    /* ========================================= */
+    /* Product Catalog Management Styles         */
+    /* ========================================= */
+    .prod-photo-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .prod-thumb-wrap {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      background: #092019;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .prod-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .prod-thumb-wrap:hover img {
+      transform: scale(1.1);
+    }
+
+    .prod-id-pill {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-light);
+      background: rgba(183, 138, 61, 0.15);
+      border: 1px solid var(--gold-border);
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .prod-title-name {
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 13.5px;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .prod-cat-sub {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: capitalize;
+    }
+
+    .prod-spec-text {
+      font-size: 12.5px;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+
+    .prod-spec-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tag-bubble {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      background: rgba(183, 138, 61, 0.1);
+      border: 1px solid rgba(183, 138, 61, 0.25);
+      color: var(--gold-light);
+      margin: 1px 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-action-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-tbl-action {
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--gold-light);
+      padding: 5px 9px;
+      border-radius: 4px;
+      font-size: 11.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+
+    .btn-tbl-action:hover {
+      background: var(--gold-primary);
+      color: #061713;
+      border-color: var(--gold-primary);
+    }
+
+    .btn-tbl-action.danger {
+      border-color: rgba(229, 83, 83, 0.4);
+      color: #ff9b9b;
+    }
+
+    .btn-tbl-action.danger:hover {
+      background: var(--danger);
+      color: #ffffff;
+      border-color: var(--danger);
+    }
+
+    .btn-tbl-action.img-btn {
+      border-color: rgba(51, 153, 255, 0.4);
+      color: #8cc4ff;
+    }
+
+    .btn-tbl-action.img-btn:hover {
+      background: var(--info);
+      color: #ffffff;
+      border-color: var(--info);
+    }
+
+    /* Modal Styles */
+    .admin-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 15, 12, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .admin-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .admin-modal-window {
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+    }
+
+    .admin-modal-overlay.active .admin-modal-window {
+      transform: translateY(0);
+    }
+
+    .admin-modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-modal-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .admin-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .admin-modal-close:hover {
+      color: #ffffff;
+    }
+
+    .admin-modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .admin-modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--gold-border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background: rgba(7, 25, 20, 0.4);
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 10px 12px;
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-light);
+    }
+
+    .img-upload-dropzone {
+      border: 1.5px dashed var(--gold-border);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+      background: rgba(7, 25, 20, 0.4);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .img-upload-dropzone:hover {
+      border-color: var(--gold-light);
+    }
+
+    .img-preview-box {
+      width: 110px;
+      height: 110px;
+      border-radius: 4px;
+      border: 1px solid var(--gold-border);
+      overflow: hidden;
+      margin: 0 auto 12px;
+      background: #092019;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn-sync-static {
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--cream);
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-sync-static:hover {
+      background: rgba(183, 138, 61, 0.15);
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
   </style>
 </head>
 <body>
@@ -913,19 +1288,33 @@
         </div>
         <div class="kpi-sub"><%= rates.pageTitleDate || rates.currentDateDisplay %></div>
       </div>
+
+      <div class="kpi-card" onclick="switchTab('products')" style="cursor: pointer;">
+        <div class="kpi-label">Showroom Products</div>
+        <div class="kpi-val" style="color: #6ee7b7;" id="kpiTotalProducts">
+          <%= products.length %>
+        </div>
+        <div class="kpi-sub">8 Categories &bull; Manage Catalog</div>
+      </div>
     </div>
 
     <!-- Navigation Tabs -->
     <div class="tabs-header">
-      <button class="tab-btn active" onclick="switchTab('inquiries')">
+      <button class="tab-btn active" id="tab-btn-inquiries" onclick="switchTab('inquiries')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span>Customer Inquiries &amp; Leads</span>
         <span class="tab-badge" id="tabInquiryBadge"><%= inquiries.length %></span>
       </button>
 
-      <button class="tab-btn" onclick="switchTab('rates')">
+      <button class="tab-btn" id="tab-btn-rates" onclick="switchTab('rates')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <span>Live Precious Metals &amp; Gold Rates</span>
+      </button>
+
+      <button class="tab-btn" id="tab-btn-products" onclick="switchTab('products')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <span>Showroom Products &amp; Catalog</span>
+        <span class="tab-badge" id="tabProductBadge"><%= products.length %></span>
       </button>
     </div>
 
@@ -1204,6 +1593,233 @@
       </div>
     </div>
 
+    <!-- ============================================== -->
+    <!-- TAB 3: PRODUCT CATALOG MANAGEMENT              -->
+    <!-- ============================================== -->
+    <div id="tab-products" class="tab-pane">
+      <div class="toolbar-bar">
+        <div class="search-filter-wrap">
+          <input type="text" class="search-input" id="searchProducts" placeholder="Search by ID (e.g. RJ-ER-01), name, purity, diamonds..." onkeyup="filterProducts()">
+        </div>
+
+        <div class="status-pills" id="productCatPills">
+          <button class="pill-btn active" data-cat="all" onclick="setProductCategoryFilter('all')">All (<span id="catCnt-all"><%= products.length %></span>)</button>
+          <button class="pill-btn" data-cat="earrings" onclick="setProductCategoryFilter('earrings')">Earrings (<span id="catCnt-earrings"><%= products.filter(p => p.categoryKey === 'earrings').length %></span>)</button>
+          <button class="pill-btn" data-cat="bracelets" onclick="setProductCategoryFilter('bracelets')">Bracelets (<span id="catCnt-bracelets"><%= products.filter(p => p.categoryKey === 'bracelets').length %></span>)</button>
+          <button class="pill-btn" data-cat="chains" onclick="setProductCategoryFilter('chains')">Chains (<span id="catCnt-chains"><%= products.filter(p => p.categoryKey === 'chains').length %></span>)</button>
+          <button class="pill-btn" data-cat="bangles" onclick="setProductCategoryFilter('bangles')">Bangles (<span id="catCnt-bangles"><%= products.filter(p => p.categoryKey === 'bangles').length %></span>)</button>
+          <button class="pill-btn" data-cat="necklaces" onclick="setProductCategoryFilter('necklaces')">Necklaces (<span id="catCnt-necklaces"><%= products.filter(p => p.categoryKey === 'necklaces').length %></span>)</button>
+          <button class="pill-btn" data-cat="rings" onclick="setProductCategoryFilter('rings')">Rings (<span id="catCnt-rings"><%= products.filter(p => p.categoryKey === 'rings').length %></span>)</button>
+          <button class="pill-btn" data-cat="studs" onclick="setProductCategoryFilter('studs')">Studs (<span id="catCnt-studs"><%= products.filter(p => p.categoryKey === 'studs').length %></span>)</button>
+          <button class="pill-btn" data-cat="fancy-chains" onclick="setProductCategoryFilter('fancy-chains')">Fancy Chains (<span id="catCnt-fancy-chains"><%= products.filter(p => p.categoryKey === 'fancy-chains').length %></span>)</button>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button type="button" class="btn-sync-static" onclick="triggerSyncStaticHtml()" title="Synchronize all static HTML category files with current catalog">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Sync HTML Files</span>
+          </button>
+          <button type="button" class="btn-save-rates" style="padding: 10px 18px; font-size: 12.5px; display: flex; align-items: center; gap: 6px;" onclick="openAddProductModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Add Product</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="inq-table">
+          <thead>
+            <tr>
+              <th>Product Ref &amp; Art</th>
+              <th>Design Name &amp; Category</th>
+              <th>Purity &amp; Weight</th>
+              <th>Diamonds &amp; Certification</th>
+              <th>Tags / Collections</th>
+              <th>Catalog Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody">
+            <% if (products && products.length > 0) { %>
+              <% products.forEach(prod => { %>
+                <tr id="prod-row-<%= prod.id %>" data-cat="<%= prod.categoryKey %>" data-search="<%= (prod.id + ' ' + prod.title + ' ' + prod.purity + ' ' + prod.diamonds + ' ' + prod.categoryKey + ' ' + (Array.isArray(prod.tags) ? prod.tags.join(' ') : prod.tags)).toLowerCase() %>">
+                  <td>
+                    <div class="prod-photo-cell">
+                      <div class="prod-thumb-wrap" onclick="openChangeImageModal('<%= prod.id %>')" title="Click to change image">
+                        <img id="thumb-<%= prod.id %>" src="<%= prod.image %>" alt="<%= prod.title %>" loading="lazy">
+                      </div>
+                      <div>
+                        <span class="prod-id-pill"><%= prod.id %></span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="prod-title-name" id="tbl-title-<%= prod.id %>"><%= prod.title %></div>
+                    <div class="prod-cat-sub" id="tbl-cat-<%= prod.id %>"><%= prod.categoryHeading || prod.categoryKey %></div>
+                  </td>
+                  <td>
+                    <div class="prod-spec-text" id="tbl-purity-<%= prod.id %>"><%= prod.purity %></div>
+                    <div class="prod-spec-sub" id="tbl-weight-<%= prod.id %>"><%= prod.weight %></div>
+                  </td>
+                  <td>
+                    <div class="prod-spec-text" id="tbl-diamonds-<%= prod.id %>"><%= prod.diamonds %></div>
+                    <div class="prod-spec-sub" id="tbl-cert-<%= prod.id %>"><%= prod.cert %></div>
+                  </td>
+                  <td>
+                    <div>
+                      <% (prod.tags || ['all']).forEach(tag => { %>
+                        <span class="tag-bubble"><%= tag %></span>
+                      <% }); %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-action-group">
+                      <button type="button" class="btn-tbl-action" onclick="openEditProductModal('<%= prod.id %>')" title="Edit details">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        <span>Edit</span>
+                      </button>
+                      <button type="button" class="btn-tbl-action img-btn" onclick="openChangeImageModal('<%= prod.id %>')" title="Change artwork">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Image</span>
+                      </button>
+                      <button type="button" class="btn-tbl-action danger" onclick="deleteProductConfirm('<%= prod.id %>', '<%= prod.title.replace(/'/g, "\\'") %>')" title="Delete product">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              <% }); %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Add/Edit Product Modal -->
+  <div class="admin-modal-overlay" id="productModal">
+    <div class="admin-modal-window">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="productModalHeading">Add Showroom Product</h3>
+        <button type="button" class="admin-modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      <form id="productForm" onsubmit="handleProductFormSubmit(event)">
+        <input type="hidden" id="prodEditMode" value="create">
+        <div class="admin-modal-body">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prodCategory">Category *</label>
+              <select class="form-control" id="prodCategory" required onchange="handleCategoryChange()">
+                <option value="earrings">Earrings &amp; Jhumkas</option>
+                <option value="bracelets">Handcrafted Bracelets</option>
+                <option value="chains">Pure Gold Chains</option>
+                <option value="bangles">Bangles &amp; Kadas</option>
+                <option value="necklaces">Heritage Necklaces</option>
+                <option value="rings">Rings &amp; Solitaires</option>
+                <option value="studs">Daily Studs</option>
+                <option value="fancy-chains">Fancy Designer Chains</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="prodId">Product ID (Ref) *</label>
+              <input type="text" class="form-control" id="prodId" placeholder="e.g. RJ-ER-17" required style="font-family: monospace;">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prodTitle">Product Title / Name *</label>
+            <input type="text" class="form-control" id="prodTitle" placeholder="e.g. Royal Chandbali Polki Earrings" required>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prodPurity">Gold Purity *</label>
+              <input type="text" class="form-control" id="prodPurity" placeholder="e.g. 22K BIS Hallmarked Gold" required>
+            </div>
+            <div class="form-group">
+              <label for="prodWeight">Approx Weight *</label>
+              <input type="text" class="form-control" id="prodWeight" placeholder="e.g. 18.20 gms" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prodDiamonds">Diamonds / Stones *</label>
+              <input type="text" class="form-control" id="prodDiamonds" placeholder="e.g. 1.10 ct VVS-EF Diamonds" required>
+            </div>
+            <div class="form-group">
+              <label for="prodCert">Certification</label>
+              <input type="text" class="form-control" id="prodCert" placeholder="e.g. BIS 100% Certified & SGL Verified" value="BIS 100% Certified & SGL Verified">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prodTags">Tags (Comma or space separated)</label>
+            <input type="text" class="form-control" id="prodTags" placeholder="e.g. diamond, gold, daily, gifting" value="diamond, gold">
+          </div>
+
+          <div class="form-group">
+            <label>Product Image Artwork *</label>
+            <div class="img-preview-box">
+              <img id="prodModalImgPreview" src="/assets/products/bracelets/bracelet_01.jpg" alt="Preview">
+            </div>
+            <div class="img-upload-dropzone" onclick="document.getElementById('prodModalFileInput').click()">
+              <input type="file" id="prodModalFileInput" accept="image/*" style="display: none;" onchange="handleModalFilePreview(event, 'prodModalImgPreview', 'prodModalImgPath')">
+              <div style="font-size: 13px; color: var(--gold-light); font-weight: 600; margin-bottom: 4px;">Click to Upload Image from Computer</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Supports PNG, JPG, WEBP (Square 1:1 ratio recommended)</div>
+            </div>
+            <div style="margin-top: 10px;">
+              <label for="prodModalImgPath" style="font-size: 10.5px;">Or Specify Image Path / URL</label>
+              <input type="text" class="form-control" id="prodModalImgPath" placeholder="/assets/Earrings/product(1).png" oninput="document.getElementById('prodModalImgPreview').src = this.value">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn-refresh-feed" onclick="closeProductModal()">Cancel</button>
+          <button type="submit" class="btn-save-rates" id="btnSaveProduct">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Quick Change Image Modal -->
+  <div class="admin-modal-overlay" id="imageModal">
+    <div class="admin-modal-window" style="max-width: 480px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title">Change Product Artwork</h3>
+        <button type="button" class="admin-modal-close" onclick="closeImageModal()">&times;</button>
+      </div>
+      <form id="imageForm" onsubmit="handleImageFormSubmit(event)">
+        <input type="hidden" id="quickImgProdId">
+        <div class="admin-modal-body">
+          <div style="text-align: center; margin-bottom: 16px;">
+            <div class="prod-id-pill" id="quickImgProdIdPill">RJ-ER-01</div>
+            <h4 id="quickImgProdTitle" style="color: #ffffff; font-size: 16px; margin-top: 6px;">Product Title</h4>
+          </div>
+
+          <div class="img-preview-box" style="width: 140px; height: 140px;">
+            <img id="quickImgPreview" src="" alt="Artwork Preview">
+          </div>
+
+          <div class="img-upload-dropzone" onclick="document.getElementById('quickImgFileInput').click()">
+            <input type="file" id="quickImgFileInput" accept="image/*" style="display: none;" onchange="handleModalFilePreview(event, 'quickImgPreview', 'quickImgPath')">
+            <div style="font-size: 13.5px; color: var(--gold-light); font-weight: 600; margin-bottom: 4px;">Upload New Image File</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Replaces artwork instantly across showroom</div>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <label for="quickImgPath" style="font-size: 11px; text-transform: uppercase; color: var(--gold-light); display: block; margin-bottom: 4px;">Or Direct Image URL / Path</label>
+            <input type="text" class="form-control" id="quickImgPath" placeholder="/assets/Earrings/product(1).png" oninput="document.getElementById('quickImgPreview').src = this.value">
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn-refresh-feed" onclick="closeImageModal()">Cancel</button>
+          <button type="submit" class="btn-save-rates">Update Artwork</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Toast Notification element -->
@@ -1221,12 +1837,18 @@
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
 
       if (tabId === 'inquiries') {
-        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        const btn = document.getElementById('tab-btn-inquiries') || document.querySelector('.tab-btn:nth-child(1)');
+        if (btn) btn.classList.add('active');
         document.getElementById('tab-inquiries').classList.add('active');
-      } else {
-        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+      } else if (tabId === 'rates') {
+        const btn = document.getElementById('tab-btn-rates') || document.querySelector('.tab-btn:nth-child(2)');
+        if (btn) btn.classList.add('active');
         document.getElementById('tab-rates').classList.add('active');
         recalcMatrix();
+      } else if (tabId === 'products') {
+        const btn = document.getElementById('tab-btn-products') || document.querySelector('.tab-btn:nth-child(3)');
+        if (btn) btn.classList.add('active');
+        document.getElementById('tab-products').classList.add('active');
       }
     }
 
@@ -1466,6 +2088,305 @@
 
     // Run initial calc
     recalcMatrix();
+
+    // ----------------------------------------------------
+    // PRODUCT CATALOG MANAGEMENT
+    // ----------------------------------------------------
+    const productsData = <%- JSON.stringify(products).replace(/</g, '\\u003c') %>;
+    let activeProductCatFilter = 'all';
+
+    function setProductCategoryFilter(catKey) {
+      activeProductCatFilter = catKey;
+      document.querySelectorAll('#productCatPills .pill-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === catKey);
+      });
+      filterProducts();
+    }
+
+    function filterProducts() {
+      const query = (document.getElementById('searchProducts').value || '').toLowerCase().trim();
+      const rows = document.querySelectorAll('#productsTableBody tr');
+
+      let visibleCount = 0;
+      rows.forEach(row => {
+        if (!row.dataset.cat) return;
+        const rowCat = row.dataset.cat;
+        const rowSearch = row.dataset.search || '';
+
+        const catMatch = activeProductCatFilter === 'all' || rowCat === activeProductCatFilter;
+        const queryMatch = !query || rowSearch.includes(query);
+
+        if (catMatch && queryMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Auto-generate ID on category selection
+    function handleCategoryChange() {
+      const cat = document.getElementById('prodCategory').value;
+      const mode = document.getElementById('prodEditMode').value;
+      if (mode === 'create') {
+        const prefixMap = {
+          earrings: 'RJ-ER',
+          bracelets: 'RJ-BR',
+          chains: 'RJ-CH',
+          bangles: 'RJ-BG',
+          necklaces: 'RJ-NC',
+          rings: 'RJ-RG',
+          studs: 'RJ-ST',
+          'fancy-chains': 'RJ-FC'
+        };
+        const prefix = prefixMap[cat] || 'RJ-PR';
+        const rows = document.querySelectorAll(`#productsTableBody tr[data-cat="${cat}"]`);
+        const nextNum = String(rows.length + 1).padStart(2, '0');
+        document.getElementById('prodId').value = `${prefix}-${nextNum}`;
+      }
+    }
+
+    // Modal File Preview handler (reads base64 for instant preview)
+    let pendingFileBase64 = null;
+    let pendingQuickFileBase64 = null;
+
+    function handleModalFilePreview(event, previewImgId, pathInputId) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById(previewImgId).src = e.target.result;
+        if (previewImgId === 'prodModalImgPreview') {
+          pendingFileBase64 = e.target.result;
+        } else {
+          pendingQuickFileBase64 = e.target.result;
+        }
+        if (pathInputId) {
+          document.getElementById(pathInputId).value = `[Uploaded File: ${file.name}]`;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Open Add Product Modal
+    function openAddProductModal() {
+      document.getElementById('prodEditMode').value = 'create';
+      document.getElementById('productModalHeading').innerText = 'Add Showroom Product';
+      document.getElementById('btnSaveProduct').innerText = 'Add to Catalog';
+      document.getElementById('prodId').readOnly = false;
+      document.getElementById('prodId').style.opacity = '1';
+      document.getElementById('productForm').reset();
+      pendingFileBase64 = null;
+      document.getElementById('prodCategory').value = 'earrings';
+      document.getElementById('prodCert').value = 'BIS 100% Certified & SGL Verified';
+      document.getElementById('prodTags').value = 'diamond, gold';
+      document.getElementById('prodModalImgPreview').src = '/assets/Earrings/product(1).png';
+      document.getElementById('prodModalImgPath').value = '/assets/Earrings/product(1).png';
+      handleCategoryChange();
+      document.getElementById('productModal').classList.add('active');
+    }
+
+    // Open Edit Product Modal
+    function openEditProductModal(productId) {
+      const prod = productsData.find(p => p.id === productId);
+      if (!prod) {
+        showToast('Product not found: ' + productId);
+        return;
+      }
+
+      document.getElementById('prodEditMode').value = 'edit';
+      document.getElementById('productModalHeading').innerText = 'Edit Product Details (' + prod.id + ')';
+      document.getElementById('btnSaveProduct').innerText = 'Save Changes';
+      document.getElementById('prodId').value = prod.id;
+      document.getElementById('prodId').readOnly = true;
+      document.getElementById('prodId').style.opacity = '0.7';
+
+      document.getElementById('prodCategory').value = prod.categoryKey;
+      document.getElementById('prodTitle').value = prod.title;
+      document.getElementById('prodPurity').value = prod.purity;
+      document.getElementById('prodWeight').value = prod.weight;
+      document.getElementById('prodDiamonds').value = prod.diamonds;
+      document.getElementById('prodCert').value = prod.cert || 'BIS 100% Certified & SGL Verified';
+      document.getElementById('prodTags').value = Array.isArray(prod.tags) ? prod.tags.join(', ') : prod.tags;
+
+      document.getElementById('prodModalImgPreview').src = prod.image;
+      document.getElementById('prodModalImgPath').value = prod.image;
+      pendingFileBase64 = null;
+
+      document.getElementById('productModal').classList.add('active');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('active');
+    }
+
+    // Open Quick Change Image Modal
+    function openChangeImageModal(productId) {
+      const prod = productsData.find(p => p.id === productId);
+      if (!prod) return;
+
+      document.getElementById('quickImgProdId').value = prod.id;
+      document.getElementById('quickImgProdIdPill').innerText = prod.id;
+      document.getElementById('quickImgProdTitle').innerText = prod.title;
+      document.getElementById('quickImgPreview').src = prod.image;
+      document.getElementById('quickImgPath').value = prod.image;
+      pendingQuickFileBase64 = null;
+      document.getElementById('quickImgFileInput').value = '';
+
+      document.getElementById('imageModal').classList.add('active');
+    }
+
+    function closeImageModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    // Submit Add/Edit Product
+    async function handleProductFormSubmit(e) {
+      e.preventDefault();
+      const mode = document.getElementById('prodEditMode').value;
+      const id = document.getElementById('prodId').value.trim();
+      const categoryKey = document.getElementById('prodCategory').value;
+      const title = document.getElementById('prodTitle').value.trim();
+      const purity = document.getElementById('prodPurity').value.trim();
+      const weight = document.getElementById('prodWeight').value.trim();
+      const diamonds = document.getElementById('prodDiamonds').value.trim();
+      const cert = document.getElementById('prodCert').value.trim();
+      const tags = document.getElementById('prodTags').value.trim();
+      const imagePath = document.getElementById('prodModalImgPath').value.trim();
+
+      const payload = {
+        id,
+        categoryKey,
+        title,
+        purity,
+        weight,
+        diamonds,
+        cert,
+        tags,
+        image: imagePath.startsWith('[Uploaded') ? '' : imagePath,
+        imageBase64: pendingFileBase64
+      };
+
+      const saveBtn = document.getElementById('btnSaveProduct');
+      saveBtn.disabled = true;
+      saveBtn.innerText = 'Saving...';
+
+      try {
+        const url = mode === 'create' ? '/admin/api/products' : `/admin/api/products/${encodeURIComponent(id)}`;
+        const method = mode === 'create' ? 'POST' : 'PUT';
+
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(mode === 'create' ? `Product ${id} added successfully!` : `Product ${id} updated!`);
+          closeProductModal();
+          setTimeout(() => window.location.reload(), 1000);
+        } else {
+          alert('Error: ' + (data.error || 'Failed to save product.'));
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error while saving product.');
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerText = 'Save Product';
+      }
+    }
+
+    // Submit Quick Image Change
+    async function handleImageFormSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('quickImgProdId').value;
+      const directPath = document.getElementById('quickImgPath').value.trim();
+
+      const payload = {
+        image: directPath.startsWith('[Uploaded') ? '' : directPath,
+        imageBase64: pendingQuickFileBase64
+      };
+
+      try {
+        const res = await fetch(`/admin/api/products/${encodeURIComponent(id)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(`Artwork for ${id} updated successfully!`);
+          closeImageModal();
+          // Update live thumbnail on page
+          const thumb = document.getElementById(`thumb-${id}`);
+          if (thumb && data.product && data.product.image) {
+            thumb.src = data.product.image;
+          }
+          // Update cached data
+          const p = productsData.find(x => x.id === id);
+          if (p && data.product) p.image = data.product.image;
+        } else {
+          alert('Error: ' + (data.error || 'Failed to update image.'));
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error while updating image.');
+      }
+    }
+
+    // Delete Product
+    async function deleteProductConfirm(id, title) {
+      if (!confirm(`Are you sure you want to permanently delete "${title}" (${id}) from the catalog?`)) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/admin/api/products/${encodeURIComponent(id)}`, {
+          method: 'DELETE'
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(`Product ${id} removed from catalog.`);
+          const row = document.getElementById(`prod-row-${id}`);
+          if (row) row.remove();
+          // Decrement badges
+          const totalBadge = document.getElementById('tabProductBadge');
+          if (totalBadge) totalBadge.innerText = parseInt(totalBadge.innerText, 10) - 1;
+          const kpi = document.getElementById('kpiTotalProducts');
+          if (kpi) kpi.innerText = parseInt(kpi.innerText, 10) - 1;
+        } else {
+          alert('Error: ' + (data.error || 'Failed to delete product.'));
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error while deleting product.');
+      }
+    }
+
+    // Trigger Sync Static HTML Files
+    async function triggerSyncStaticHtml() {
+      try {
+        showToast('Synchronizing static HTML category pages...');
+        const res = await fetch('/admin/api/products/sync-static', {
+          method: 'POST'
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('All static HTML category files synchronized successfully!');
+        } else {
+          alert('Error: ' + (data.error || 'Failed to sync.'));
+        }
+      } catch (err) {
+        alert('Network error while syncing files.');
+      }
+    }
   </script>
 </body>
 </html>
+

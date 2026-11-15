@@ -250,6 +250,74 @@ async function runTests() {
     console.log(`[ADMIN TEST 14] DELETE /admin/api/inquiries/:id => Status ${res.statusCode}`);
     if (res.statusCode !== 200) throw new Error('Inquiry deletion failed');
 
+    // ==========================================
+    // ADMIN PRODUCT CATALOG MANAGEMENT TESTS
+    // ==========================================
+    console.log('\n--- ADMIN PRODUCT CATALOG MANAGEMENT TESTS ---');
+
+    // Test 14a. GET /admin/api/products
+    res = await request('GET', '/admin/api/products', null, { 'Cookie': adminCookie });
+    const prodList = JSON.parse(res.body);
+    console.log(`[PROD TEST 1] GET /admin/api/products => Status ${res.statusCode} | Total Products: ${prodList.count}`);
+    if (res.statusCode !== 200 || !prodList.success || prodList.count < 100) {
+      throw new Error(`Product list check failed, expected >= 100 products, got ${prodList.count}`);
+    }
+
+    // Test 14b. GET /admin/api/products?category=earrings (Verify 16 earrings)
+    res = await request('GET', '/admin/api/products?category=earrings', null, { 'Cookie': adminCookie });
+    const earList = JSON.parse(res.body);
+    console.log(`[PROD TEST 2] GET /admin/api/products?category=earrings => Status ${res.statusCode} | Earrings Count: ${earList.count}`);
+    if (earList.count !== 16 || !earList.products[0].image.includes('product')) {
+      throw new Error(`Earrings category count mismatch: expected 16, got ${earList.count}`);
+    }
+
+    // Test 14c. POST /admin/api/products (Create test product)
+    const newTestProd = {
+      id: 'RJ-TEST-99',
+      categoryKey: 'earrings',
+      title: 'Solitaire Test Drop Earrings',
+      purity: '22K BIS Hallmarked Gold',
+      diamonds: '1.20 ct Natural Certified Diamonds',
+      weight: '12.40 gms',
+      cert: 'BIS 100% Certified & SGL Verified',
+      image: '/assets/Earrings/product(1).png',
+      tags: ['diamond', 'gold']
+    };
+    res = await request('POST', '/admin/api/products', newTestProd, { 'Cookie': adminCookie });
+    const createProdRes = JSON.parse(res.body);
+    console.log(`[PROD TEST 3] POST /admin/api/products => Status ${res.statusCode} | Created: ${createProdRes.product.id}`);
+    if (res.statusCode !== 200 || !createProdRes.success || createProdRes.product.id !== 'RJ-TEST-99') {
+      throw new Error('Create product failed');
+    }
+
+    // Test 14d. PUT /admin/api/products/:id (Update product details & image)
+    res = await request('PUT', '/admin/api/products/RJ-TEST-99', {
+      title: 'Updated Solitaire Test Drop Earrings',
+      weight: '13.10 gms',
+      image: '/assets/Earrings/product(2).png'
+    }, { 'Cookie': adminCookie });
+    const updateProdRes = JSON.parse(res.body);
+    console.log(`[PROD TEST 4] PUT /admin/api/products/RJ-TEST-99 => Status ${res.statusCode} | Updated Title: ${updateProdRes.product.title}`);
+    if (updateProdRes.product.title !== 'Updated Solitaire Test Drop Earrings' || updateProdRes.product.image !== '/assets/Earrings/product(2).png') {
+      throw new Error('Update product failed');
+    }
+
+    // Test 14e. DELETE /admin/api/products/:id (Delete test product)
+    res = await request('DELETE', '/admin/api/products/RJ-TEST-99', null, { 'Cookie': adminCookie });
+    const delProdRes = JSON.parse(res.body);
+    console.log(`[PROD TEST 5] DELETE /admin/api/products/RJ-TEST-99 => Status ${res.statusCode} | Success: ${delProdRes.success}`);
+    if (res.statusCode !== 200 || !delProdRes.success) {
+      throw new Error('Delete product failed');
+    }
+
+    // Test 14f. POST /admin/api/products/sync-static
+    res = await request('POST', '/admin/api/products/sync-static', null, { 'Cookie': adminCookie });
+    const syncRes = JSON.parse(res.body);
+    console.log(`[PROD TEST 6] POST /admin/api/products/sync-static => Status ${res.statusCode} | Synced Files: ${Object.keys(syncRes.results).length}`);
+    if (res.statusCode !== 200 || !syncRes.success) {
+      throw new Error('Sync static HTML failed');
+    }
+
     // 20. Test GET /admin/logout
     res = await request('GET', '/admin/logout');
     console.log(`[ADMIN TEST 15] GET /admin/logout => Status ${res.statusCode} | Location: ${res.headers.location}`);

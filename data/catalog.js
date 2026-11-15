@@ -471,7 +471,7 @@ const categories = {
     banner: '/assets/Banners/Earring.png',
     mobileBanner: '/assets/Mobile%20Banners/Earrings.png',
     description: 'Sculpted heritage jhumkas, sparkling polki chandbalis, and modern dangles for regal celebrations.',
-    count: 9,
+    count: 16,
     products: [
       {
         id: 'RJ-ER-01',
@@ -480,7 +480,7 @@ const categories = {
         diamonds: 'Uncut Natural Polki & Pearl Drops',
         weight: '24.50 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_01.jpg',
+        image: '/assets/Earrings/product(1).png',
         tags: ['gold', 'diamond']
       },
       {
@@ -490,7 +490,7 @@ const categories = {
         diamonds: 'Enamel Feather Detailing & Rubies',
         weight: '28.20 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_02.jpg',
+        image: '/assets/Earrings/product(2).png',
         tags: ['gold']
       },
       {
@@ -500,7 +500,7 @@ const categories = {
         diamonds: '1.45 ct Linear Diamond Drops',
         weight: '11.80 gms',
         cert: 'SGL Certified Natural Diamonds',
-        image: '/assets/products/earrings/earrings_03.jpg',
+        image: '/assets/Earrings/product(3).png',
         tags: ['diamond', 'daily']
       },
       {
@@ -510,7 +510,7 @@ const categories = {
         diamonds: '0.70 ct Micro-Pavé Highlights',
         weight: '9.60 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_04.jpg',
+        image: '/assets/Earrings/product(4).png',
         tags: ['diamond', 'daily']
       },
       {
@@ -520,7 +520,7 @@ const categories = {
         diamonds: 'Natural Burmese Rubies & Seed Pearls',
         weight: '21.40 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_05.jpg',
+        image: '/assets/Earrings/product(5).png',
         tags: ['gold', 'gifting']
       },
       {
@@ -530,7 +530,7 @@ const categories = {
         diamonds: '0.55 ct Daily Comfort Hoops',
         weight: '6.40 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_06.jpg',
+        image: '/assets/Earrings/product(6).png',
         tags: ['diamond', 'daily']
       },
       {
@@ -540,7 +540,7 @@ const categories = {
         diamonds: 'Goddess Lakshmi Carved Motifs',
         weight: '22.80 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_07.jpg',
+        image: '/assets/Earrings/product(7).png',
         tags: ['gold']
       },
       {
@@ -550,7 +550,7 @@ const categories = {
         diamonds: '2.20 ct Flexible Cascading Diamonds',
         weight: '16.50 gms',
         cert: 'IGI Certified Natural Diamonds',
-        image: '/assets/products/earrings/earrings_08.jpg',
+        image: '/assets/Earrings/product(8).png',
         tags: ['diamond', 'gifting']
       },
       {
@@ -560,8 +560,78 @@ const categories = {
         diamonds: 'Delicate Wire Art & Diamond Beads',
         weight: '14.60 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/earrings/earrings_09.jpg',
+        image: '/assets/Earrings/product(9).png',
         tags: ['gold', 'daily']
+      },
+      {
+        id: 'RJ-ER-10',
+        title: 'Noor Crescent Polki Jadau Earrings',
+        purity: '22K Yellow Gold',
+        diamonds: 'Uncut Polki Diamonds & Emerald Droplets',
+        weight: '17.50 gms',
+        cert: 'BIS 100% Certified & SGL Verified',
+        image: '/assets/Earrings/product(10).png',
+        tags: ['gold', 'diamond']
+      },
+      {
+        id: 'RJ-ER-11',
+        title: 'Maharani Meenakari Floral Jhumkis',
+        purity: '22K Kundan Gold',
+        diamonds: 'Handcrafted Jaipur Enamel & Pearls',
+        weight: '19.80 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Earrings/product(11).png',
+        tags: ['gold', 'gifting']
+      },
+      {
+        id: 'RJ-ER-12',
+        title: 'Aura Geometric Solitaire Stud Dangles',
+        purity: '18K White Gold',
+        diamonds: '1.30 ct Certified Natural Solitaires',
+        weight: '10.40 gms',
+        cert: 'IGI Certified Natural Diamonds',
+        image: '/assets/Earrings/product(12).png',
+        tags: ['diamond', 'daily']
+      },
+      {
+        id: 'RJ-ER-13',
+        title: 'Gulmarg Blossom Diamond Chandelier',
+        purity: '18K Rose Gold',
+        diamonds: '1.80 ct Brilliant Cut Floral Diamonds',
+        weight: '15.90 gms',
+        cert: 'SGL Certified Natural Diamonds',
+        image: '/assets/Earrings/product(13).png',
+        tags: ['diamond', 'gifting']
+      },
+      {
+        id: 'RJ-ER-14',
+        title: 'Kundan & South Sea Pearl Balis',
+        purity: '22K Hallmarked Gold',
+        diamonds: 'Graded South Sea Pearls & Kundan',
+        weight: '20.30 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Earrings/product(14).png',
+        tags: ['gold']
+      },
+      {
+        id: 'RJ-ER-15',
+        title: 'Modern Linear Baguette Diamond Stiletto',
+        purity: '18K Yellow Gold',
+        diamonds: '1.15 ct Tapered Baguette Diamonds',
+        weight: '8.70 gms',
+        cert: 'IGI Certified Natural Diamonds',
+        image: '/assets/Earrings/product(15).png',
+        tags: ['diamond', 'daily']
+      },
+      {
+        id: 'RJ-ER-16',
+        title: 'The Royal Noor Heritage Polki Jhumka Suite',
+        purity: '22K Heritage Antique Gold',
+        diamonds: 'Certified Syndicate Polki & Basra Pearls',
+        weight: '26.20 gms',
+        cert: 'BIS 100% Certified & SGL Verified',
+        image: '/assets/Earrings/product.png',
+        tags: ['gold', 'diamond']
       }
     ]
   },
@@ -673,7 +743,7 @@ const categories = {
     banner: '/assets/Banners/chains.png',
     mobileBanner: '/assets/Mobile%20Banners/Chains.png',
     description: 'Precision woven 22K hallmarked chains, solid rope links, and regal men and women everyday essentials.',
-    count: 9,
+    count: 24,
     products: [
       {
         id: 'RJ-CH-01',
@@ -682,7 +752,7 @@ const categories = {
         diamonds: 'Panchmukhi Rudraksha with Gold Capping',
         weight: '24.80 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_01.jpg',
+        image: '/assets/Chains/product(1).png',
         tags: ['gold', 'daily']
       },
       {
@@ -692,8 +762,8 @@ const categories = {
         diamonds: 'Diamond-Cut Spiraled Solid Links',
         weight: '32.00 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_02.jpg',
-        tags: ['gold']
+        image: '/assets/Chains/product(2).png',
+        tags: ['gold', 'diamond']
       },
       {
         id: 'RJ-CH-03',
@@ -702,68 +772,218 @@ const categories = {
         diamonds: 'Interlocking Hand-Crafted Byzantine Links',
         weight: '45.00 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_03.jpg',
+        image: '/assets/Chains/product(3).png',
         tags: ['gold', 'gifting']
       },
       {
         id: 'RJ-CH-04',
+        title: 'Royal Nawabi Filigree Gold Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Intricate Lucknowi Jaali Craft',
+        weight: '36.20 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(4).png',
+        tags: ['gold', 'gifting']
+      },
+      {
+        id: 'RJ-CH-05',
         title: 'Royal Figaro Diamond Cut Gold Chain',
         purity: '22K BIS Hallmarked 916 Gold',
         diamonds: 'High-Polish Triple Link Pattern',
         weight: '18.50 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_04.jpg',
+        image: '/assets/Chains/product(5).png',
         tags: ['gold', 'daily']
       },
       {
-        id: 'RJ-CH-05',
+        id: 'RJ-CH-06',
         title: 'Traditional Box Link Gold Chain',
         purity: '22K BIS Hallmarked 916 Gold',
         diamonds: 'Sturdy Smooth Finished Daily Box Links',
         weight: '14.20 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_05.jpg',
+        image: '/assets/Chains/product(6).png',
         tags: ['gold', 'daily']
       },
       {
-        id: 'RJ-CH-06',
+        id: 'RJ-CH-07',
         title: 'Sleek Singapore Link 22K Gold Chain',
         purity: '22K BIS Hallmarked 916 Gold',
         diamonds: 'Twisted Wave Light-Catching Links',
         weight: '11.40 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_06.jpg',
+        image: '/assets/Chains/product(7).png',
         tags: ['gold', 'daily']
       },
       {
-        id: 'RJ-CH-07',
+        id: 'RJ-CH-08',
         title: 'Heavy Cuban Curb Link Men Chain',
         purity: '22K BIS Hallmarked 916 Gold',
         diamonds: 'Solid Heavyweight Beveled Edge Links',
         weight: '55.00 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_07.jpg',
+        image: '/assets/Chains/product(8).png',
         tags: ['gold']
       },
       {
-        id: 'RJ-CH-08',
+        id: 'RJ-CH-09',
+        title: 'Vedic Omkar Sacred Pendant Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Embossed Sacred Om with Micro Link',
+        weight: '21.00 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(9).png',
+        tags: ['gold', 'daily']
+      },
+      {
+        id: 'RJ-CH-10',
+        title: 'Kundan & Polki Stationed Festoon Chain',
+        purity: '22K Gold & Natural Polki',
+        diamonds: 'Uncut Syndicate Polki Accents',
+        weight: '38.60 gms',
+        cert: 'GIA / IGI Verified',
+        image: '/assets/Chains/product(10).png',
+        tags: ['diamond', 'gifting']
+      },
+      {
+        id: 'RJ-CH-11',
+        title: 'Maharaja Triple Curb Heavy Gold Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Triple Interlocked Solid Links',
+        weight: '64.00 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(11).png',
+        tags: ['gold']
+      },
+      {
+        id: 'RJ-CH-12',
         title: 'Wheat Spiga Delicate Everyday Chain',
         purity: '18K Yellow Gold',
         diamonds: 'Four-Strand Woven Spiga Finish',
         weight: '8.90 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_08.jpg',
+        image: '/assets/Chains/product(12).png',
         tags: ['gold', 'daily']
       },
       {
-        id: 'RJ-CH-09',
+        id: 'RJ-CH-13',
         title: 'Temple Textured Ball Bead Gold Chain',
         purity: '22K BIS Hallmarked 916 Gold',
         diamonds: 'Hand-Fluted Gold Spheres & Solid Links',
         weight: '28.60 gms',
         cert: 'BIS 100% Certified',
-        image: '/assets/products/chains/chains_09.jpg',
+        image: '/assets/Chains/product(13).png',
         tags: ['gold', 'gifting']
+      },
+      {
+        id: 'RJ-CH-14',
+        title: 'Antique Peacock Motif Chokdi Chain',
+        purity: '22K Antique Hallmarked Gold',
+        diamonds: 'Hand-Engraved Nakashi Peacock Beads',
+        weight: '34.10 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(14).png',
+        tags: ['gold']
+      },
+      {
+        id: 'RJ-CH-15',
+        title: 'Emerald Stationed Diamond Cut Chain',
+        purity: '18K Yellow Gold',
+        diamonds: 'Zambian Emerald Drops & Gold Beads',
+        weight: '22.40 gms',
+        cert: 'Certified Gemological',
+        image: '/assets/Chains/product(15).png',
+        tags: ['daily', 'gifting']
+      },
+      {
+        id: 'RJ-CH-16',
+        title: 'Lotus Bloom Carved Gold Malai Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Lotus Petal Repousse Motifs',
+        weight: '29.80 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(16).png',
+        tags: ['gold', 'daily']
+      },
+      {
+        id: 'RJ-CH-17',
+        title: 'Ganga Jamuna Two-Tone Figaro Chain',
+        purity: '22K Yellow & White Gold',
+        diamonds: 'Dual Gold High-Polish Figaro',
+        weight: '31.50 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(17).png',
+        tags: ['gold', 'diamond']
+      },
+      {
+        id: 'RJ-CH-18',
+        title: 'Grand Rajwada Hollow Rope Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'High-Volume Lightweight Rope Art',
+        weight: '19.80 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(18).png',
+        tags: ['gold', 'gifting']
+      },
+      {
+        id: 'RJ-CH-19',
+        title: 'Fluted Melon Bead Heritage Gold Chain',
+        purity: '22K Antique Hallmarked Gold',
+        diamonds: 'Hollow Fluted Melon Beads',
+        weight: '27.60 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(19).png',
+        tags: ['gold', 'daily']
+      },
+      {
+        id: 'RJ-CH-20',
+        title: 'Sankalp Trishul & Damru Devotional Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Micro Sculpted Shiva Symbols',
+        weight: '23.40 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(20).png',
+        tags: ['gold', 'daily']
+      },
+      {
+        id: 'RJ-CH-21',
+        title: 'Belcher Oval Link Minimalist Chain',
+        purity: '18K Yellow Gold',
+        diamonds: 'High-Polish Rounded Oval Belcher',
+        weight: '15.20 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(21).png',
+        tags: ['daily', 'gifting']
+      },
+      {
+        id: 'RJ-CH-22',
+        title: 'Diamond Faceted Marina Anchor Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Beveled Mariner Marine Links',
+        weight: '33.70 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(22).png',
+        tags: ['diamond', 'gold']
+      },
+      {
+        id: 'RJ-CH-23',
+        title: 'Royal Awadh Broad Mesh Gold Chain',
+        purity: '22K BIS Hallmarked 916 Gold',
+        diamonds: 'Woven Mesh Statement Collar Link',
+        weight: '48.90 gms',
+        cert: 'BIS 100% Certified',
+        image: '/assets/Chains/product(23).png',
+        tags: ['gold', 'gifting']
+      },
+      {
+        id: 'RJ-CH-24',
+        title: 'Kohinoor Polki Pendant Gold Chain',
+        purity: '22K Gold & Natural Polki',
+        diamonds: 'Uncut Syndicate Polki Solitaire',
+        weight: '26.20 gms',
+        cert: 'GIA / IGI Verified',
+        image: '/assets/Chains/product.png',
+        tags: ['diamond', 'gifting']
       }
     ]
   },

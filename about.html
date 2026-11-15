@@ -36,54 +36,35 @@
   </div>
 
   <!-- Main Navigation Header -->
-  <header class="site-header">
+  <header class="site-header" id="home">
     <div class="header-container">
       <a class="brand-logo" href="index.html" aria-label="Rahul Jewellers Legacy">
         <img src="assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
 
-      <!-- Desktop Nav -->
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu">
-          <li><a class="nav-link" href="index.html">Home</a></li>
-          <li><a class="nav-link active" href="about.html">About Us</a></li>
-          <li class="nav-item-dropdown">
-            <a class="nav-link" href="bracelets.html">
-              Collection
-              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="bangles.html">Bangles</a></li>
-              <li><a href="bracelets.html">Bracelets</a></li>
-              <li><a href="chains.html">Chains</a></li>
-              <li><a href="earrings.html">Earrings</a></li>
-              <li><a href="fancy-chains.html">Fancy Chains</a></li>
-              <li><a href="necklaces.html">Necklaces</a></li>
-              <li><a href="rings.html">Rings</a></li>
-              <li><a href="studs.html">Studs</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link" href="index.html#gold-rates">Gold Rates</a></li>
-          <li><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="about.html">About Us</a>
+        <div class="nav-item-dropdown">
+          <a class="nav-link" href="index.html#collections">Collection</a>
+          <ul class="dropdown-menu">
+            <li><a href="bangles.html">Bangles</a></li>
+            <li><a href="bracelets.html">Bracelets</a></li>
+            <li><a href="chains.html">Chains</a></li>
+            <li><a href="earrings.html">Earrings</a></li>
+            <li><a href="fancy-chains.html">Fancy Chains</a></li>
+            <li><a href="necklaces.html">Necklaces</a></li>
+            <li><a href="rings.html">Rings</a></li>
+            <li><a href="studs.html">Studs</a></li>
+          </ul>
+        </div>
+        <a class="nav-link" href="gold-rates.html">Gold Rates</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </nav>
 
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="mobile-toggle" type="button" aria-label="Toggle Navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-    </div>
-
-    <div class="mobile-backdrop" id="mobileBackdrop"></div>
-    <!-- Mobile Drawer Menu -->
-    <div class="mobile-drawer" id="mobileDrawer">
-      <ul class="mobile-nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="about.html">About Us</a></li>
-        <li><a href="bracelets.html">Collections</a></li>
-        <li><a href="index.html#gold-rates">Live Gold Rates</a></li>
-        <li><a href="contact.html">Contact Showroom</a></li>
-      </ul>
     </div>
   </header>
 
@@ -145,75 +126,80 @@
     </section>
   </main>
 
-  <!-- Line-Art Palace Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-col brand-col">
-          <div class="footer-logo">
-            <img src="assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy" class="site-footer-logo">
-          </div>
-          <p class="footer-desc">
-            Crafting timeless, heirloom jewelry that celebrates heritage, purity, and magnificent cultural artistry. Trusted for generations of refined gold and diamond creations.
-          </p>
-          <div class="footer-social">
-            <a href="https://facebook.com" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="https://instagram.com" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="https://youtube.com" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-            <a href="https://wa.me/919559777770" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Our Legacy</a></li>
-            <li><a href="bracelets.html">Services</a></li>
-            <li><a href="rings.html">Diamonds</a></li>
-            <li><a href="bangles.html">Gold</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col footer-store-info">
-          <h4>Visit Our Store</h4>
-          <p>
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Lucknow - Raibareli Rd, Nilmatha Bazar, Telibagh, Lucknow, Uttar Pradesh 226025</span>
-          </p>
-          <p>
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span><strong>Store Timings:</strong><br>Mon &ndash; Sun: 11:30 AM &ndash; 8:30 PM<br>(Open All 7 Days)</span>
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #a4b5ad; margin-bottom: 4px;">Talk To Our Expert</p>
-          <a class="phone-link" href="tel:+919559777770" style="color: #f7f1e7; font-weight: 700; font-size: 16px; text-decoration: none;">09559777770</a>
-          <p style="font-size: 12px; color: #a4b5ad; margin-top: 8px;">Lucknow Flagship Showroom</p>
+    <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="bg">
+      <img class="abs-fill" src="assets/footer-bg.png" alt="Palace architecture illustration">
+    </div>
+    <div class="f-in">
+      <div class="f-brand">
+        <img class="logo-img" src="assets/logo-footer-transparent.png" alt="Rahul Jewellers Legacy">
+        <p>Crafting timeless, heirloom jewelry that celebrates heritage, purity, and magnificent cultural artistry. Trusted for generations of refined gold and diamond creations.</p>
+        <div class="social">
+          <a href="#" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ico" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <a href="#" aria-label="Share"><svg class="ico" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></a>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Rahul Jewellers &mdash; All rights reserved. Designed with timeless purity.</p>
+      <div class="f-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">Our Legacy</a>
+        <a href="index.html#collections">Services</a>
+        <a href="necklaces.html">Diamonds</a>
+        <a href="gold-rates.html">Gold</a>
+        <a href="about.html">Blog</a>
+        <a href="contact.html">Contact</a>
       </div>
+
+      <div class="f-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Disclaimer</a>
+      </div>
+
+      <div class="f-col">
+        <h4>Visit Our Store</h4>
+        <div class="store-detail">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>A2/99, Pahlwan Pura, Vivek Khand-4, Gomti Nagar, Lucknow, Uttar Pradesh Pin Code: 226010</span>
+        </div>
+        <div class="divider"></div>
+        <div class="store-detail">
+          <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <strong style="color:var(--gold-light, #d2ae6e);">Store Timings:</strong><br>
+            Mon – Tue: 11:30 AM - 8:30 PM<br>
+            Wednesday: Closed<br>
+            Thu – Sun: 11:30 AM - 8:30PM
+          </div>
+        </div>
+        <div class="connect-block">
+          <h5>Connect</h5>
+          <div class="connect-label">TALK TO OUR EXPERT</div>
+          <a class="phone-link" href="tel:+919616905999">+91 96169 05999</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy">
+      &copy; 2026 Rahul Jewellers - All rights reserved. Designed with timeless purity.
     </div>
   </footer>
 
   <script>
     // Mobile navigation toggle
-    const toggleBtn = document.getElementById('mobileToggle');
-    const drawer = document.getElementById('mobileDrawer');
-    const backdrop = document.getElementById('mobileBackdrop');
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-    if (toggleBtn && drawer) {
+    if (toggleBtn && navMenu) {
       function toggleMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !drawer.classList.contains('open');
-        drawer.classList.toggle('open', isOpen);
+        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
+        navMenu.classList.toggle('open', isOpen);
         toggleBtn.classList.toggle('active', isOpen);
-        if (backdrop) backdrop.classList.toggle('open', isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : '';
       }
 
@@ -222,12 +208,14 @@
         toggleMenu();
       });
 
-      if (backdrop) {
-        backdrop.addEventListener('click', () => toggleMenu(false));
-      }
-
-      drawer.querySelectorAll('a').forEach(link => {
+      navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => toggleMenu(false));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.site-header')) {
+          toggleMenu(false);
+        }
       });
     }
   </script>
