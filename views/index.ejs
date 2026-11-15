@@ -2084,40 +2084,83 @@
       }
       .nav-menu .nav-link {
         width: 100% !important;
-        padding: 11px 0 !important;
+        padding: 12px 0 !important;
         font-size: 15px !important;
         font-weight: 600 !important;
         color: #123c32 !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
       }
       .nav-menu .nav-item-dropdown {
         width: 100% !important;
+        display: block !important;
       }
-      .nav-menu .dropdown-menu {
+      .nav-menu .nav-item-dropdown .dropdown-toggle {
+        cursor: pointer !important;
+        user-select: none !important;
+      }
+      .nav-menu .nav-item-dropdown .dropdown-chevron {
+        width: 16px !important;
+        height: 16px !important;
+        stroke: #123c32 !important;
+        display: inline-block !important;
+        transition: transform 0.28s ease, stroke 0.28s ease !important;
+        margin-left: auto !important;
+      }
+      .nav-menu .nav-item-dropdown.open .dropdown-chevron {
+        transform: rotate(180deg) !important;
+        stroke: #b78a3d !important;
+      }
+      .nav-menu .nav-item-dropdown .dropdown-menu {
+        display: none !important;
         position: static !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 8px !important;
+        width: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 10px 0 !important;
-        min-width: unset !important;
-        background: transparent !important;
+        pointer-events: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+      }
+      .nav-menu .nav-item-dropdown.open .dropdown-menu {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        padding: 10px 0 14px 0 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+      }
+      .nav-menu .dropdown-menu li {
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
       }
       .nav-menu .dropdown-menu li a {
         display: block !important;
         background: #faf7f2 !important;
-        border: 1px solid rgba(183, 138, 61, 0.2) !important;
+        border: 1px solid rgba(183, 138, 61, 0.22) !important;
         border-radius: 6px !important;
-        padding: 8px 10px !important;
+        padding: 9px 10px !important;
         font-size: 12.5px !important;
         font-weight: 500 !important;
         color: #2b3a35 !important;
         text-align: center !important;
+        text-decoration: none !important;
+        font-family: 'Instrument Sans', sans-serif !important;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+      }
+      .nav-menu .dropdown-menu li a:hover,
+      .nav-menu .dropdown-menu li a:active,
+      .nav-menu .dropdown-menu li a.active-cat {
+        background: #f2e9db !important;
+        color: #123c32 !important;
+        border-color: #b78a3d !important;
+        font-weight: 600 !important;
       }
       .mobile-drawer,
       .mobile-backdrop {
@@ -2210,6 +2253,7 @@
       }
       .featured .filters {
         display: flex !important;
+        justify-content: flex-start !important;
         width: 100% !important;
         overflow-x: auto !important;
         padding-bottom: 6px !important;
@@ -2544,6 +2588,7 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/css/header.css">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="shortcut icon" href="/assets/favicon.png">
 </head>
@@ -3087,35 +3132,11 @@
       reelWrapper.scrollLeft = scrollLeft - walk;
     });
   }
+  </script>
 
-    // Mobile Navigation Toggle (Matching Chains Page)
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+  <script src="/js/header.js"></script>
 
-    if (mobileToggle && navMenu) {
-      function toggleMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
-        navMenu.classList.toggle('open', isOpen);
-        mobileToggle.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-
-      mobileToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.site-header') && !e.target.closest('.nav-menu')) {
-          toggleMenu(false);
-        }
-      });
-    }
-
+  <script>
     // Testimonial Dots Scroll Sync
     const testiWrap = document.getElementById('testiTickerWrap');
     const testiDots = document.querySelectorAll('.testi-dot');

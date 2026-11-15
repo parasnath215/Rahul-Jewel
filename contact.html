@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="shortcut icon" href="assets/favicon.png">
 </head>
@@ -42,11 +43,14 @@
         <img src="assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
 
-      <nav class="nav-menu" aria-label="Primary Navigation">
+            <nav class="nav-menu" aria-label="Primary Navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="about.html">About Us</a>
         <div class="nav-item-dropdown">
-          <a class="nav-link" href="index.html#collections">Collection</a>
+          <a class="nav-link dropdown-toggle" href="index.html#collections" role="button" aria-haspopup="true">
+            <span>Collection</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
           <ul class="dropdown-menu">
             <li><a href="bangles.html">Bangles</a></li>
             <li><a href="bracelets.html">Bracelets</a></li>
@@ -277,82 +281,6 @@
     </div>
   </footer>
 
-  <script>
-    // Mobile navigation toggle
-    const toggleBtn = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (toggleBtn && navMenu) {
-      function toggleMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
-        navMenu.classList.toggle('open', isOpen);
-        toggleBtn.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.site-header')) {
-          toggleMenu(false);
-        }
-      });
-    }
-
-    // Handle Contact Form AJAX Submission
-    async function handleContactSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const submitBtn = document.getElementById('submitBtn');
-      const feedback = document.getElementById('contactFeedback');
-
-      const formData = {
-        name: form.firstName.value + ' ' + form.lastName.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        message: form.message.value,
-        source: 'Contact Page Inquiry'
-      };
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Submitting...';
-
-      try {
-        const res = await fetch('/api/inquiry', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-        const data = await res.json();
-        
-        feedback.style.display = 'block';
-        if (res.ok && data.success) {
-          feedback.style.background = '#dcfce7';
-          feedback.style.color = '#166534';
-          feedback.style.border = '1px solid #86efac';
-          feedback.innerHTML = '&#10004; Thank you! Your message has been received. Our senior jewelry consultant will contact you within 2 business hours.';
-          form.reset();
-        } else {
-          throw new Error(data.message || 'Submission failed');
-        }
-      } catch (err) {
-        feedback.style.display = 'block';
-        feedback.style.background = '#fee2e2';
-        feedback.style.color = '#991b1b';
-        feedback.style.border = '1px solid #fca5a5';
-        feedback.innerHTML = '&#9888; Thank you! Your inquiry was recorded. You can also chat directly on WhatsApp at 09559777770.';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>SUBMIT</span> <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-      }
-    }
-  </script>
+  <script src="js/header.js"></script>
 </body>
 </html>

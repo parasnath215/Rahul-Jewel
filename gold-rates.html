@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="shortcut icon" href="assets/favicon.png">
 </head>
@@ -42,11 +43,14 @@
         <img src="assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
 
-      <nav class="nav-menu" aria-label="Primary Navigation">
+            <nav class="nav-menu" aria-label="Primary Navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="about.html">About Us</a>
         <div class="nav-item-dropdown">
-          <a class="nav-link" href="index.html#collections">Collection</a>
+          <a class="nav-link dropdown-toggle" href="index.html#collections" role="button" aria-haspopup="true">
+            <span>Collection</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
           <ul class="dropdown-menu">
             <li><a href="bangles.html">Bangles</a></li>
             <li><a href="bracelets.html">Bracelets</a></li>
@@ -404,51 +408,6 @@
     </div>
   </footer>
 
-  <script>
-    // Mobile navigation toggle
-    const toggleBtn = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (toggleBtn && navMenu) {
-      function toggleMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
-        navMenu.classList.toggle('open', isOpen);
-        toggleBtn.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.site-header')) {
-          toggleMenu(false);
-        }
-      });
-    }
-
-    // Dynamic Live Cache Poller (refreshes if server has updated cache)
-    async function refreshLiveRates() {
-      try {
-        const res = await fetch('/api/rates');
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data && data.success && data.featured) {
-          const goldEl = document.getElementById('featuredGoldVal');
-          const silEl = document.getElementById('featuredSilverVal');
-          if (goldEl && data.featured.gold24k_10g) goldEl.innerText = data.featured.gold24k_10g.value;
-          if (silEl && data.featured.silver_1kg) silEl.innerText = data.featured.silver_1kg.value;
-        }
-      } catch (e) {}
-    }
-    // Check every 60 seconds
-    setInterval(refreshLiveRates, 60000);
-  </script>
+  <script src="js/header.js"></script>
 </body>
 </html>

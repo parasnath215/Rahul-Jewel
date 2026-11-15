@@ -9,7 +9,10 @@
       <a class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'home') ? 'active' : '' %>" href="/">Home</a>
       <a class="nav-link <%= (typeof activePage !== 'undefined' && activePage === 'about') ? 'active' : '' %>" href="/about">About Us</a>
       <div class="nav-item-dropdown">
-        <a class="nav-link <%= (typeof activeCategory !== 'undefined' || (typeof activePage !== 'undefined' && (activePage === 'category' || activePage === 'product'))) ? 'active' : '' %>" href="/#collections">Collection</a>
+        <a class="nav-link dropdown-toggle <%= (typeof activeCategory !== 'undefined' || (typeof activePage !== 'undefined' && (activePage === 'category' || activePage === 'product'))) ? 'active' : '' %>" href="/#collections" role="button" aria-haspopup="true">
+          <span>Collection</span>
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
         <ul class="dropdown-menu">
           <li><a href="/collections/bangles" class="<%= (typeof activeCategory !== 'undefined' && activeCategory === 'bangles') ? 'active-cat' : '' %>">Bangles</a></li>
           <li><a href="/collections/bracelets" class="<%= (typeof activeCategory !== 'undefined' && activeCategory === 'bracelets') ? 'active-cat' : '' %>">Bracelets</a></li>

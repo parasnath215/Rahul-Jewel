@@ -1,33 +1,5 @@
 // Rahul Jewellers - Category & Catalog Interactivity
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Nav Toggle
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-
-  if (mobileToggle && navMenu) {
-    function toggleMenu(forceState) {
-      const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
-      navMenu.classList.toggle('open', isOpen);
-      mobileToggle.classList.toggle('active', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-
-    mobileToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.site-header') && !e.target.closest('.nav-menu')) {
-        toggleMenu(false);
-      }
-    });
-  }
-
   // Quick View Modal Elements
   const modalOverlay = document.getElementById('quickViewModal');
   const modalClose = document.getElementById('modalClose');

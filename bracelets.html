@@ -13,6 +13,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/category.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="shortcut icon" href="assets/favicon.png">
 </head>
@@ -43,11 +44,14 @@
         <img src="assets/logo-header.png" alt="Rahul Jewellers Legacy" class="site-brand-logo">
       </a>
 
-      <nav class="nav-menu" aria-label="Primary Navigation">
+            <nav class="nav-menu" aria-label="Primary Navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="about.html">About Us</a>
         <div class="nav-item-dropdown">
-          <a class="nav-link active" href="index.html#collections">Collection</a>
+          <a class="nav-link dropdown-toggle active" href="index.html#collections" role="button" aria-haspopup="true">
+            <span>Collection</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
           <ul class="dropdown-menu">
             <li><a href="bangles.html">Bangles</a></li>
             <li><a href="bracelets.html" class="active-cat">Bracelets</a></li>
@@ -473,5 +477,6 @@
   </footer>
 
   <script src="js/category.js"></script>
+  <script src="js/header.js"></script>
 </body>
 </html>

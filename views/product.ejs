@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/header.css">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="shortcut icon" href="/assets/favicon.png">
 </head>
@@ -211,35 +212,11 @@
     function closeEnquiryModal() {
       document.getElementById('enquiryModal').style.display = 'none';
     }
+  </script>
 
-    // Mobile nav toggle
-    const toggleBtn = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+  <script src="/js/header.js"></script>
 
-    if (toggleBtn && navMenu) {
-      function toggleMenu(forceState) {
-        const isOpen = forceState !== undefined ? forceState : !navMenu.classList.contains('open');
-        navMenu.classList.toggle('open', isOpen);
-        toggleBtn.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      }
-
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.site-header')) {
-          toggleMenu(false);
-        }
-      });
-    }
-
+  <script>
     async function handleProductEnquiry(e) {
       e.preventDefault();
       const form = e.target;
